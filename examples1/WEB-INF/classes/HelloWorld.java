@@ -1,6 +1,4 @@
-//TOMCAT FOLDER: /var/lib/tomcat8/webapps/
 //Compile: sudo javac -cp .:../lib/javax.servlet-api-3.0.1.jar: HelloWorld.java
-//START TOMCAT: sudo service tomcat8 start
 
 import java.io.*;
 import javax.servlet.*;
