@@ -1,0 +1,21 @@
+1.- Uninstall the apache version that could be installed on the PC:
+apt-get remove --purge apache2
+
+2.- Install the most recent version of apache2
+apt-get install apache2
+
+3.- After create the file /etc/apache2/httpd.conf, add the nex line in the file /etc/apache2/apache2.conf:
+Include httpd.conf
+
+4.- Disable the port 8080 in the file $CATALINA_HOME/conf/server.xml, commenting with <!-- --> the next code block:
+
+   <Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+               
+5.- Define $CATALINA_HOME and $JAVA_HOME
+
+~/.bashrc
+
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+export CATALINA_HOME=/opt/tomcat/apache-tomcat-8.5.32

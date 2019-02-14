@@ -1,0 +1,4 @@
+$ cd example1
+$ javac web-src/mx/ipn/escom/wad/servlets/*.java -d web/WEB-INF/classes/ -classpath web/WEB-INF/lib/*.jar
+$ cd web-src
+$ jar cvf ../web.war *

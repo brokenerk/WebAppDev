@@ -1,0 +1,266 @@
+Enviroment settings
+
+Java install
+
+1. Download the Java requiered version from Oracle Official Site (http://www.oracle.com/index.html).
+
+2. Open a Terminal Console.
+
+3. Enter the directory where the Java version was downloaded. (Use the cd command)
+
+4. Type the following command on the terminal:
+$	su 
+
+5. Type the root password.
+
+6. Extract the files from the downloaded tar.gz using the following command (The files are extracted in a single directory)
+$ tar -xvf [filename]
+
+7. Make a directory to store the extracted directory
+$ mkdir /usr/local/java
+
+8. Move the contents of the extracted directory to the one made in the previous step.
+$ mv jdkVERSION /usr/local/java
+
+9. Execute the following commands to indicate Debian where Java is located
+$ update-alternatives --install /usr/bin/java java /usr/local/java/jdkVERSION/bin/java 1065
+$ update-alternatives --install /usr/bin/javac javac /usr/local/java/jdkVERSION/bin/javac 1065
+$ update-alternatives --install /usr/bin/jar jar /usr/local/java/jdkVERSION/bin/jar 1065
+$ update-alternatives --install /usr/bin/javaws javaws /usr/local/java/jdkVERSION/bin/javaws 1065
+
+10. Choose the java version that was installed on the previous steps.
+$ update-alternatives --config java
+
+11. Java installation is done.
+
+
+
+
+Apache Tomcat v7 Install
+
+1. Download Apache Tomcat 7.0.x (apache-tomcat-7.0.x.tar.gz) from Apache Tomcat Official Site.
+
+2. Open a Terminal Console.
+
+3. Enter the directory where the Java version was downloaded. (Use the cd command)
+
+4. Extract the files from the downloaded tar.gz using the following command. 
+$ tar -xvzf apache-tomcat-7.0.x.tar.gz
+The files are extracted in a single directory named apache-tomcat-7.0.x which contains Apache Tomacat configuration files and directories.
+
+5. Delete the downloaded apache-tomcat-7.0.x.tar.gz file
+$ rm apache-tomcat-7.0.x.tar.gz
+
+6. Log in with root and type the root password.
+$ su
+
+7. Move the extracted directory into /usr/local/tomcat using:
+# mv apache-tomcat-7.0.x/* /usr/local/tomcat/
+
+8. Delete the downloaded file
+# rm -rf apache-tomcat-7.0.x
+
+9. Add the environment variable CATALINA_HOME. To do this, open the file bash.bashrc 
+# nano /etc/bash.bashrc
+
+10. Add the following line at the end of the file
+export CATALINA_HOME=/usr/local/tomcat/
+
+11. Save changes and close the file
+
+12. The installation is done.
+
+
+
+Create Tomcat user on Debian
+
+1. Open a Terminal Console and log in as root
+
+2. Make a group named tomcat
+# groupadd tomcat
+
+3. Make an user named tomcat, add it to the group and asign its home directory as /usr/local/tomcat/ como su home
+# useradd -g tomcat -d /usr/local/tomcat/ tomcat
+
+4. Add user tomcat to the www-data group
+# usermod -G www-data tomcat
+
+5. Set a password for the user tomcat
+# passwd tomcat
+
+6. Change the console type to bash for the user tomcat by modifying the file /etc/passwd
+# nano /etc/passwd
+
+7. Modify the following line as shown:
+Before -> tomcat:x:1001:1001::/usr/local/tomcat/:/bin/sh
+After -> tomcat:x:1001:1001::/usr/local/tomcat/:/bin/bash
+
+8. Save the changes and close the file.
+
+9. Change the ownner of the directory /usr/local/tomcat/
+# chown -R tomcat:tomcat tomcat/
+
+10. From now on any changes made to this directory can only be made with the user tomcat.
+
+11. End.
+
+
+Tomat automatic start settings
+
+1. Open a Terminal Console and log in as root
+
+2. Make a file named tomcat on /etc/init.d/
+# nano /etc/init.d/tomcat
+
+3. Add the following lines to the file:
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides: tomcat
+# Required-Start: $syslog
+# Required-Stop: $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: arranque automatico de tomcat
+# Description:
+### END INIT INFO
+case $1 in
+start)
+sh /usr/local/tomcat/bin/startup.sh
+;;
+stop)
+sh /usr/local/tomcat/bin/shutdown.sh
+;;
+restart)
+sh /usr/local/tomcat/bin/shutdown.sh
+sh /usr/local/tomcat/bin/startup.sh
+;;
+esac
+exit 0
+
+4. Save the changes and close the file.
+
+5. Modify the permission of the file /etc/init.d/tomcat so it can be excecuted.
+# chmod 755 /etc/init.d/tomcat
+
+6. Add a symbolic link to Tomcat's boot script.
+# update-rc.d tomcat defaults
+Now Tomcat v7 will start automatically everytime the OS boots.
+
+7. Verify the proper excecution of the settings by typing the following command:
+# /etc/init.d/tomcat start
+
+8. Open a browser and go to http://127.0.0.1:8080
+
+9. End
+
+
+
+
+
+Apache Tomcat and Apache Settings
+1. Open a Terminal Console and log in as root
+
+2. Move to the directory where apache-tomcat-7.0.37 is located.
+# cd /usr/local/tomcat/
+
+3. Open the file /apache-tomcat-7.0.37/conf/server.xml para lectura as read-only
+# nano conf/server.xml
+
+4. Find the following lines on server.xml
+<!-- Define an AJP 1.3 Connector on port 8009 -->
+<Connector port=‘‘8009’’ protocol=‘‘AJP/1.3’’ redirectPort=‘‘8443’’ />
+
+5. On the previous lines identify the port number that Apache server uses to communicate with Apache Tomcat. By default, the port is 8089
+
+6. Close the file.
+
+7. Open the file httpd.conf as read-and-write
+# nano /etc/apache2/httpd.conf
+
+8. At the end of the file write de following lines:
+# Settings so that every request to port 80 are redirected to port 8089 of Tomcat.
+MaxClients 250
+ProxyPass / ajp://localhost:8009/
+ProxyPassReverse / ajp://localhost:8009/
+
+• The first line especifies the number of clients that Apache server can handle concurrently.
+• The second line redirects all trafic to port 8089.
+• The third line sets a Reverse Proxy that allows Apache to change the response headers sent to Apache Tomacat: location, content-location and URI. This way any external users will see the responses coming from Apache and not from Apache Tomcat.
+
+9. Once the httpd.conf file is edited, save the changes and close the file.
+
+10. Install mod_proxy with the following commands:
+# a2enmod proxy_ajp
+# a2enmod proxy
+This is a script that enables the specified module within apache2 configuration.
+
+11. Reboot Apache server using the following command.
+# /etc/init.d/apache2 restart
+
+12. Open a browser and go to http://127.0.0.1:8080.
+
+13. In case Tomcat7 is not connected with Apache2, open the file apache2.conf as read-and-write
+nano /etc/apache2/apache2.conf
+
+14. Add the following lines at the end of the file if they are missing:
+# Include all the user configurations:
+Include httpd.conf
+
+15. End
+
+
+User for Tomcat manager
+1. Create the user which will be used to install the application on Apache Tomcat. Open the file tomcat-users.xml located in /usr/local/tomcat/conf
+nano /usr/local/tomcat/conf/tomcat-users.xml
+
+2. Add the following lines at the end of the file:
+<tomcat-users>
+<role rolename="manager"/>
+<role rolename="manager-gui"/>
+<role rolename="admin"/>
+<user username="admin" password="admin" roles="manager,manager-gui,admin"/>
+</tomcat-users>
+
+• The first and last lines enclose the block for user creation. You must make sure that there is only one tomcat-users block in the file.
+• The third line creates the manger-gui role, which is needed to allow an user to install application on Apache Tomcat.
+• The fourth line creates the specified user with the specified password.
+
+
+3. Once the changes are done, save the changes and close the file.
+
+4. Reboot Tomcat.
+# /etc/init.d/tomcat restart
+
+5. Open a browser and go to http://127.0.0.1:8080. Clic on the Manager App button
+
+6. You will be asked for user and password. You should type the ones created on step 2.
+
+7. Once the correct user and password are provided you will be shown the manager app interface.
+
+8. End.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
