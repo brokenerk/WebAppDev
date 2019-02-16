@@ -1,0 +1,10 @@
+<web-app>
+	<servlet>
+		<servlet-name>Ejemplo1</servlet-name>
+		<servlet-class>mx.ipn.escom.wad.servlets.Ejemplo1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Ejemplo1</servlet-name>
+		<url-pattern>/Ejemplo1</url-pattern>
+	</servlet-mapping>
+</web-app>
