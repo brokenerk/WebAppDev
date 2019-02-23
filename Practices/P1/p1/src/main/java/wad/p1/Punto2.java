@@ -36,6 +36,8 @@ public class Punto2 extends HttpServlet {
             out.println(name + " ====> " + value);
             out.println("<br>");
         }
+        out.println("<br>");
+		out.println("<a href='index.jsp'><button>Home</button></a>");
         out.println("</body>");
 		out.println("</html>");
 		out.close();

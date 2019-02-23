@@ -33,6 +33,8 @@ public class Punto3 extends HttpServlet {
 			out.println("<html>");
 			out.println("<body>");
 			out.println("<h2>Number of GET Requests: " + counter + "</h2>");
+			out.println("<br>");
+			out.println("<a href='index.jsp'><button>Home</button></a>");
 			out.println("</body>");
 			out.println("</html>");
 			out.close();

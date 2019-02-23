@@ -30,6 +30,8 @@ public class Punto1 extends HttpServlet {
 		out.println("<html>");
 		out.println("<body>");
 		out.println("<h2>Hello world</h2>");
+		out.println("<br>");
+		out.println("<a href='index.jsp'><button>Home</button></a>");
 		out.println("</body>");
 		out.println("</html>");
 		out.close();

@@ -1,8 +1,10 @@
 package wad.p1;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.sql.Date;
 
 public class Conexion {
@@ -12,6 +14,7 @@ public class Conexion {
 	String driver;
 	String password;
 	Connection con;
+	SimpleDateFormat sdf, sdf2;
 
 	public Conexion(String driver, String url, String db, String user, String password) {
 		this.driver = driver;
@@ -20,6 +23,8 @@ public class Conexion {
 		this.user = user;
 		this.password = password;
 		this.con = null;
+		sdf = new SimpleDateFormat("dd-MM-yyyy");
+		sdf2 = new SimpleDateFormat("yyyy-MM-dd");
 	}
 	
 	public void conectarBD() {
@@ -27,51 +32,87 @@ public class Conexion {
             Class.forName(driver);
             con = DriverManager.getConnection(url + db,  user, password);
             con.setAutoCommit(false);
-        } catch (Exception e) {
+        }catch (Exception e) {
             System.out.println("Ocurrio un error : "+e.getMessage());
             System.exit(1);
         }
-		
-        System.out.println("La conexión se realizo sin problemas! =) ");
+        System.out.println("La conexión se realizo sin problemas");
 	}
 	
-	public Connection getConexion() {
-		return this.con;
+	public void cerrarConexion() {
+		try {
+			con.close();
+			System.out.println("Se cierra la conexion...");
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 	
-	public void mostrarRegistros() {
+	public void mostrarUsuarios(PrintWriter out) {
 		try {
 			Statement stmt = null;
 			stmt = con.createStatement();
-			
-	        ResultSet rsPerson = stmt.executeQuery("SELECT p.*, u.tx_login FROM person p, users u WHERE u.id_user = p.id_person;");
+	        ResultSet rsPerson = stmt.executeQuery(
+	        		"SELECT p.*, u.tx_login " +
+	        		"FROM person p, users u " +
+	        		"WHERE u.id_user = p.id_person;");
 	        
 	        while (rsPerson.next()) {
-	        	int idPerson = rsPerson.getInt("id_person");
-	            String nickname = rsPerson.getString("tx_login");
-	            String firstName = rsPerson.getString("tx_first_name");
-	            String lastName = rsPerson.getString("tx_last_name_a");
-	            String secondName = rsPerson.getString("tx_last_name_b");
-	            String curp = rsPerson.getString("tx_curp");
-	            Date birthday = rsPerson.getDate("fh_birth");
-	            
-	            System.out.println("ID = " + idPerson);
-	            System.out.println("FIRST NAME = " + firstName);
-	            System.out.println("LAST NAME = " + lastName);
-	            System.out.println("SECOND NAME = " + secondName);
-	            System.out.println("CURP = " + curp);
-	            System.out.println("BIRTHDAY = " + birthday);
-	            System.out.println("NICKNAME = " + nickname);
-	            System.out.println("");
+	            out.println("<tr>");
+				out.println("<td>" + rsPerson.getString("tx_first_name") + "</td>");
+				out.println("<td>" + rsPerson.getString("tx_last_name_a") + "</td>");
+				out.println("<td>" + rsPerson.getString("tx_last_name_b") + "</td>");
+				out.println("<td>" + rsPerson.getString("tx_curp") + "</td>");
+				out.println("<td>" + sdf.format(rsPerson.getDate("fh_birth")) + "</td>");
+				out.println("<td>" + rsPerson.getString("tx_login") + "</td>");
+				out.println("</tr>");
 	        }
+	        
 	        rsPerson.close();
 	        stmt.close();
-	        //con.close();
+	        System.out.println("Usuarios mostrados en tabla");
 		}catch(Exception e) {
 			e.printStackTrace();
+			System.exit(1);
 		}
-		
-		
-	}
+	}	
 	
+	public void registrarUsuarios(String firstName, String lastName, String secondName, String curp, String birthday, String login, String password) {
+		try {
+			Statement stmt = null;
+			int nextId = 1;
+			stmt = con.createStatement();
+			Date birth = new Date((sdf2.parse(birthday)).getTime()); 
+			
+			String addPerson = 
+					"INSERT INTO person (tx_first_name, tx_last_name_a, tx_last_name_b, tx_curp, fh_birth) " +
+					"VALUES ('" + firstName + "', '" + lastName + "', '" + secondName + "', '" + curp + "', '" + birth + "');";
+			
+			stmt.executeUpdate(addPerson);
+	
+			String getId = "SELECT id_person " +
+	        		"FROM person " +
+	        		"WHERE tx_curp = '" + curp + "';";
+	
+			ResultSet rsId = stmt.executeQuery(getId);
+			
+			if(rsId.next()) {
+				nextId = rsId.getInt("id_person");
+			}
+			
+			String addUser = 
+					"INSERT INTO users (id_user, tx_login, tx_password) " +
+					"VALUES (" + nextId + ", '" + login + "', '" + password + "');";
+			
+			stmt.executeUpdate(addUser);
+	
+	        stmt.close();
+	        con.commit();
+	        System.out.println("Registro insertado correctamente");
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
+	}
 }
