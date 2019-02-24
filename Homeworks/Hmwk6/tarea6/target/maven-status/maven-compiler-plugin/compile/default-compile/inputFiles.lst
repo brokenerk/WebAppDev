@@ -1,0 +1,11 @@
+/Users/hermes/eclipse-clases-workspace/tarea7/src/main/java/mx/ipn/escom/wad/tarea6/dao/LoginDao.java
+/Users/hermes/eclipse-clases-workspace/tarea7/src/main/java/mx/ipn/escom/wad/tarea6/entidad/Rol.java
+/Users/hermes/eclipse-clases-workspace/tarea7/src/main/java/mx/ipn/escom/wad/tarea6/exception/UserBlockedException.java
+/Users/hermes/eclipse-clases-workspace/tarea7/src/main/java/mx/ipn/escom/wad/tarea6/entidad/Acceso.java
+/Users/hermes/eclipse-clases-workspace/tarea7/src/main/java/mx/ipn/escom/wad/tarea6/entidad/Cuenta.java
+/Users/hermes/eclipse-clases-workspace/tarea7/src/main/java/mx/ipn/escom/wad/tarea6/exception/NombreObjetosSession.java
+/Users/hermes/eclipse-clases-workspace/tarea7/src/main/java/mx/ipn/escom/wad/tarea6/entidad/Persona.java
+/Users/hermes/eclipse-clases-workspace/tarea7/src/main/java/mx/ipn/escom/wad/tarea6/entidad/Usuario.java
+/Users/hermes/eclipse-clases-workspace/tarea7/src/main/java/mx/ipn/escom/wad/tarea6/exception/UserNotFoundException.java
+/Users/hermes/eclipse-clases-workspace/tarea7/src/main/java/mx/ipn/escom/wad/tarea6/controller/LoginCtrl.java
+/Users/hermes/eclipse-clases-workspace/tarea7/src/main/java/mx/ipn/escom/wad/tarea6/bs/LoginBs.java
