@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+	<servlet>
+		<servlet-name>Recibe</servlet-name>
+		<display-name>Recibe</display-name>
+		<description></description>
+		<servlet-class>ramos_diaz.homework5.Recibe</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Recibe</servlet-name>
+		<url-pattern>/Recibe</url-pattern>
+	</servlet-mapping>
+
+</web-app>
