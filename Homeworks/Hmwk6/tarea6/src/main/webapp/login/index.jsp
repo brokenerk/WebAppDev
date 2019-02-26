@@ -1,4 +1,8 @@
 <html>
+<head>
+<title>Acces Login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+</head>
 <body>
 	<h1>Ingresar</h1>
 	<form action="login/LoginCtrl" method="post">

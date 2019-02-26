@@ -1,7 +1,11 @@
- <%@ page language="java" contentType="text/html; charset=windows-1256" 
+ <%@ page language="java" contentType="text/html; charset=utf-8" 
  pageEncoding="windows-1256" import="mx.ipn.escom.wad.tarea6.entidad.*" %>
  
 <html>
+<head>
+<title>Welcome!!!!</title>
+</head>
+
 <body>
 	<h1>Bienvenido</h1>
 	<% Persona currentPersona = (Persona) (session.getAttribute("currentSessionPersona"));%> 
