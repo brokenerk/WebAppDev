@@ -1,4 +1,4 @@
-package mx.ipn.escom.wad.servlets.p2;
+package mx.ipn.escom.wad.filters.p2;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -11,39 +11,30 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 
 public class Punto1 implements Filter {
 
-
     public Punto1() {
-        
     }
 
-	public void destroy() {
-		
-	}
-
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		String IP = request.getRemoteAddr();
+		HttpServletRequest req = (HttpServletRequest) request;
+		String IP = req.getRemoteAddr();
 		DateFormat datef = new SimpleDateFormat("dd/MM/yyyy");
 		DateFormat timef = new SimpleDateFormat("HH:mm:ss");
 		Date date = new Date();
+		String metodo = req.getMethod();
+		String recurso = req.getRequestURI();
 		
-		System.out.println("IP: " + IP);
-		System.out.println("Date: " + datef.format(date.getTime()));
-		System.out.println("Time: " + timef.format(date.getTime()));
-		
-		
+		System.out.println("LOG: " + IP + " | " + datef.format(date.getTime()) + " | " + timef.format(date.getTime()) + " | " + metodo + " | " + recurso);
 		chain.doFilter(request, response);
-		
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
-	public void init(FilterConfig fConfig) throws ServletException {
-		
+	public void init(FilterConfig filterConfig) throws ServletException {
 	}
 
+	public void destroy() {
+	}
 }
