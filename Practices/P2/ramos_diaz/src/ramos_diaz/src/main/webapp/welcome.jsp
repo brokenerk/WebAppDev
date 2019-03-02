@@ -17,6 +17,10 @@
 	<br>
 	<%= currentCuenta.getRol().getNombre() + ": " + currentCuenta.getRol().getDescripcion()%>
 	<br>
+	
+	<a href="punto2.jsp"><button>Ver recursos</button></a>
+	<br>
+	<a href="/ramos_diaz/"><button>Index</button></a>
 
 </body>
 </html>

@@ -18,7 +18,7 @@ public class Punto1 implements Filter {
 
     public Punto1() {
     }
-
+    //Filtro: /*
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		String IP = req.getRemoteAddr();

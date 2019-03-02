@@ -16,6 +16,6 @@ public class Ejemplo6 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendError(405,"Chavo estas buscando un recurso que no existe...");
+		response.sendError(404,"Chavo estas buscando un recurso que no existe...");
 	}
 }

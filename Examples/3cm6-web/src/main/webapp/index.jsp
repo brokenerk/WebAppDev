@@ -8,6 +8,10 @@
 		<li><a href="ejemplo4.jsp">Example 4:</a> The HttpServletRequest object</li>
 		<li><a href="Ejemplo5">Example 5:</a> Send redirect</li>
 		<li><a href="Ejemplo6">Example 6:</a> Send error</li>
+		<li><a href="Ejemplo7">Example 7</a> Forward</li>
+		<li><a href="Ejemplo8">Example 8</a> Include</li>
+		<li><a href="Ejemplo9">Example 9</a> Concurrency</li>
+		<li><a href="ejemploA.jsp">Ejemplo A:</a> Sessions</li>
 	</ol>
 </body>
 </html>
