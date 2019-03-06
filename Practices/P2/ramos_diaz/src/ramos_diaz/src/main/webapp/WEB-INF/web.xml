@@ -10,9 +10,20 @@
 		<servlet-name>LoginCtrl</servlet-name>
 		<servlet-class>mx.ipn.escom.wad.servlets.p2.controller.LoginCtrl</servlet-class>
 	</servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>UsersTable</display-name>
+  	<servlet-name>UsersTable</servlet-name>
+  	<servlet-class>mx.ipn.escom.wad.servlets.p2.userstable.UsersTable</servlet-class>
+  </servlet>
 	<servlet-mapping>
 		<servlet-name>LoginCtrl</servlet-name>
 		<url-pattern>LoginCtrl</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UsersTable</servlet-name>
+		<url-pattern>/UsersTable</url-pattern>
 	</servlet-mapping>
   <filter>
   	<filter-name>Punto1</filter-name>
@@ -34,6 +45,7 @@
   <filter-mapping>
   	<filter-name>Punto2</filter-name>
   	<url-pattern>/resources/*</url-pattern>
+  	<url-pattern>/UsersTable</url-pattern>
   	<dispatcher>REQUEST</dispatcher>
   </filter-mapping>
   <listener>

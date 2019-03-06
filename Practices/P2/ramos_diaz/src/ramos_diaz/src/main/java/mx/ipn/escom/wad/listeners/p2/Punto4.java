@@ -1,6 +1,6 @@
 package mx.ipn.escom.wad.listeners.p2;
 
-import java.util.Enumeration;
+
 
 import javax.servlet.ServletContextAttributeEvent;
 import javax.servlet.ServletContextAttributeListener;
@@ -10,14 +10,12 @@ import javax.servlet.ServletRequestAttributeEvent;
 import javax.servlet.ServletRequestAttributeListener;
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
-import javax.servlet.http.HttpSession;
+
 import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-import mx.ipn.escom.wad.servlets.p2.entidad.Cuenta;
-import mx.ipn.escom.wad.servlets.p2.entidad.Persona;
 
 public class Punto4 implements ServletContextListener, ServletContextAttributeListener, HttpSessionListener, HttpSessionAttributeListener, ServletRequestListener, ServletRequestAttributeListener {
 

@@ -12,6 +12,7 @@
 		<li> <a href="/ramos_diaz/resources/carnage.jpg">carnage.jpg</a>
 		<li> <a href="/ramos_diaz/resources/menu_ejemplo.html">menu_ejemplo.html</a>
 		<li> <a href="/ramos_diaz/resources/snake.html">snake.html</a>
+		<li> <a href="UsersTable">Users Table</a>
 	</ul>
 	<br>
 	<a href="/ramos_diaz/"><button>Regresar</button></a>
