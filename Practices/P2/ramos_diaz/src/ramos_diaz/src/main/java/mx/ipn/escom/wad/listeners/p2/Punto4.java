@@ -1,7 +1,5 @@
 package mx.ipn.escom.wad.listeners.p2;
 
-
-
 import javax.servlet.ServletContextAttributeEvent;
 import javax.servlet.ServletContextAttributeListener;
 import javax.servlet.ServletContextEvent;
@@ -15,7 +13,6 @@ import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
-
 
 public class Punto4 implements ServletContextListener, ServletContextAttributeListener, HttpSessionListener, HttpSessionAttributeListener, ServletRequestListener, ServletRequestAttributeListener {
 
@@ -31,13 +28,11 @@ public class Punto4 implements ServletContextListener, ServletContextAttributeLi
     }
 
     public void attributeAdded(ServletRequestAttributeEvent srae)  { 
-       	System.out.println("LOG: Atributo request agregado: " + srae.getName() + " -> " + srae.getValue());
-        
+       	System.out.println("LOG: Atributo request agregado: " + srae.getName() + " -> " + srae.getValue()); 
     }
 
     public void attributeReplaced(HttpSessionBindingEvent event)  { 
-       	System.out.println("LOG: Atributo sesion reemplazado: " + event.getName() + " -> " + event.getValue());
-        
+       	System.out.println("LOG: Atributo sesion reemplazado: " + event.getName() + " -> " + event.getValue());  
     }
 
     public void contextInitialized(ServletContextEvent sce)  { 
@@ -45,8 +40,7 @@ public class Punto4 implements ServletContextListener, ServletContextAttributeLi
     }
 
     public void attributeAdded(ServletContextAttributeEvent event)  { 
-     	System.out.println("LOG: Atributo contexto agregado: " + event.getName() + " -> " + event.getValue());
-        
+     	System.out.println("LOG: Atributo contexto agregado: " + event.getName() + " -> " + event.getValue());  
     }
 
     public void requestDestroyed(ServletRequestEvent sre)  { 
@@ -55,12 +49,10 @@ public class Punto4 implements ServletContextListener, ServletContextAttributeLi
 
     public void attributeRemoved(ServletRequestAttributeEvent srae)  { 
     	System.out.println("LOG: Atributo request eliminado: " + srae.getName() + " -> " + srae.getValue());
-    	 
     }
 
     public void requestInitialized(ServletRequestEvent sre)  { 
-     	System.out.println("LOG: Request inicializado: " + sre.getServletRequest()); 
-     	 
+     	System.out.println("LOG: Request inicializado: " + sre.getServletRequest());  
     }
 
     public void sessionDestroyed(HttpSessionEvent se)  { 
@@ -68,28 +60,22 @@ public class Punto4 implements ServletContextListener, ServletContextAttributeLi
     }
 
     public void contextDestroyed(ServletContextEvent sce)  { 
-      	System.out.println("LOG: Contexto destruido: " + sce.getServletContext().getServletContextName());   
-        
+      	System.out.println("LOG: Contexto destruido: " + sce.getServletContext().getServletContextName());    
     }
 
     public void attributeReplaced(ServletRequestAttributeEvent srae)  { 
-    	System.out.println("LOG: Atributo request reemplazado: " + srae.getName() + " -> " + srae.getValue());
-    	
+    	System.out.println("LOG: Atributo request reemplazado: " + srae.getName() + " -> " + srae.getValue());	
     }
 
     public void attributeAdded(HttpSessionBindingEvent event)  { 
-       	System.out.println("LOG: Atributo sesion agregado: " + event.getName() + " -> " + event.getSession().getId());
-        
+       	System.out.println("LOG: Atributo sesion agregado: " + event.getName() + " -> " + event.getSession().getId());  
     }
 
     public void attributeRemoved(HttpSessionBindingEvent event)  { 
        	System.out.println("LOG: Atributo sesion eliminado: " + event.getName() + " -> " + event.getSession().getId());
-        
     }
 
     public void attributeReplaced(ServletContextAttributeEvent event)  { 
-       	System.out.println("LOG: Atributo contexto reemplazado: " + event.getName() + " -> " + event.getValue());
-        
-    }
-	
+       	System.out.println("LOG: Atributo contexto reemplazado: " + event.getName() + " -> " + event.getValue());   
+    }	
 }
