@@ -24,8 +24,7 @@ public class Punto2 implements Filter {
     }
     
     public boolean esRecurso(String url) {
-    	String[] recursos = {"carnage.jpg", 
-    						"menu_ejemplo.html", "alljeux.html", "UsersTable"};
+    	String[] recursos = {"carnage.jpg", "snake.html", "UsersTable"};
     	 for(String r : recursos){
              if(url.endsWith(r)){
                  return true;
