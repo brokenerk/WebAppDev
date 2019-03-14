@@ -2,25 +2,19 @@
  pageEncoding="windows-1256" import="mx.ipn.escom.wad.servlets.p2.entidad.*" %>
  
 <html>
-<head>
-<title>Welcome!!!!</title>
-</head>
+	<head>
+		<title>Welcome!!!!</title>
+	</head>
+	<body>
+		<h1>Bienvenido</h1><br>
+		<% Persona currentPersona = (Persona) (session.getAttribute("currentSessionPersona"));%> 
+		<% Cuenta currentCuenta = (Cuenta) (session.getAttribute("currentSessionCuenta"));%>
 
-<body>
-	<h1>Bienvenido</h1>
-	<% Persona currentPersona = (Persona) (session.getAttribute("currentSessionPersona"));%> 
-	<% Cuenta currentCuenta = (Cuenta) (session.getAttribute("currentSessionCuenta"));%>
-
-	<br>
-	<%= currentPersona.getNombre() + " " + currentPersona.getPrimerApellido() + " " + currentPersona.getSegundoApellido()%>
-	<br>
-	<br>
-	<%= currentCuenta.getRol().getNombre() + ": " + currentCuenta.getRol().getDescripcion()%>
-	<br>
-	
-	<a href="punto2.jsp"><button>Ver recursos</button></a>
-	<br>
-	<a href="/ramos_diaz/"><button>Index</button></a>
-
-</body>
+		<%= currentPersona.getNombre() + " " + currentPersona.getPrimerApellido() + " " + currentPersona.getSegundoApellido()%>
+		<br><br>
+		<%= currentCuenta.getRol().getNombre() + ": " + currentCuenta.getRol().getDescripcion()%><br>
+		
+		<a href="punto2.jsp"><button>Ver recursos</button></a><br>
+		<a href="/ramos_diaz/"><button>Index</button></a>
+	</body>
 </html>

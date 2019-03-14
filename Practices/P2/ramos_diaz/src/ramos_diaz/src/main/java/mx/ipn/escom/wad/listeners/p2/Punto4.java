@@ -56,7 +56,7 @@ public class Punto4 implements ServletContextListener, ServletContextAttributeLi
     }
 
     public void sessionDestroyed(HttpSessionEvent se)  { 
-    	System.out.println("LOG: Sesion destruida: " + se.getSession().getId() + " | " + se.getClass().getName());
+    	System.out.println("LOG: Sesion destruida: " + se.getSession().getId() + " -> " + se.getClass().getName());
     }
 
     public void contextDestroyed(ServletContextEvent sce)  { 
