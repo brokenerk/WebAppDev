@@ -1,30 +1,30 @@
-Install Postgres:
-Link: https://askubuntu.com/questions/633919/how-install-postgresql-9-4
-sudo add-apt-repository "deb https://apt.postgresql.org/pub/repos/apt YOUR_UBUNTU_VERSION_HERE-pgdg main"
+--Install Postgres:
+--Link: https://askubuntu.com/questions/633919/how-install-postgresql-9-4
+--sudo add-apt-repository "deb https://apt.postgresql.org/pub/repos/apt YOUR_UBUNTU_VERSION_HERE-pgdg main"
 
-GET UBUNTU VERSION: lsb_release -sc
+--GET UBUNTU VERSION: lsb_release -sc
 
-sudo wget --quiet -O - https://postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - 
-sudo apt-get update
-sudo apt-get install postgresql-9.4
+--sudo wget --quiet -O - https://postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - 
+--sudo apt-get update
+--sudo apt-get install postgresql-9.4
 
 ---------------------------------------------------------
-Configure user postgres:
-$ sudo
+--Configure user postgres:
+--$ sudo
 # passwd postgres
 
-$ su - postgres
-$ pqsl
-postgres =# alter user postgres with password 'postgres';
+--$ su - postgres
+--$ pqsl
+--postgres =# alter user postgres with password 'postgres';
 
 ---------------------------------------------------------
-Create database homework-6:
-$ su - postgres
-$ createdb homework-6 
-$ psql homework-6
+--Create database homework-6:
+--$ su - postgres
+--$ createdb homework-6 
+--$ psql homework-6
 
 ---------------------------------------------------------
-Tables:
+--Tables:
 
 create table users (id_user int4 not null, tx_login varchar(30) not null unique, tx_password varchar(100) not null, primary key (id_user));
 create table role (id_role serial not null, nb_role varchar(50) not null unique, ds_role varchar(250) not null, st_valid bool not null, primary key (id_role));
@@ -44,10 +44,9 @@ alter table contact add constraint FKcontact249289 foreign key (id_person) refer
 alter table contact add constraint FKcontact337911 foreign key (id_contact) references person;
 
 ---------------------------------------------------------
-Inserts:
+--Inserts:
 
 -- Roles
-
 insert into role(nb_role, ds_role, st_valid) values ('Técnico','Director técnico de futbol',true);
 insert into role(nb_role, ds_role, st_valid) values ('Jugador','Jugador profesional de futbol',true);
 
@@ -92,6 +91,3 @@ insert into person_contacto(id_persona, id_tipo, tx_contact) values (2,2,'aaaa.b
 insert into person_contacto(id_persona, id_tipo, tx_contact) values (3,3,'5555555555');
 insert into person_contacto(id_persona, id_tipo, tx_contact) values (4,4,'Facebook');
 insert into person_contacto(id_persona, id_tipo, tx_contact) values (5,5,'@Twitter');
-
-
-
