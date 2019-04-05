@@ -16,9 +16,9 @@ public class Role {
 	@GeneratedValue(generator = "role_id_role_seq", strategy = GenerationType.SEQUENCE)
 	@Column(name = "id_role")
 	private Integer id;
-	@Column(name = "nb_role")
+	@Column(name = "tx_name")
 	private String name;
-	@Column(name = "ds_role")
+	@Column(name = "tx_description")
 	private String description;
 	@Column(name = "st_active")
 	private Boolean active;

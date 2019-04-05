@@ -56,3 +56,11 @@ insert into type_contact(tx_name, tx_description, st_active) values ('Email','Em
 insert into type_contact(tx_name, tx_description, st_active) values ('Mobile phone','Mobile phone',true);
 insert into type_contact(tx_name, tx_description, st_active) values ('Facebook','Facebook',true);
 insert into type_contact(tx_name, tx_description, st_active) values ('Twitter','Twitter',true);
+
+
+delete from type_contact;
+delete from access;
+delete from account;
+delete from users;
+delete from person;
+TRUNCATE TABLE person RESTART IDENTITY cascade;

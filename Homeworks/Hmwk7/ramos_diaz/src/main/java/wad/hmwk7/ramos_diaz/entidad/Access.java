@@ -4,18 +4,13 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "access")
 public class Access {
 	@Id
-	@SequenceGenerator(name = "access_id_access_seq", sequenceName = "access_id_access_seq", allocationSize = 1)
-	@GeneratedValue(generator = "access_id_access_seq", strategy = GenerationType.SEQUENCE)
 	@Column(name = "id_access")
 	private Integer id;
 	@Column(name = "nu_attempt")

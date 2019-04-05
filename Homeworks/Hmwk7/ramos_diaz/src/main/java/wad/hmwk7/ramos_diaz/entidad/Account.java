@@ -36,6 +36,14 @@ public class Account {
 	public Integer getId() {
 		return id;
 	}
+	
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
 
 	public void setId(Integer id) {
 		this.id = id;
