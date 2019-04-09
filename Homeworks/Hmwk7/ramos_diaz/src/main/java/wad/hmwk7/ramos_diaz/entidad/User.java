@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -14,8 +13,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.annotations.Where;
 
 @Entity
@@ -30,8 +27,7 @@ public class User extends Person implements Serializable {
 	@Column(name = "tx_password")
 	private String password;
 
-	@OneToOne(optional = true)
-	@NotFound(action = NotFoundAction.IGNORE)
+	@OneToOne
 	@JoinColumn(name = "id_user", referencedColumnName = "id_access", insertable = false, updatable = false)
 	private Access access;
 

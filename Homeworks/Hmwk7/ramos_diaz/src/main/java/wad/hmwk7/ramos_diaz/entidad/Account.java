@@ -32,21 +32,21 @@ public class Account {
 	@ManyToOne
 	@JoinColumn(name = "id_role", referencedColumnName = "id_role", insertable = false, updatable = false)
 	private Role role;
-
+	
 	public Integer getId() {
 		return id;
 	}
-	
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public Role getRole() {
 		return role;
 	}
 
 	public void setRole(Role role) {
 		this.role = role;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public Integer getIdRole() {
@@ -105,5 +105,5 @@ public class Account {
 			return false;
 		return true;
 	}
-
+	
 }

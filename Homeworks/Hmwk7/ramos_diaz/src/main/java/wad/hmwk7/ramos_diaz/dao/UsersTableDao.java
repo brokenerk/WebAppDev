@@ -54,9 +54,19 @@ public class UsersTableDao {
 			u.setBirthDay(birthday);
 			u.setLogin(login);
 			u.setPassword(password);
+			
+			//Creamos una entidad access
+			Access acc = new Access();
+			acc.setAttempt(0);
+			
 			//Insertamos en la bd con persist
 			//insert into users ...
 			entityManagerFactory.persist(u);
+			
+			//Asiganmos ID
+			acc.setId(u.getId());
+			//insert into access ...
+			entityManagerFactory.persist(acc);
 			entityManagerFactory.flush();
 		}
 		catch(Exception e) {
