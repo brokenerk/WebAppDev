@@ -16,9 +16,6 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import wad.cart.ramos.diaz.bs.PruebaBs;
 import wad.cart.ramos.diaz.entidad.CardUser;
 import wad.cart.ramos.diaz.entidad.CreditCard;
-import wad.cart.ramos.diaz.entidad.OrderC;
-import wad.cart.ramos.diaz.entidad.OrderDetail;
-import wad.cart.ramos.diaz.entidad.Product;
 import wad.cart.ramos.diaz.entidad.User;
 
 /**

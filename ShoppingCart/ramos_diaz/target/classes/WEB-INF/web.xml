@@ -69,6 +69,13 @@
 		<servlet-name>ViewUser</servlet-name>
 		<servlet-class>wad.cart.ramos.diaz.servlets.ViewUser</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>EjemploConekta</display-name>
+		<servlet-name>EjemploConekta</servlet-name>
+		<servlet-class>wad.cart.ramos.diaz.servlets.EjemploConekta</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>EjemploUsers</servlet-name>
 		<url-pattern>/EjemploUsers</url-pattern>
@@ -88,6 +95,10 @@
 	<servlet-mapping>
 		<servlet-name>ViewUser</servlet-name>
 		<url-pattern>/ViewUser</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EjemploConekta</servlet-name>
+		<url-pattern>/EjemploConekta</url-pattern>
 	</servlet-mapping>
 	<!-- <session-config>
 		<session-timeout>10</session-timeout>

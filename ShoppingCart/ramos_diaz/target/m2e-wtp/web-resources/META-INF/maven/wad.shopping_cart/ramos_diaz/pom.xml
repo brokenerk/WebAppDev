@@ -155,6 +155,13 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
 		</dependency>
+		
+		<!-- Conekta para transacciones/pagos online con tarjeta de credito -->
+		<dependency>
+		  <groupId>io.conekta</groupId>
+		  <artifactId>conekta-java</artifactId>
+		  <version>2.1.5</version>
+		</dependency>
 	</dependencies>
   <build>
     <finalName>ramos_diaz</finalName>

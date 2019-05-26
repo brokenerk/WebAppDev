@@ -2,7 +2,6 @@ package wad.cart.ramos.diaz.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -15,9 +14,6 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import wad.cart.ramos.diaz.bs.PruebaBs;
 import wad.cart.ramos.diaz.entidad.Address;
-import wad.cart.ramos.diaz.entidad.OrderC;
-import wad.cart.ramos.diaz.entidad.OrderDetail;
-import wad.cart.ramos.diaz.entidad.Product;
 import wad.cart.ramos.diaz.entidad.User;
 
 /**
