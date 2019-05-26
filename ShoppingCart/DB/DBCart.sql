@@ -67,7 +67,7 @@ create table card_users (
 	primary key (id_user, id_credit_card));
 
 create table credit_card (
-	id_credit_card int4 not null,
+	id_credit_card serial not null,
 	tx_number varchar(16) not null,
 	tx_owner varchar(60) not null,
 	fh_expiration timestamp(0) not null,
@@ -89,3 +89,5 @@ alter table card_users add constraint FKcard_users162639 foreign key (id_credit_
 drop table product cascade;
 drop table order_detail cascade;
 drop table order_c cascade;
+drop table credit_card cascade;
+drop table card_users cascade;

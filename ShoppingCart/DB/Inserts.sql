@@ -49,6 +49,16 @@ insert into order_detail(id_product, id_order, nu_amount) values (10, 1, 3);
 insert into order_c(fh_date, st_purchased, ft_total, ft_discount, id_user) values (to_date('01/01/2001','dd/MM/yyyy'), false, 1000.00, 50.3, 1);
 insert into order_c(fh_date, st_purchased, ft_total, ft_discount, id_user) values (to_date('02/02/2002','dd/MM/yyyy'), false, 200.00, null, 1);
 
+-- Tarjeta credito 
+insert into credit_card(tx_number, tx_owner, fh_expiration, tx_street, tx_city, tx_state, tx_zipcode) values ("8544731223541592", "Lourdes Diaz Hernandez", to_date('01/10/2020','dd/MM/yyyy'), "Toluca 31", "Tlalnepantla", "EDOMEX", "54040");
+insert into credit_card(tx_number, tx_owner, fh_expiration, tx_street, tx_city, tx_state, tx_zipcode) values ("9544731223541593", "Vicente Matias Vuoso", to_date('01/08/2021','dd/MM/yyyy'), "Ballena 600", "Atizapan", "EDOMEX", "54041");
+insert into credit_card(tx_number, tx_owner, fh_expiration, tx_street, tx_city, tx_state, tx_zipcode) values ("3544731223541594", "Michael Jackson", to_date('01/05/2022','dd/MM/yyyy'), "Halconazo 66", "Cuauhtemoc", "CDMX", "54042");
+
+-- Tarjeta - Usuario
+insert into card_users(id_user, id_credit_card) values (1, 1);
+insert into card_users(id_user, id_credit_card) values (1, 2);
+insert into card_users(id_user, id_credit_card) values (2, 3);
+
 -- Para reiniciar bd en caso de errores xd
 delete from access;
 delete from address;

@@ -55,6 +55,20 @@
 		<servlet-name>EjemploOrders</servlet-name>
 		<servlet-class>wad.cart.ramos.diaz.servlets.EjemploOrders</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>EjemploCreditCard</display-name>
+		<servlet-name>EjemploCreditCard</servlet-name>
+		<servlet-class>wad.cart.ramos.diaz.servlets.EjemploCreditCard</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>ViewUser</display-name>
+		<servlet-name>ViewUser</servlet-name>
+		<servlet-class>wad.cart.ramos.diaz.servlets.ViewUser</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>EjemploUsers</servlet-name>
 		<url-pattern>/EjemploUsers</url-pattern>
@@ -66,6 +80,14 @@
 	<servlet-mapping>
 		<servlet-name>EjemploOrders</servlet-name>
 		<url-pattern>/EjemploOrders</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EjemploCreditCard</servlet-name>
+		<url-pattern>/EjemploCreditCard</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewUser</servlet-name>
+		<url-pattern>/ViewUser</url-pattern>
 	</servlet-mapping>
 	<!-- <session-config>
 		<session-timeout>10</session-timeout>
