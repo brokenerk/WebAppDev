@@ -28,8 +28,8 @@ insert into address(id_person, tx_street, tx_city, tx_state, tx_zipcode, tx_tele
 insert into address(id_person, tx_street, tx_city, tx_state, tx_zipcode, tx_telephone) values (5, 'Bomboro 502 Torres Satelite', 'Naucalpan de Juarez', 'EDOMEX', '54044', '55-55-55-55-59');
 
 -- Productos
-insert into product(tx_name, tx_description, ft_price, nu_stock, ft_discount, tx_image) values ('PlayStation 4 Pro', 'Incluye una consola PlayStation 4 Slim de 1 TB, un control inalámbrico DUALSHOCK 4, discos de Blu-ray de God of War, Horizon Zero Dawn Complete Edition, Shadow of the Colossus, y un cupón para PS Plus (suscripción de 3 meses).', 6699.00, 200, null, null);
-insert into product(tx_name, tx_description, ft_price, nu_stock, ft_discount, tx_image) values ('Xbox One X', 'El paquete incluye: Consola Xbox One, descarga completa del juego Battlefield V Deluxe Edition, 1 mes de prueba de Xbox Game Pass con acceso a más de 100 juegos, y 14 días de prueba de Xbox Live Gold', 5999.00, 250, null, null);
+insert into product(tx_name, tx_description, ft_price, nu_stock, ft_discount, tx_image) values ('PlayStation 4 Slim', 'Incluye una consola PlayStation 4 Slim de 1 TB, un control inalámbrico DUALSHOCK 4, discos de Blu-ray de God of War, Horizon Zero Dawn Complete Edition, Shadow of the Colossus, y un cupón para PS Plus (suscripción de 3 meses).', 6699.00, 200, null, null);
+insert into product(tx_name, tx_description, ft_price, nu_stock, ft_discount, tx_image) values ('Xbox One S', 'El paquete incluye: Consola Xbox One, descarga completa del juego Battlefield V Deluxe Edition, 1 mes de prueba de Xbox Game Pass con acceso a más de 100 juegos, y 14 días de prueba de Xbox Live Gold', 5999.00, 250, null, null);
 insert into product(tx_name, tx_description, ft_price, nu_stock, ft_discount, tx_image) values ('Eco Dot Bocina con Alexa', 'Echo Dot es una bocina inteligente que se controla con la voz. Se conecta a través de Wi-Fi a Alexa, un servicio de voz basado en la nube. Alexa puede reproducir música, responder a preguntas, narrar las noticias, consultar el pronóstico del clima, configurar alarmas, controlar dispositivos de Casa Inteligente compatibles y mucho más.', 699.00, 80, null, null);
 insert into product(tx_name, tx_description, ft_price, nu_stock, ft_discount, tx_image) values ('HP Laptop 15-DA0001LA', 'Intel Celeron N4000, Ram 4 GB, Disco Duro 500GB, Windows 10 Home, 15.6", Sin Unidad Óptica. Garantía de 1 año.', 5478.99, 500, null, null);
 insert into product(tx_name, tx_description, ft_price, nu_stock, ft_discount, tx_image) values ('Huawei Mate 20 Lite', '64GB Libre de Fabrica 4G LTE SNE-LX3. SNE-LX3 Libre de Fabrica, Android 8.1 Oreo + EMUI 8.', 5128.00, 800, null, null);
@@ -39,20 +39,24 @@ insert into product(tx_name, tx_description, ft_price, nu_stock, ft_discount, tx
 insert into product(tx_name, tx_description, ft_price, nu_stock, ft_discount, tx_image) values ('Appetite for Destruction (2LP)', 'Primer álbum Remaster de cintas analógicas originales Álbum original ampliado a 2 LP para reproducción de audio Corte de vinilo de 192 kHz 24 bits Remastered Audio de alta resolución Edición limitada Foil Art Slipcase Side 4 Bono extra: Holograma Hologroove de GNR Descargar etiqueta engomada de la tarjeta Álbum digital de 44 bits de 44.1kHz', 631.01, 900, null, null);
 insert into product(tx_name, tx_description, ft_price, nu_stock, ft_discount, tx_image) values ('Marvel Guante Electrónico Avengers Infinity War', 'El Guante electrónico de Thanos, ¡que incluye luces y sonidos! ¡Presiona el botón central en el puño para iluminar la piedra central y activar el poderoso sonido! Este Guante del Infinito está inspirado en la película Avengers: Infinity War y está diseñado para adaptarse a la mayoría de los tamaños de mano.', 226.82, 900, null, null);
 
+-- Pedido - Carrito
+insert into order_c(fh_date, st_purchased, ft_total, ft_discount, id_user) values (to_date('01/01/2001','dd/MM/yyyy'), false, 1000.00, 50.3, 1);
+insert into order_c(fh_date, st_purchased, ft_total, ft_discount, id_user) values (to_date('02/02/2002','dd/MM/yyyy'), false, 200.00, null, 1);
+
 -- Detalle Pedido
 insert into order_detail(id_product, id_order, nu_amount) values (1, 1, 10);
 insert into order_detail(id_product, id_order, nu_amount) values (2, 1, 1);
 insert into order_detail(id_product, id_order, nu_amount) values (9, 1, 2);
 insert into order_detail(id_product, id_order, nu_amount) values (10, 1, 3);
-
--- Pedido - Carrito
-insert into order_c(fh_date, st_purchased, ft_total, ft_discount, id_user) values (to_date('01/01/2001','dd/MM/yyyy'), false, 1000.00, 50.3, 1);
-insert into order_c(fh_date, st_purchased, ft_total, ft_discount, id_user) values (to_date('02/02/2002','dd/MM/yyyy'), false, 200.00, null, 1);
+insert into order_detail(id_product, id_order, nu_amount) values (1, 2, 10);
+insert into order_detail(id_product, id_order, nu_amount) values (5, 2, 1);
+insert into order_detail(id_product, id_order, nu_amount) values (7, 2, 2);
+insert into order_detail(id_product, id_order, nu_amount) values (8, 2, 3);
 
 -- Tarjeta credito 
-insert into credit_card(tx_number, tx_owner, fh_expiration, tx_street, tx_city, tx_state, tx_zipcode) values ("8544731223541592", "Lourdes Diaz Hernandez", to_date('01/10/2020','dd/MM/yyyy'), "Toluca 31", "Tlalnepantla", "EDOMEX", "54040");
-insert into credit_card(tx_number, tx_owner, fh_expiration, tx_street, tx_city, tx_state, tx_zipcode) values ("9544731223541593", "Vicente Matias Vuoso", to_date('01/08/2021','dd/MM/yyyy'), "Ballena 600", "Atizapan", "EDOMEX", "54041");
-insert into credit_card(tx_number, tx_owner, fh_expiration, tx_street, tx_city, tx_state, tx_zipcode) values ("3544731223541594", "Michael Jackson", to_date('01/05/2022','dd/MM/yyyy'), "Halconazo 66", "Cuauhtemoc", "CDMX", "54042");
+insert into credit_card(tx_number, tx_owner, fh_expiration, tx_street, tx_city, tx_state, tx_zipcode) values ('8544731223541592', 'Lourdes Diaz Hernandez', to_date('01/10/2020','dd/MM/yyyy'), 'Toluca 31', 'Tlalnepantla', 'EDOMEX', '54040');
+insert into credit_card(tx_number, tx_owner, fh_expiration, tx_street, tx_city, tx_state, tx_zipcode) values ('9544731223541593', 'Vicente Matias Vuoso', to_date('01/08/2021','dd/MM/yyyy'), 'Ballena 600', 'Atizapan', 'EDOMEX', '54041');
+insert into credit_card(tx_number, tx_owner, fh_expiration, tx_street, tx_city, tx_state, tx_zipcode) values ('3544731223541594', 'Michael Jackson', to_date('01/05/2022','dd/MM/yyyy'), 'Halconazo 66', 'Cuauhtemoc', 'CDMX', '54042');
 
 -- Tarjeta - Usuario
 insert into card_users(id_user, id_credit_card) values (1, 1);
@@ -60,15 +64,16 @@ insert into card_users(id_user, id_credit_card) values (1, 2);
 insert into card_users(id_user, id_credit_card) values (2, 3);
 
 -- Para reiniciar bd en caso de errores xd
-delete from access;
-delete from address;
-delete from users;
-delete from person;
-delete from product;
-delete from order_c;
-delete from order_detail;
-delete from credit_card;
-delete from card_users;
+delete from access cascade;
+delete from address cascade;
+delete from users cascade;
+delete from person cascade;
+delete from product cascade;
+delete from order_c cscade;
+delete from order_detail cascade;
+delete from credit_card cascade;
+delete from card_users cascade;
+TRUNCATE TABLE credit_card RESTART IDENTITY cascade;
 TRUNCATE TABLE person RESTART IDENTITY cascade;
 TRUNCATE TABLE product RESTART IDENTITY cascade;
 TRUNCATE TABLE order_c RESTART IDENTITY cascade;
