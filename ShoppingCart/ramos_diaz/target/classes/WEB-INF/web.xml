@@ -31,10 +31,12 @@
 		<filter-name>struts-prepare</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareFilter</filter-class>
 	</filter>
+	<!--  
 	<filter>
 		<filter-name>sitemesh</filter-name>
 		<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
 	</filter>
+	-->
 	<filter>
 		<filter-name>struts-execute</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.filter.StrutsExecuteFilter</filter-class>
@@ -50,6 +52,7 @@
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>INCLUDE</dispatcher>
 	</filter-mapping>
+	<!--
 	<filter-mapping>
 		<filter-name>sitemesh</filter-name>
 		<url-pattern>/*</url-pattern>
@@ -57,6 +60,7 @@
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>INCLUDE</dispatcher>
 	</filter-mapping>
+	-->
 	<filter-mapping>
 		<filter-name>struts-execute</filter-name>
 		<url-pattern>/*</url-pattern>
@@ -70,72 +74,6 @@
 		<listener>
 		<listener-class>org.apache.struts2.dispatcher.listener.StrutsListener</listener-class>
 	</listener>
-	<servlet>
-		<description>
-		</description>
-		<display-name>EjemploUsers</display-name>
-		<servlet-name>EjemploUsers</servlet-name>
-		<servlet-class>wad.cart.ramos.diaz.servlets.EjemploUsers</servlet-class>
-	</servlet>
-	<servlet>
-		<description>
-		</description>
-		<display-name>EjemploProducts</display-name>
-		<servlet-name>EjemploProducts</servlet-name>
-		<servlet-class>wad.cart.ramos.diaz.servlets.EjemploProducts</servlet-class>
-	</servlet>
-	<servlet>
-		<description>
-		</description>
-		<display-name>EjemploOrders</display-name>
-		<servlet-name>EjemploOrders</servlet-name>
-		<servlet-class>wad.cart.ramos.diaz.servlets.EjemploOrders</servlet-class>
-	</servlet>
-	<servlet>
-		<description>
-		</description>
-		<display-name>EjemploCreditCard</display-name>
-		<servlet-name>EjemploCreditCard</servlet-name>
-		<servlet-class>wad.cart.ramos.diaz.servlets.EjemploCreditCard</servlet-class>
-	</servlet>
-	<servlet>
-		<description>
-		</description>
-		<display-name>ViewUser</display-name>
-		<servlet-name>ViewUser</servlet-name>
-		<servlet-class>wad.cart.ramos.diaz.servlets.ViewUser</servlet-class>
-	</servlet>
-	<servlet>
-		<description>
-		</description>
-		<display-name>EjemploConekta</display-name>
-		<servlet-name>EjemploConekta</servlet-name>
-		<servlet-class>wad.cart.ramos.diaz.servlets.EjemploConekta</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>EjemploUsers</servlet-name>
-		<url-pattern>/EjemploUsers</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>EjemploProducts</servlet-name>
-		<url-pattern>/EjemploProducts</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>EjemploOrders</servlet-name>
-		<url-pattern>/EjemploOrders</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>EjemploCreditCard</servlet-name>
-		<url-pattern>/EjemploCreditCard</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>ViewUser</servlet-name>
-		<url-pattern>/ViewUser</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>EjemploConekta</servlet-name>
-		<url-pattern>/EjemploConekta</url-pattern>
-	</servlet-mapping>
 	<!-- <session-config>
 		<session-timeout>10</session-timeout>
 	</session-config> -->

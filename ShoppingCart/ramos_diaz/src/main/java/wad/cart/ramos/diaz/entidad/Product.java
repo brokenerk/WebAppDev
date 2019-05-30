@@ -9,6 +9,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "product")
@@ -29,8 +30,8 @@ public class Product {
 	private Integer stock;
 	@Column(name = "ft_discount")
 	private Float discount;
-	@Column(name = "tx_image")
-	private String image;
+	@Transient
+	protected Float realPrice;
 
 	public Integer getId() {
 		return id;
@@ -48,6 +49,14 @@ public class Product {
 		this.name = name;
 	}
 	
+	public Float getRealPrice() {
+		return realPrice;
+	}
+
+	public void setRealPrice(Float realPrice) {
+		this.realPrice = realPrice;
+	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -64,16 +73,6 @@ public class Product {
 		this.stock = stock;
 	}
 	
-	public String getImage() {
-		return image;
-	}
-	
-	public void setImage(String image) {
-		this.image = image;
-	}
-	
-	
-
 	public Float getPrice() {
 		return price;
 	}

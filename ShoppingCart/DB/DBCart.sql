@@ -43,7 +43,6 @@ create table product (
 	ft_price float not null,
 	nu_stock int4 not null,
 	ft_discount float,
-	tx_image varchar(40),   
 	primary key (id_product));
 
 create table order_detail (
