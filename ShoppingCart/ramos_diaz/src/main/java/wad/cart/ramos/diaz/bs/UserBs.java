@@ -30,9 +30,9 @@ public class UserBs {
 		return userDao.findById(id);
 	}
 	
-	public OrderC findCart(User u){
+	public OrderC findCart(List<OrderC> orders){
 		OrderC order = null;
-		for(OrderC o: u.getOrders()) {
+		for(OrderC o: orders) {
 			if(!o.getPurchased()) {
 				order = o;
 			}
@@ -40,9 +40,9 @@ public class UserBs {
 		return order;
 	}
 	
-	public List<OrderC> findOrders(User u){
+	public List<OrderC> findOrders(List<OrderC> orders){
 		List<OrderC> order = new ArrayList<OrderC>();
-		for(OrderC o: u.getOrders()) {
+		for(OrderC o: orders) {
 			if(o.getPurchased()) {
 				order.add(o);
 			}

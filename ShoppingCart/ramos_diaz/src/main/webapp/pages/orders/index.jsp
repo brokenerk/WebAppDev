@@ -42,7 +42,7 @@
 			</tbody>
 		</table>
 		<div class="row">
-			<a href="${pageContext.request.contextPath}/users/${model.id}">Completed Orders</a>
+			<a href="${pageContext.request.contextPath}/users">Return</a>
 		</div>
 	</div>
 </body>

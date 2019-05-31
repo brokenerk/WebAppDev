@@ -34,17 +34,12 @@ public class OrdersAct {
 	public String index() {
 		//Nos apoyamos de la sesion
 		model = userBs.findById(1);
-		orders = userBs.findOrders(getModel());
+		orders = userBs.findOrders(model.getOrders());
 		return "index";
 	}
 	
 	public String show() {
-		orderDetails = getOrder().getOrderDetails();
-		for(OrderDetail od: orderDetails) {
-			Product p = od.getProduct();
-			Float realPrice = productBs.calculateDiscount(p.getPrice(), p.getDiscount());
-			p.setRealPrice(realPrice);
-		}
+		orderDetails = productBs.calculateRealPrice(getOrder().getOrderDetails());
 		return "show";
 	}
 	

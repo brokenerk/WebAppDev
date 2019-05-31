@@ -9,23 +9,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator;
 
+import wad.cart.ramos.diaz.bs.CreditCardBs;
 import wad.cart.ramos.diaz.bs.UserBs;
 import wad.cart.ramos.diaz.entidad.CardUser;
+import wad.cart.ramos.diaz.entidad.CreditCard;
 import wad.cart.ramos.diaz.entidad.User;
 
 @Results({ @Result(name = ActionSupport.SUCCESS, type = "redirectAction", params = { "actionName", "credit-card" }) })
 public class CreditCardAct {
 	@Autowired
+	private CreditCardBs creditCardBs;
+	@Autowired
 	private UserBs userBs;
-	private User model;
+	private User user;
+	private CreditCard model;
 	private List<CardUser> creditCards;
 	private Integer idSel;
 	
 	private static final long serialVersionUID = 1L;
 	
-	public String show() {
-		creditCards = model.getCreditCards();
-		return "show";
+	public String index() {
+		user = userBs.findById(1);
+		creditCards = user.getCreditCards();
+		return "index";
+	}
+	
+	@VisitorFieldValidator
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@VisitorFieldValidator
@@ -45,16 +60,16 @@ public class CreditCardAct {
 	public void setIdSel(Integer idSel) {
 		this.idSel = idSel;
 		if (idSel != null) {
-			model = userBs.findById(idSel);
+			model = creditCardBs.findById(idSel);
 		}
 	}
 
-	public void setModel(User model) {
+	public void setModel(CreditCard model) {
 		this.model = model;
 	}
 
 	@VisitorFieldValidator
-	public User getModel() {
+	public CreditCard getModel() {
 		return model;
 	}
 	

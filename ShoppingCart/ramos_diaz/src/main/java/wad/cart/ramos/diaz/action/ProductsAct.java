@@ -25,13 +25,14 @@ public class ProductsAct {
 
 	public String index() {
 		listProducts = productBs.findAllProducts();
-		return "index";
+		return "products";
 	}
 	
 	public String show() {
 		return "show";
 	}
-
+	
+	@VisitorFieldValidator
 	public List<Product> getListProducts() {
 		return listProducts;
 	}
@@ -39,7 +40,8 @@ public class ProductsAct {
 	public void setListProducts(List<Product> listProducts) {
 		this.listProducts = listProducts;
 	}
-
+	
+	@VisitorFieldValidator
 	public Integer getIdSel() {
 		return idSel;
 	}

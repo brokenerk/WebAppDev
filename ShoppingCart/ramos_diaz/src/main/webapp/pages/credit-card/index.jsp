@@ -12,46 +12,41 @@
 	<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Shopping Cart</title>
+<title>Credit Cards</title>
 </head>
 <body>
-	<div class="row">
-		<a href="${pageContext.request.contextPath}/users">User Profile</a>
-	</div>
-	<div class="row">
-		<a href="${pageContext.request.contextPath}/cart">Cart</a>
-	</div>
-	<div class="row">
-		<h1 class="title">Products</h1>
-	</div>
 	<div class="row">
 		<table>
 			<thead>
 				<tr>
-					<th>Image</th>
-					<th>Name</th>
-					<th>Price</th>
-					<th>Discount</th>
-					<th>Total</th>
+					<th>ID</th>
+					<th>Number</th>
+					<th>Owner</th>
 					<th></th>
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
-				<s:iterator value="listProducts" var="product">
+				<s:iterator value="creditCards" var="creditCard">
 					<tr>
-						<td><img src="${pageContext.request.contextPath }/imgs/products/${product.id}.jpg" width="100"/></td>
-						<td>${product.name}</td>
-						<td>$ ${product.price}</td>
-						<td>${product.discount} %</td>
-						<td>$ ${product.realPrice}</td>
-						<td><a href="${pageContext.request.contextPath}/products/${product.id}">View</a></td>
-						<td><a href="#">Add to cart</a></td>
-						
+						<td>${creditCard.id}</td>
+						<td>${creditCard.number}</td>
+						<td>${creditCard.owner}</td>
+						<!-- Metodo PUT -->
+						<td><a href="#">Edit</a></td>
+						<!-- Metodo DELETE -->
+						<td><a href="#">Remove</a></td>
 						</tr>
 				</s:iterator>
 			</tbody>
 		</table>
+		<!-- Metodo POST -->
+		<div class="row">
+			<a href="#">Add new</a>
+		</div>
+		<div class="row">
+			<a href="${pageContext.request.contextPath}/users">Return</a>
+		</div>
 	</div>
 </body>
 </html>

@@ -12,7 +12,7 @@
 	<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title><h1>Completed Order</h1></title>
+<title>Completed Order</title>
 </head>
 <body>
 	<h1>Completed Order ID</h1>

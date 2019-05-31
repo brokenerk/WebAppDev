@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import wad.cart.ramos.diaz.dao.ProductDao;
+import wad.cart.ramos.diaz.entidad.OrderDetail;
 import wad.cart.ramos.diaz.entidad.Product;
 import wad.cart.ramos.diaz.entidad.User;
 
@@ -24,6 +25,15 @@ public class ProductBs {
 		Float realPrice = price - (price * (discount / 100));
 		DecimalFormat df = new DecimalFormat("#.##");
 		return Float.valueOf(df.format(realPrice));
+	}
+	
+	public List<OrderDetail> calculateRealPrice(List<OrderDetail> orderDetails){
+		for(OrderDetail od: orderDetails) {
+			Product p = od.getProduct();
+			Float realPrice = calculateDiscount(p.getPrice(), p.getDiscount());
+			p.setRealPrice(realPrice);
+		}
+		return orderDetails;
 	}
 
 	public List<Product> findAllProducts() {

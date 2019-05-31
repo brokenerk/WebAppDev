@@ -62,7 +62,7 @@
 	</div>
 		
 	<div class="row">
-		<a href="${pageContext.request.contextPath}/cart">Add to cart</a>
+		<a href="#">Add to cart</a>
 	</div>
 </body>
 	</html>

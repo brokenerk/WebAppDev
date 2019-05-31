@@ -12,37 +12,36 @@
 	<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Credit Cards</title>
+<title>Login</title>
 </head>
 <body>
-	<div class="row">
-		<table>
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Number</th>
-					<th>Owner</th>
-					<th></th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<s:iterator value="creditCards" var="creditCard">
-					<tr>
-						<td>${creditCard.id}</td>
-						<td>${creditCard.number}</td>
-						<td>${creditCard.owner}</td>
-						<!-- Metodo PUT -->
-						<td><a href="#">Edit</a></td>
-						<!-- Metodo DELETE -->
-						<td><a href="#">Remove</a></td>
-						</tr>
-				</s:iterator>
-			</tbody>
-		</table>
-		<!-- Metodo POST -->
-		<a href="#">Add new</a>
-	</div>
+	
+	<s:form id="frmLogin"
+		action="%{#pageContext.request.contextPath}/login"
+		method="post" theme="simple">
+		
+		<div class="col-md-4">
+				<label for="">Username</label>
+		</div>
+		<div class="col-md-8">
+			<s:textfield id="txUsername" name="username"/>
+		</div>
+		
+		<div class="col-md-4">
+				<label for="">Password</label>
+		</div>
+		<div class="col-md-8">
+			<s:password id="txPassword" name="password"/>
+		</div>
+		
+		<div class="col-md-8">
+			<s:hidden id="IdSel" name="idSel"/>
+		</div>
+
+
+		<s:submit value="Confirm" />
+	</s:form>
+
 </body>
 </html>
 </jsp:root>

@@ -29,15 +29,11 @@ public class CartAct {
 	
 	private static final long serialVersionUID = 1L;
 
-	public String show() {
-		orders = userBs.findCart(getModel());
-		orderDetails = orders.getOrderDetails();
-		for(OrderDetail od: orderDetails) {
-			Product p = od.getProduct();
-			Float realPrice = productBs.calculateDiscount(p.getPrice(), p.getDiscount());
-			p.setRealPrice(realPrice);
-		}
-		return "show";
+	public String index() {
+		model = userBs.findById(1);
+		orders = userBs.findCart(model.getOrders());
+		orderDetails = productBs.calculateRealPrice(orders.getOrderDetails());
+		return "index";
 	}
 	
 	@VisitorFieldValidator
@@ -65,9 +61,6 @@ public class CartAct {
 
 	public void setIdSel(Integer idSel) {
 		this.idSel = idSel;
-		if (idSel != null) {
-			model = userBs.findById(idSel);
-		}
 	}
 
 	public void setModel(User model) {

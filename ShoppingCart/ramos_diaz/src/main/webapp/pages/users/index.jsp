@@ -77,10 +77,10 @@
 	</div>
 	
 	<div class="row">
-		<a href="${pageContext.request.contextPath}/credit-card/${model.id}">Credit Cards</a>
+		<a href="${pageContext.request.contextPath}/credit-card">Credit Cards</a>
 	</div>
 	<div class="row">
-		<a href="${pageContext.request.contextPath}/orders/">Completed Orders</a>
+		<a href="${pageContext.request.contextPath}/orders">Completed Orders</a>
 	</div>
 	<div class="row">
 		<a href="${pageContext.request.contextPath}/products">Return</a>
