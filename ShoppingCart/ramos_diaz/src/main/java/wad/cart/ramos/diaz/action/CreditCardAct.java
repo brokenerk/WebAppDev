@@ -2,6 +2,10 @@ package wad.cart.ramos.diaz.action;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +19,9 @@ import wad.cart.ramos.diaz.entidad.CardUser;
 import wad.cart.ramos.diaz.entidad.CreditCard;
 import wad.cart.ramos.diaz.entidad.User;
 
-@Results({ @Result(name = ActionSupport.SUCCESS, type = "redirectAction", params = { "actionName", "credit-card" }) })
+@Results({ @Result(name = ActionSupport.SUCCESS, type = "redirectAction", params = { "actionName", "credit-card" }),
+	       @Result(name = "login-credit-card", type = "redirectAction", params = { "actionName", "login/2"})})
+@InterceptorRef(value="customStack")
 public class CreditCardAct {
 	@Autowired
 	private CreditCardBs creditCardBs;
@@ -29,7 +35,9 @@ public class CreditCardAct {
 	private static final long serialVersionUID = 1L;
 	
 	public String index() {
-		user = userBs.findById(1);
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		Integer idUser = (Integer) session.getAttribute("idUser");
+		user = userBs.findById(idUser);
 		creditCards = user.getCreditCards();
 		return "index";
 	}

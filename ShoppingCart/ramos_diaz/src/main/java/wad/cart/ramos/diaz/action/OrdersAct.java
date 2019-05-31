@@ -1,6 +1,10 @@
 package wad.cart.ramos.diaz.action;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +16,11 @@ import wad.cart.ramos.diaz.bs.ProductBs;
 import wad.cart.ramos.diaz.bs.UserBs;
 import wad.cart.ramos.diaz.entidad.OrderC;
 import wad.cart.ramos.diaz.entidad.OrderDetail;
-import wad.cart.ramos.diaz.entidad.Product;
 import wad.cart.ramos.diaz.entidad.User;
 
-@Results({ @Result(name = ActionSupport.SUCCESS, type = "redirectAction", params = { "actionName", "orders" }) })
+@Results({ @Result(name = ActionSupport.SUCCESS, type = "redirectAction", params = { "actionName", "orders" }),
+	      @Result(name = "login-orders", type = "redirectAction", params = { "actionName", "login/3"})})
+@InterceptorRef(value="customStack")
 public class OrdersAct {
 	
 	@Autowired
@@ -33,7 +38,9 @@ public class OrdersAct {
 	
 	public String index() {
 		//Nos apoyamos de la sesion
-		model = userBs.findById(1);
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		Integer idUser = (Integer) session.getAttribute("idUser");
+		model = userBs.findById(idUser);
 		orders = userBs.findOrders(model.getOrders());
 		return "index";
 	}

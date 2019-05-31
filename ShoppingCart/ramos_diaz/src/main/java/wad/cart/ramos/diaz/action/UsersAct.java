@@ -1,5 +1,8 @@
 package wad.cart.ramos.diaz.action;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
@@ -13,7 +16,7 @@ import wad.cart.ramos.diaz.entidad.Address;
 import wad.cart.ramos.diaz.entidad.User;
 
 @Results({ @Result(name = ActionSupport.SUCCESS, type = "redirectAction", params = { "actionName", "users" }),
-			@Result(name = "login", type = "redirectAction", params = { "actionName", "login" })})
+		   @Result(name = "login-users", type = "redirectAction", params = { "actionName", "login/5"})})
 @InterceptorRef(value="customStack")
 public class UsersAct {
 	@Autowired
@@ -25,7 +28,10 @@ public class UsersAct {
 	private static final long serialVersionUID = 1L;
 	
 	public String index() {
-		model = userBs.findById(1);
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		Integer idUser = (Integer) session.getAttribute("idUser");
+		
+		model = userBs.findById(idUser);
 		address = model.getAddress();
 		return "index";
 	}

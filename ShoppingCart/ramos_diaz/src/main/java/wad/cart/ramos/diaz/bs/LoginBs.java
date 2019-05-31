@@ -17,6 +17,14 @@ public class LoginBs {
 		@Autowired
 		private LoginDao loginDao;
 		
+		public String[] getValues(HashMap<Integer, String> views) {
+			return views.values().toArray(new String[0]);
+		}
+		
+		public Integer[] getKeys(HashMap<Integer, String> views) {
+			return views.keySet().toArray(new Integer[0]);
+		}
+		
 		public HashMap<Integer, String> fillViews(HashMap<Integer, String> views){
 			views.put(1, "cart");
 			views.put(2, "credit-card");

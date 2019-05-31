@@ -32,7 +32,7 @@ public class LoginAct{
 	private Integer idSel;
 	
 	private static final long serialVersionUID = 1L;
-
+	
 	public String show() {
 		return "show";
 	}

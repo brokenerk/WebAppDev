@@ -19,6 +19,9 @@
 		<a href="${pageContext.request.contextPath}/users">User Profile</a>
 	</div>
 	<div class="row">
+		<a href="${pageContext.request.contextPath}/login/5">Log In</a>
+	</div>
+	<div class="row">
 		<a href="${pageContext.request.contextPath}/cart">Cart</a>
 	</div>
 	<div class="row">

@@ -177,9 +177,9 @@
 
 			</interceptor-stack>
 			
-			<interceptor name="userInterceptor" class="wad.cart.ramos.diaz.interceptors.UserInterceptor" />
+			<interceptor name="loginInterceptor" class="wad.cart.ramos.diaz.interceptors.LoginInterceptor" />
 	            <interceptor-stack name="customStack">
-	                <interceptor-ref name="userInterceptor"/>
+	                <interceptor-ref name="loginInterceptor"/>
 	            </interceptor-stack>
 	            
 		</interceptors>
