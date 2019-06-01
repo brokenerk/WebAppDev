@@ -16,8 +16,8 @@ import wad.cart.ramos.diaz.entidad.Address;
 import wad.cart.ramos.diaz.entidad.User;
 
 @Results({ @Result(name = ActionSupport.SUCCESS, type = "redirectAction", params = { "actionName", "users" }),
-		   @Result(name = "login-users", type = "redirectAction", params = { "actionName", "login/5"})})
-@InterceptorRef(value="customStack")
+		   @Result(name = "login-users", type = "redirectAction", params = { "actionName", "login/users"})})
+@InterceptorRef("customStack")
 public class UsersAct {
 	@Autowired
 	private UserBs userBs;

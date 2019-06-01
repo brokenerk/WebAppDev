@@ -33,9 +33,5 @@ public class UserDao {
 	public User findById(Integer id) {
 		return entityManagerFactory.find(User.class, id);
 	}
-	
-	public OrderC findOrderById(Integer id) {
-		return entityManagerFactory.find(OrderC.class, id);
-	}
 
 }

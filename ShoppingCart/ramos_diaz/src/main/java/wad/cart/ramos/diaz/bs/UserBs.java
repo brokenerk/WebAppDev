@@ -22,10 +22,6 @@ public class UserBs {
 		return userDao.findAllUsers();
 	}
 	
-	public OrderC findOrderById(Integer id) {
-		return userDao.findOrderById(id);
-	}
-	
 	public User findById(Integer id) {
 		return userDao.findById(id);
 	}

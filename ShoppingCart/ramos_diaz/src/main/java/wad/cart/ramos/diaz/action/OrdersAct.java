@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator;
 
+import wad.cart.ramos.diaz.bs.OrderBs;
 import wad.cart.ramos.diaz.bs.ProductBs;
 import wad.cart.ramos.diaz.bs.UserBs;
 import wad.cart.ramos.diaz.entidad.OrderC;
@@ -19,14 +20,16 @@ import wad.cart.ramos.diaz.entidad.OrderDetail;
 import wad.cart.ramos.diaz.entidad.User;
 
 @Results({ @Result(name = ActionSupport.SUCCESS, type = "redirectAction", params = { "actionName", "orders" }),
-	      @Result(name = "login-orders", type = "redirectAction", params = { "actionName", "login/3"})})
-@InterceptorRef(value="customStack")
+	      @Result(name = "login-orders", type = "redirectAction", params = { "actionName", "login/orders"})})
+@InterceptorRef("customStack")
 public class OrdersAct {
 	
 	@Autowired
 	private UserBs userBs;
 	@Autowired
 	private ProductBs productBs;
+	@Autowired
+	private OrderBs orderBs;
 	private User model;
 	private Integer idSel;
 	private List<OrderC> orders;
@@ -76,7 +79,7 @@ public class OrdersAct {
 	public void setIdSel(Integer idSel) {
 		this.idSel = idSel;
 		if (idSel != null) {
-			order = userBs.findOrderById(idSel);
+			order = orderBs.findById(idSel);
 		}
 	}
 

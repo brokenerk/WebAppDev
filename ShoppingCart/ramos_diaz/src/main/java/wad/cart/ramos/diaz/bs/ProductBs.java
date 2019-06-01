@@ -21,17 +21,19 @@ public class ProductBs {
 	@Autowired
 	private ProductDao productDao;
 	
-	public Float calculateDiscount(Float price, Float discount) {
+	public Product calculateDiscount(Product p) {
+		Float price = p.getPrice();
+		Float discount = p.getDiscount();
 		Float realPrice = price - (price * (discount / 100));
 		DecimalFormat df = new DecimalFormat("#.##");
-		return Float.valueOf(df.format(realPrice));
+		p.setRealPrice(Float.valueOf(df.format(realPrice)));
+		return p;
 	}
 	
 	public List<OrderDetail> calculateRealPrice(List<OrderDetail> orderDetails){
 		for(OrderDetail od: orderDetails) {
 			Product p = od.getProduct();
-			Float realPrice = calculateDiscount(p.getPrice(), p.getDiscount());
-			p.setRealPrice(realPrice);
+			p = calculateDiscount(p);
 		}
 		return orderDetails;
 	}
@@ -40,8 +42,7 @@ public class ProductBs {
 		List<Product> products = productDao.findAllProducts();
 		//Precio con descuento
 		for(Product p: products) {
-			Float realPrice = calculateDiscount(p.getPrice(), p.getDiscount());
-			p.setRealPrice(realPrice);
+			p = calculateDiscount(p);
 		}
 		return products;
 	}

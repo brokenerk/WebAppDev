@@ -22,19 +22,19 @@
 			<div class="col-md-4">
 				<label for="">Id Order</label>
 			</div>
-			<div class="col-md-8">${orders.id}</div>
+			<div class="col-md-8">${cart.id}</div>
 		</div>
 		<div class="form-group">
 			<div class="col-md-4">
 				<label for="">Date</label>
 			</div>
-			<div class="col-md-8">${orders.date}</div>
+			<div class="col-md-8">${cart.date}</div>
 		</div>
 		<div class="form-group">
 			<div class="col-md-4">
 				<label for="">Total</label>
 			</div>
-			<div class="col-md-8">${orders.total}</div>
+			<div class="col-md-8">${cart.total}</div>
 		</div>
 		
 			
@@ -52,14 +52,46 @@
 			</thead>
 			<tbody>
 				<s:iterator value="orderDetails" var="orderDetail">
+					<s:set var="productId">${orderDetail.product.id}</s:set>
 					<tr>
 						<td><img src="${pageContext.request.contextPath }/imgs/products/${orderDetail.product.id}.jpg" width="100"/></td>
 						<td>${orderDetail.product.name}</td>
 						<td>$ ${orderDetail.product.realPrice}</td>
 						<td>${orderDetail.amount}</td>
-						<td><a href="#">Add</a></td>
-						<td><a href="#">Remove</a></td>
+						<td>
+							<s:form id="frmAdd"
+							action="%{#pageContext.request.contextPath}/cart/%{#productId}"
+							method="post" theme="simple">
+							
+							<s:hidden id="hdnMethod" name="_method" value="put" />
+							<s:hidden id="operation" name="operation" value="inc" />
+							<s:submit value="+" />
+							</s:form>
+						</td>
+						
+						<td>
+							<s:form id="frmAdd"
+							action="%{#pageContext.request.contextPath}/cart/%{#productId}"
+							method="post" theme="simple">
+							
+							<s:hidden id="hdnMethod" name="_method" value="put" />
+							<s:hidden id="operation" name="operation" value="dec" />
+							<s:submit value="-" />
+							</s:form>
+						</td>
+						
+						<td>
+							<s:form id="frmRemove"
+							action="%{#pageContext.request.contextPath}/cart/%{#productId}"
+							method="post" theme="simple">
+							
+							<s:hidden id="hdnMethod" name="_method" value="delete" />
+							<s:submit value="Remove" />
+							</s:form>
+						</td>
+						
 						</tr>
+						
 				</s:iterator>
 			</tbody>
 		</table>

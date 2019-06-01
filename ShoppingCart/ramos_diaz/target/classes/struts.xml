@@ -180,11 +180,12 @@
 			<interceptor name="loginInterceptor" class="wad.cart.ramos.diaz.interceptors.LoginInterceptor" />
 	            <interceptor-stack name="customStack">
 	                <interceptor-ref name="loginInterceptor"/>
+	                <interceptor-ref name="defaultStack"/>  
 	            </interceptor-stack>
 	            
 		</interceptors>
 		
-		<default-interceptor-ref name="stack" />
+		<!--<default-interceptor-ref name="stack" />-->
 
 		<!-- Resultados accesibles desde toda la aplicacion -->
 		<global-results>

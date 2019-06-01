@@ -1,18 +1,18 @@
 package wad.cart.ramos.diaz.action;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
-import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator;
 
 import wad.cart.ramos.diaz.bs.LoginBs;
+import wad.cart.ramos.diaz.bs.UserBs;
+import wad.cart.ramos.diaz.bs.UserNotFoundException;
+import wad.cart.ramos.diaz.bs.WrongPasswordException;
+import wad.cart.ramos.diaz.entidad.OrderC;
 import wad.cart.ramos.diaz.entidad.User;
 
 @Results({ 
@@ -20,16 +20,14 @@ import wad.cart.ramos.diaz.entidad.User;
 	@Result(name = "cart", type = "redirectAction", params = { "actionName", "cart" }),
 	@Result(name = "credit-card", type = "redirectAction", params = { "actionName", "credit-card" }),
 	@Result(name = "orders", type = "redirectAction", params = { "actionName", "orders" }),
-	@Result(name = "products", type = "redirectAction", params = { "actionName", "products" }),
 	@Result(name = "users", type = "redirectAction", params = { "actionName", "users" })})
-public class LoginAct{
+public class LoginAct extends ActionSupport {
 	@Autowired
 	private LoginBs loginBs;
 	private User model;
 	private String username;
 	private String password;
-	private HashMap<Integer, String> views = new HashMap<>();
-	private Integer idSel;
+	private String idSel;
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -37,14 +35,33 @@ public class LoginAct{
 		return "show";
 	}
 	
-	public String create() {
-		views = loginBs.fillViews(views);
-		Integer idUser = loginBs.logIn(getUsername(), getPassword());
-		ServletActionContext.getRequest().getSession().setAttribute("idUser", idUser);
-		return views.get(getIdSel());
+	public String editNew() {
+		return "editNew";
 	}
 	
-		
+	public void validateCreate() {
+		idSel = getIdSel();
+		try {
+			model = loginBs.logIn(getUsername(), getPassword());
+			Integer idUser = model.getId();
+			ServletActionContext.getRequest().getSession().setAttribute("idUser", idUser);
+		}
+		catch(UserNotFoundException ex1) {
+			addFieldError("username", "Username is wrong");
+		}
+		catch(WrongPasswordException ex2) {
+			addFieldError("password", "Password is wrong");
+		}
+		finally {
+			
+		}
+	}
+	
+	public String create() {
+		idSel = getIdSel();
+		return idSel;
+	}
+	
 	@VisitorFieldValidator
 	public String getUsername() {
 		return username;
@@ -73,20 +90,11 @@ public class LoginAct{
 	}
 	
 	@VisitorFieldValidator
-	public HashMap<Integer, String> getViews() {
-		return views;
-	}
-
-	public void setViews(HashMap<Integer, String> views) {
-		this.views = views;
-	}
-	
-	@VisitorFieldValidator
-	public Integer getIdSel() {
+	public String getIdSel() {
 		return idSel;
 	}
 
-	public void setIdSel(Integer idSel) {
+	public void setIdSel(String idSel) {
 		this.idSel = idSel;
 	}
 }

@@ -49,10 +49,7 @@ public class ProductsAct {
 	public void setIdSel(Integer idSel) {
 		this.idSel = idSel;
 		if (idSel != null) {
-			model = productBs.findById(idSel);
-			//Añadimos el precio sin descuento
-			Float realPrice = productBs.calculateDiscount(model.getPrice(), model.getDiscount());
-			model.setRealPrice(realPrice);
+			model = productBs.calculateDiscount(productBs.findById(idSel));
 		}
 	}
 	

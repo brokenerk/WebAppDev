@@ -30,8 +30,6 @@ public class OrderC {
 	private Boolean purchased;
 	@Column(name = "ft_total")
 	private Float total;
-	@Column(name = "ft_discount")
-	private Float discount;
 	@Column(name = "id_user")
 	private Integer idUser;
 	
@@ -55,22 +53,12 @@ public class OrderC {
 		this.date = date;
 	}
 	
-	
-
 	public Float getTotal() {
 		return total;
 	}
 
 	public void setTotal(Float total) {
 		this.total = total;
-	}
-
-	public Float getDiscount() {
-		return discount;
-	}
-
-	public void setDiscount(Float discount) {
-		this.discount = discount;
 	}
 
 	public List<OrderDetail> getOrderDetails() {

@@ -16,7 +16,7 @@
 </head>
 <body>
 	<div class="row">
-		<h1 class="title">Profile ID: ${model.id}</h1>
+		<h1 class="title">User ID: ${model.id}</h1>
 	</div>
 	<div class="form-group">
 		<div class="col-md-4">
@@ -75,10 +75,7 @@
 	<div class="row">
 		<a href="#">Edit</a>
 	</div>
-	
-	<div class="row">
-		<a href="${pageContext.request.contextPath}/credit-card">Credit Cards</a>
-	</div>
+
 	<div class="row">
 		<a href="${pageContext.request.contextPath}/orders">Completed Orders</a>
 	</div>

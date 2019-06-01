@@ -40,8 +40,8 @@ insert into product(tx_name, tx_description, ft_price, nu_stock, ft_discount) va
 insert into product(tx_name, tx_description, ft_price, nu_stock, ft_discount) values ('Marvel Guante Electrónico Avengers Infinity War', 'El Guante electrónico de Thanos, ¡que incluye luces y sonidos! ¡Presiona el botón central en el puño para iluminar la piedra central y activar el poderoso sonido! Este Guante del Infinito está inspirado en la película Avengers: Infinity War y está diseñado para adaptarse a la mayoría de los tamaños de mano.', 226.82, 900, 50.3);
 
 -- Pedido - Carrito
-insert into order_c(fh_date, st_purchased, ft_total, ft_discount, id_user) values (to_date('01/01/2001','dd/MM/yyyy'), true, 1000.00, 50.3, 1);
-insert into order_c(fh_date, st_purchased, ft_total, ft_discount, id_user) values (to_date('02/02/2002','dd/MM/yyyy'), false, 200.00, null, 1);
+insert into order_c(fh_date, st_purchased, ft_total, id_user) values (to_date('01/01/2001','dd/MM/yyyy'), true, 1000.00, 1);
+insert into order_c(fh_date, st_purchased, ft_total, id_user) values (to_date('02/02/2002','dd/MM/yyyy'), false, 200.00, 1);
 
 -- Detalle Pedido
 insert into order_detail(id_product, id_order, nu_amount) values (1, 1, 10);
@@ -69,8 +69,8 @@ delete from address cascade;
 delete from users cascade;
 delete from person cascade;
 delete from product cascade;
-delete from order_c cascade;
 delete from order_detail cascade;
+delete from order_c cascade;
 delete from credit_card cascade;
 delete from card_users cascade;
 TRUNCATE TABLE credit_card RESTART IDENTITY cascade;

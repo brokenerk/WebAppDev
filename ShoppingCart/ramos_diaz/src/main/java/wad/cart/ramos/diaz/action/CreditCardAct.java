@@ -20,8 +20,8 @@ import wad.cart.ramos.diaz.entidad.CreditCard;
 import wad.cart.ramos.diaz.entidad.User;
 
 @Results({ @Result(name = ActionSupport.SUCCESS, type = "redirectAction", params = { "actionName", "credit-card" }),
-	       @Result(name = "login-credit-card", type = "redirectAction", params = { "actionName", "login/2"})})
-@InterceptorRef(value="customStack")
+	       @Result(name = "login-credit-card", type = "redirectAction", params = { "actionName", "login/credit-card"})})
+@InterceptorRef("customStack")
 public class CreditCardAct {
 	@Autowired
 	private CreditCardBs creditCardBs;

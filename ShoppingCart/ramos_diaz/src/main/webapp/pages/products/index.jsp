@@ -16,10 +16,7 @@
 </head>
 <body>
 	<div class="row">
-		<a href="${pageContext.request.contextPath}/users">User Profile</a>
-	</div>
-	<div class="row">
-		<a href="${pageContext.request.contextPath}/login/5">Log In</a>
+		<a href="${pageContext.request.contextPath}/users">Account</a>
 	</div>
 	<div class="row">
 		<a href="${pageContext.request.contextPath}/cart">Cart</a>
@@ -42,6 +39,7 @@
 			</thead>
 			<tbody>
 				<s:iterator value="listProducts" var="product">
+					<s:set var="product.id">${product.id}</s:set>
 					<tr>
 						<td><img src="${pageContext.request.contextPath }/imgs/products/${product.id}.jpg" width="100"/></td>
 						<td>${product.name}</td>
@@ -49,7 +47,16 @@
 						<td>${product.discount} %</td>
 						<td>$ ${product.realPrice}</td>
 						<td><a href="${pageContext.request.contextPath}/products/${product.id}">View</a></td>
-						<td><a href="#">Add to cart</a></td>
+						<td>
+							<s:form id="frmAddProduct"
+							action="%{#pageContext.request.contextPath}/cart"
+							method="post" theme="simple">
+							
+							<s:hidden id="IdSel" name="idSel" value="%{#product.id}"/>
+							<s:submit value="Add to Cart" />
+							</s:form>
+							
+						</td>
 						
 						</tr>
 				</s:iterator>

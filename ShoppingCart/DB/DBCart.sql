@@ -56,7 +56,6 @@ create table order_c (
 	fh_date timestamp(0) not null,
 	st_purchased bool not null,
 	ft_total float not null,
-	ft_discount float,
 	id_user int4 not null,
 	primary key (id_order));
 
