@@ -2,6 +2,10 @@ package wad.cart.ramos.diaz.action;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +16,8 @@ import com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator;
 import wad.cart.ramos.diaz.bs.ProductBs;
 import wad.cart.ramos.diaz.entidad.Product;
 
-@Results({ @Result(name = ActionSupport.SUCCESS, type = "redirectAction", params = { "actionName", "products" }) })
+@Results({ @Result(name = ActionSupport.SUCCESS, type = "redirectAction", params = { "actionName", "products" }), 
+			@Result(name = "login-products", type = "redirectAction", params = { "actionName", "login/products"})})
 public class ProductsAct {
 	
 	@Autowired
@@ -20,6 +25,8 @@ public class ProductsAct {
 	private List<Product> listProducts;
 	private Integer idSel;
 	private Product model;
+	private HttpSession session = ServletActionContext.getRequest().getSession();
+	private Integer idUser = (Integer) session.getAttribute("idUser");
 	
 	private static final long serialVersionUID = 1L;
 
@@ -29,6 +36,7 @@ public class ProductsAct {
 	}
 	
 	public String show() {
+		idSel = getIdSel();
 		return "show";
 	}
 	
@@ -41,6 +49,15 @@ public class ProductsAct {
 		this.listProducts = listProducts;
 	}
 	
+	@VisitorFieldValidator
+	public Integer getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
+	}
+
 	@VisitorFieldValidator
 	public Integer getIdSel() {
 		return idSel;

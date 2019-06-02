@@ -14,6 +14,11 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
+import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;
+import com.opensymphony.xwork2.validator.annotations.Validations;
+import com.opensymphony.xwork2.validator.annotations.ValidatorType;
+
 @Entity
 @Table(name = "person")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -29,12 +34,16 @@ public class Person {
 	protected String lastName;
 	@Column(name = "tx_last_name_b")
 	protected String secondLastName;
-	@Transient
-	protected String fullName;
-
-	@OneToOne(optional = true)
-	@JoinColumn(name = "id_person", referencedColumnName = "id_person", insertable = false, updatable = false)
-	private Address address;
+	@Column(name = "tx_street")
+	private String street;
+	@Column(name = "tx_city")
+	private String city;
+	@Column(name = "tx_state")
+	private String state;
+	@Column(name = "tx_zipcode")
+	private String zipCode;
+	@Column(name = "tx_telephone")
+	private String telephone;
 
 	public Integer getId() {
 		return id;
@@ -43,7 +52,10 @@ public class Person {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
+	
+	@Validations(
+			requiredStrings = {@RequiredStringValidator(fieldName = "model.name", type = ValidatorType.FIELD, message = "Name is mandatory")}, 
+			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.name", type = ValidatorType.FIELD, message = "Name length is too long", maxLength = "30")})
 	public String getName() {
 		return name;
 	}
@@ -51,7 +63,10 @@ public class Person {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+	@Validations(
+			requiredStrings = {@RequiredStringValidator(fieldName = "model.lastName", type = ValidatorType.FIELD, message = "Last name is mandatory")}, 
+			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.lastName", type = ValidatorType.FIELD, message = "Last name length is too long", maxLength = "30")})
 	public String getLastName() {
 		return lastName;
 	}
@@ -59,7 +74,10 @@ public class Person {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
+	
+	@Validations(
+			requiredStrings = {@RequiredStringValidator(fieldName = "model.secondLastName", type = ValidatorType.FIELD, message = "Second lastname is mandatory")}, 
+			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.secondLastName", type = ValidatorType.FIELD, message = "Second lastname length is too long", maxLength = "30")})
 	public String getSecondLastName() {
 		return secondLastName;
 	}
@@ -68,22 +86,60 @@ public class Person {
 		this.secondLastName = secondLastName;
 	}
 
-
-	public String getFullName() {
-		return fullName;
+	@Validations(
+			requiredStrings = {@RequiredStringValidator(fieldName = "model.state", type = ValidatorType.FIELD, message = "State is mandatory")}, 
+			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.state", type = ValidatorType.FIELD, message = "State length is too long", maxLength = "100")})
+	public String getState() {
+		return state;
 	}
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
+	public void setState(String state) {
+		this.state = state;
+	}
+	
+	@Validations(
+			requiredStrings = {@RequiredStringValidator(fieldName = "model.telephone", type = ValidatorType.FIELD, message = "Telephone is mandatory")}, 
+			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.telephone", type = ValidatorType.FIELD, message = "Telephone length is not valid", minLength="14", maxLength = "14")})
+	public String getTelephone() {
+		return telephone;
 	}
 
-
-	public Address getAddress() {
-		return address;
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+	
+	@Validations(
+			requiredStrings = {@RequiredStringValidator(fieldName = "model.street", type = ValidatorType.FIELD, message = "Street is mandatory")}, 
+			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.street", type = ValidatorType.FIELD, message = "Street length is too long", maxLength = "100")})
+	public String getStreet() {
+		return street;
+	}
+	
+	
+	public void setStreet(String street) {
+		this.street = street;
+	}
+	
+	@Validations(
+			requiredStrings = {@RequiredStringValidator(fieldName = "model.city", type = ValidatorType.FIELD, message = "City is mandatory")}, 
+			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.city", type = ValidatorType.FIELD, message = "City length is too long", maxLength = "100")})
+	public String getCity() {
+		return city;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
+	@Validations(
+			requiredStrings = {@RequiredStringValidator(fieldName = "model.zipCode", type = ValidatorType.FIELD, message = "ZipCode is mandatory")}, 
+			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.zipCode", type = ValidatorType.FIELD, message = "ZipCode length is not valid", minLength="5", maxLength = "5")})
+	public String getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
 	}
 
 	@Override

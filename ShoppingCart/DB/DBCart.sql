@@ -10,7 +10,7 @@
 create table users (
 	id_user int4 not null, 
 	tx_login varchar(30) not null unique, 
-	tx_password varchar(100) not null, 
+	tx_password varchar(10) not null, 
 	primary key (id_user));
 
 create table person (
@@ -18,6 +18,11 @@ create table person (
 	tx_first_name varchar(30) not null, 
 	tx_last_name_a varchar(30) not null, 
 	tx_last_name_b varchar(30) not null, 
+	tx_street varchar(100) not null, 
+	tx_city varchar(100) not null, 
+	tx_state varchar(100) not null,
+	tx_zipcode varchar(5) not null,
+	tx_telephone varchar(14) not null, 
 	primary key (id_person));
 
 create table access (
@@ -26,15 +31,6 @@ create table access (
 	fh_failed timestamp(0), 
 	fh_lock timestamp(0), 
 	primary key (id_access));
-
-create table address (
-	id_person int4 not null, 
-	tx_street varchar(100) not null, 
-	tx_city varchar(100) not null, 
-	tx_state varchar(100) not null,
-	tx_zipcode varchar(10) not null,
-	tx_telephone varchar(25) not null, 
-	primary key (id_person));
 
 create table product (
 	id_product serial not null, 
@@ -77,13 +73,14 @@ create table credit_card (
 
 alter table access add constraint FKaccess801659 foreign key (id_access) references users;
 alter table users add constraint FKusers311802 foreign key (id_user) references person;
-alter table address add constraint FKaddress501726 foreign key (id_person) references person;
 alter table order_detail add constraint FKorder_detail999795 foreign key (id_product) references product;
 alter table order_detail add constraint FKorder_detail713322 foreign key (id_order) references order_c;
 alter table order_c add constraint FKorder_c249289 foreign key (id_user) references users;
 alter table card_users add constraint FKcard_users337911 foreign key (id_user) references users;
 alter table card_users add constraint FKcard_users162639 foreign key (id_credit_card) references credit_card;
 
+drop table users cascade;
+drop table person cascade;
 drop table product cascade;
 drop table order_detail cascade;
 drop table order_c cascade;

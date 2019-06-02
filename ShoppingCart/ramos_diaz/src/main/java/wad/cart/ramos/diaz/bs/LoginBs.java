@@ -1,7 +1,5 @@
 package wad.cart.ramos.diaz.bs;
 
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
@@ -17,7 +15,7 @@ public class LoginBs {
 	//Para usar el acceso a datos
 	@Autowired
 	private LoginDao loginDao;
-	String[] views = {"cart", "credit-card", "orders", "users"};
+	String[] views = {"cart", "credit-card", "orders", "products", "users"};
 	
 	public String findView(String url) {
 		String view = "";
@@ -37,8 +35,6 @@ public class LoginBs {
 			//El usuario existe
 			if (logedUser.getPassword().equals(passwordDigest(password))) {
 				//La contraseña es correcta
-				//Asignamos el nombre completo
-				logedUser.setFullName(logedUser.getName() + " " + logedUser.getLastName() + " " + logedUser.getSecondLastName());
 				System.out.println("Usuario autenticado exitosamente");
 				//Devolver usuario, si cumple con la autentificacion
 				return logedUser;

@@ -15,9 +15,30 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-	<div class="row">
-		<a href="${pageContext.request.contextPath}/users">Account</a>
-	</div>
+	<s:if test="%{idUser==null}">
+		<div class="row">
+			<a href="${pageContext.request.contextPath}/login/products">Login</a>
+		</div>
+		<div class="row">
+			<a href="${pageContext.request.contextPath}/register">Register</a>
+		</div>
+	</s:if>
+	<s:else>
+		<div class="row">
+			<a href="${pageContext.request.contextPath}/users">Account</a>
+		</div>
+		<div class="row">
+			<s:form id="frmRemove"
+			action="%{#pageContext.request.contextPath}/login/products"
+			method="post" theme="simple">
+			
+			<s:hidden id="hdnMethod" name="_method" value="delete" />
+			<s:submit value="Logout" />
+			</s:form>
+		</div>
+	</s:else>
+
+
 	<div class="row">
 		<a href="${pageContext.request.contextPath}/cart">Cart</a>
 	</div>
@@ -34,7 +55,9 @@
 					<th>Discount</th>
 					<th>Total</th>
 					<th></th>
+					<s:if test="%{idUser!=null}">
 					<th></th>
+					</s:if>
 				</tr>
 			</thead>
 			<tbody>
@@ -47,16 +70,18 @@
 						<td>${product.discount} %</td>
 						<td>$ ${product.realPrice}</td>
 						<td><a href="${pageContext.request.contextPath}/products/${product.id}">View</a></td>
-						<td>
-							<s:form id="frmAddProduct"
-							action="%{#pageContext.request.contextPath}/cart"
-							method="post" theme="simple">
-							
-							<s:hidden id="IdSel" name="idSel" value="%{#product.id}"/>
-							<s:submit value="Add to Cart" />
-							</s:form>
-							
-						</td>
+						
+						<s:if test="%{idUser!=null}">
+							<td>
+								<s:form id="frmAddProduct"
+								action="%{#pageContext.request.contextPath}/cart"
+								method="post" theme="simple">
+								
+								<s:hidden id="IdSel" name="idSel" value="%{#product.id}"/>
+								<s:submit value="Add to Cart" />
+								</s:form>
+							</td>
+						</s:if>
 						
 						</tr>
 				</s:iterator>

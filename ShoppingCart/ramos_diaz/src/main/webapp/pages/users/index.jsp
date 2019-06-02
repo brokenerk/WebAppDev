@@ -37,6 +37,13 @@
 		<div class="col-md-8">${model.secondLastName}</div>
 	</div>
 	
+	<div class="form-group">
+		<div class="col-md-4">
+			<label for="">Username</label>
+		</div>
+		<div class="col-md-8">${model.login}</div>
+	</div>
+	
 	<div class="row">
 		<h2 class="title">Address</h2>
 	</div>
@@ -44,36 +51,42 @@
 		<div class="col-md-4">
 			<label for="">Street</label>
 		</div>
-		<div class="col-md-8">${address.street}</div>
+		<div class="col-md-8">${model.street}</div>
 	</div>
 	<div class="form-group">
 		<div class="col-md-4">
 			<label for="">City</label>
 		</div>
-		<div class="col-md-8">${address.city}</div>
+		<div class="col-md-8">${model.city}</div>
 	</div>
 	<div class="form-group">
 		<div class="col-md-4">
 			<label for="">State</label>
 		</div>
-		<div class="col-md-8">${address.state}</div>
+		<div class="col-md-8">${model.state}</div>
 	</div>
 	<div class="form-group">
 		<div class="col-md-4">
 			<label for="">ZIPCODE</label>
 		</div>
-		<div class="col-md-8">${address.zipCode}</div>
+		<div class="col-md-8">${model.zipCode}</div>
 	</div>
 	<div class="form-group">
 		<div class="col-md-4">
 			<label for="">Telephone</label>
 		</div>
-		<div class="col-md-8">${address.telephone}</div>
+		<div class="col-md-8">${model.telephone}</div>
 	</div>
 	
-	<!-- Metodo PUT -->
+	<!-- Metodo POST -->
 	<div class="row">
-		<a href="#">Edit</a>
+	
+		<s:form id="frmEditUser"
+			action="%{#pageContext.request.contextPath}/users"
+			method="post" theme="simple">
+			<s:submit value="Edit" />
+		</s:form>
+
 	</div>
 
 	<div class="row">

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import wad.cart.ramos.diaz.dao.UserDao;
 import wad.cart.ramos.diaz.entidad.OrderC;
@@ -24,6 +25,16 @@ public class UserBs {
 	
 	public User findById(Integer id) {
 		return userDao.findById(id);
+	}
+	
+	@Transactional(rollbackFor = Exception.class)
+	public void addUser(User u) {
+		userDao.addUser(u);
+	}
+	
+	@Transactional(rollbackFor = Exception.class)
+	public User updateUser(User u) {
+		return userDao.updateUser(u);
 	}
 	
 	public OrderC findCart(List<OrderC> orders){

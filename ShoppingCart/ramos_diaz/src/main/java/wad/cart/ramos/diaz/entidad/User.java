@@ -13,6 +13,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.opensymphony.xwork2.validator.annotations.EmailValidator;
+import com.opensymphony.xwork2.validator.annotations.Validations;
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
+import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;
+import com.opensymphony.xwork2.validator.annotations.ValidatorType;
+
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -52,7 +58,9 @@ public class User extends Person implements Serializable {
 	public void setOrders(List<OrderC> orders) {
 		this.orders = orders;
 	}
-
+	
+	@RequiredStringValidator(fieldName = "model.login", type = ValidatorType.FIELD, message = "Username is mandatory")
+	@EmailValidator(fieldName = "model.login", type = ValidatorType.FIELD, message = "Username is not valid")
 	public String getLogin() {
 		return login;
 	}
@@ -60,7 +68,10 @@ public class User extends Person implements Serializable {
 	public void setLogin(String login) {
 		this.login = login;
 	}
-
+	
+	@Validations(
+			requiredStrings = {@RequiredStringValidator(fieldName = "model.password", type = ValidatorType.FIELD, message = "Password is mandatory")}, 
+			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.password", type = ValidatorType.FIELD, message = "Password length is too long", maxLength = "10")})
 	public String getPassword() {
 		return password;
 	}

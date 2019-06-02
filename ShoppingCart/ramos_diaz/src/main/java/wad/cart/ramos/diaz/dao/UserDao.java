@@ -11,6 +11,7 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
+import wad.cart.ramos.diaz.entidad.Access;
 import wad.cart.ramos.diaz.entidad.OrderC;
 import wad.cart.ramos.diaz.entidad.User;
 
@@ -32,6 +33,33 @@ public class UserDao {
 	
 	public User findById(Integer id) {
 		return entityManagerFactory.find(User.class, id);
+	}
+	
+	public void addUser(User u) {
+		try {
+			entityManagerFactory.persist(u);
+			Access a = new Access();
+			a.setId(u.getId());
+			a.setAttempt(0);
+			entityManagerFactory.persist(a);
+			entityManagerFactory.flush();
+		}
+		catch(Exception e) {
+			System.out.println("Error al registrar nuevo usuario");
+		}
+		finally {}
+	}
+	
+	public User updateUser(User user) {
+		User u = null;
+		try {
+			u = entityManagerFactory.merge(user);
+		}
+		catch(Exception e) {
+			System.out.println("Error al registrar nuevo usuario");
+		}
+		finally {}
+		return u;
 	}
 
 }

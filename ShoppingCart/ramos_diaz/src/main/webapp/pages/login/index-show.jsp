@@ -15,6 +15,12 @@
 <title>Login</title>
 </head>
 <body>
+
+	<s:actionerror/>
+	<div class="col-md-8">
+		<h2>Login</h2>
+	</div>
+			
 	<s:form id="frmLogin"
 		action="%{#pageContext.request.contextPath}/login"
 		method="post" theme="simple">
@@ -24,6 +30,7 @@
 		</div>
 		<div class="col-md-8">
 			<s:textfield id="txUsername" name="username"/>
+			<s:fielderror fieldName="username" />
 		</div>
 		
 		<div class="col-md-4">
@@ -31,6 +38,7 @@
 		</div>
 		<div class="col-md-8">
 			<s:password id="txPassword" name="password"/>
+			<s:fielderror fieldName="password" />
 		</div>
 		
 		<div class="col-md-8">

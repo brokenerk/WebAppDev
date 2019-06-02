@@ -60,10 +60,21 @@
 	<div class="row">
 		<a href="${pageContext.request.contextPath}/products">Return</a>
 	</div>
-		
-	<div class="row">
-		<a href="#">Add to cart</a>
-	</div>
+	
+	<s:if test="%{idUser!=null}">
+		<div class="row">
+			<s:form id="frmAddProduct"
+			action="%{#pageContext.request.contextPath}/cart"
+			method="post" theme="simple">
+			
+			<s:hidden id="IdSel" name="idSel"/>
+			<s:submit value="Add to Cart" />
+			</s:form>
+		</div>
+	</s:if>
+	<s:else>
+		<a href="${pageContext.request.contextPath}/login/products">Login</a>
+	</s:else>
 </body>
 	</html>
 </jsp:root>

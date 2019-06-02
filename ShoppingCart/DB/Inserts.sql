@@ -1,10 +1,10 @@
 --Inserts
 -- Personas
-insert into person(tx_first_name, tx_last_name_a, tx_last_name_b) values ('Enrique', 'Ramos', 'Diaz');
-insert into person(tx_first_name, tx_last_name_a, tx_last_name_b) values ('Victor', 'Morales', 'Flores');
-insert into person(tx_first_name, tx_last_name_a, tx_last_name_b) values ('Roberto', 'Tecla', 'Parra');
-insert into person(tx_first_name, tx_last_name_a, tx_last_name_b) values ('Juanito', 'Banana', 'Suarez');
-insert into person(tx_first_name, tx_last_name_a, tx_last_name_b) values ('Teo', 'Gonzalez', 'Gonzalez');
+insert into person(tx_first_name, tx_last_name_a, tx_last_name_b, tx_street, tx_city, tx_state, tx_zipcode, tx_telephone) values ('Enrique', 'Ramos', 'Diaz', 'Toluca 31 Lomas de San Andres', 'Tlalnepantla de Baz', 'EDOMEX', '54040', '55-55-55-55-55');
+insert into person(tx_first_name, tx_last_name_a, tx_last_name_b, tx_street, tx_city, tx_state, tx_zipcode, tx_telephone) values ('Victor', 'Morales', 'Flores', 'Coral 999', 'Azcapotzalco', 'CDMX', '54041', '55-55-55-55-56');
+insert into person(tx_first_name, tx_last_name_a, tx_last_name_b, tx_street, tx_city, tx_state, tx_zipcode, tx_telephone) values ('Roberto', 'Tecla', 'Parra', 'El Solecito 49', 'Benito Juarez', 'CDMX', '54042', '55-55-55-55-57');
+insert into person(tx_first_name, tx_last_name_a, tx_last_name_b, tx_street, tx_city, tx_state, tx_zipcode, tx_telephone) values ('Juanito', 'Banana', 'Suarez', 'Jardines de Atizapan 11 Arboledas', 'Atizapan de Zaragoza', 'EDOMEX', '54043', '55-55-55-55-58');
+insert into person(tx_first_name, tx_last_name_a, tx_last_name_b, tx_street, tx_city, tx_state, tx_zipcode, tx_telephone) values ('Teo', 'Gonzalez', 'Gonzalez', 'Bomboro 502 Torres Satelite', 'Naucalpan de Juarez', 'EDOMEX', '54044', '55-55-55-55-59');
 
 -- Usuarios
 insert into users(id_user, tx_login, tx_password) values (1, 'enriquebroly@gmail.com', 'prueba123');
@@ -19,13 +19,6 @@ insert into access(id_access, nu_attempt, fh_failed, fh_lock) values (2, 0, null
 insert into access(id_access, nu_attempt, fh_failed, fh_lock) values (3, 0, null, null);
 insert into access(id_access, nu_attempt, fh_failed, fh_lock) values (4, 0, null, null);
 insert into access(id_access, nu_attempt, fh_failed, fh_lock) values (5, 0, null, null);
-
--- Direcciones
-insert into address(id_person, tx_street, tx_city, tx_state, tx_zipcode, tx_telephone) values (1, 'Toluca 31 Lomas de San Andres', 'Tlalnepantla de Baz', 'EDOMEX', '54040', '55-55-55-55-55');
-insert into address(id_person, tx_street, tx_city, tx_state, tx_zipcode, tx_telephone) values (2, 'Coral 999', 'Azcapotzalco', 'CDMX', '54041', '55-55-55-55-56');
-insert into address(id_person, tx_street, tx_city, tx_state, tx_zipcode, tx_telephone) values (3, 'El Solecito 49', 'Benito Juarez', 'CDMX', '54042', '55-55-55-55-57');
-insert into address(id_person, tx_street, tx_city, tx_state, tx_zipcode, tx_telephone) values (4, 'Jardines de Atizapan 11 Arboledas', 'Atizapan de Zaragoza', 'EDOMEX', '54043', '55-55-55-55-58');
-insert into address(id_person, tx_street, tx_city, tx_state, tx_zipcode, tx_telephone) values (5, 'Bomboro 502 Torres Satelite', 'Naucalpan de Juarez', 'EDOMEX', '54044', '55-55-55-55-59');
 
 -- Productos
 insert into product(tx_name, tx_description, ft_price, nu_stock, ft_discount) values ('PlayStation 4 Slim', 'Incluye una consola PlayStation 4 Slim de 1 TB, un control inalámbrico DUALSHOCK 4, discos de Blu-ray de God of War, Horizon Zero Dawn Complete Edition, Shadow of the Colossus, y un cupón para PS Plus (suscripción de 3 meses).', 6699.00, 200, 0);
@@ -65,7 +58,6 @@ insert into card_users(id_user, id_credit_card) values (2, 3);
 
 -- Para reiniciar bd en caso de errores xd
 delete from access cascade;
-delete from address cascade;
 delete from users cascade;
 delete from person cascade;
 delete from product cascade;

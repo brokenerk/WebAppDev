@@ -37,6 +37,10 @@
 			<div class="col-md-8">${cart.total}</div>
 		</div>
 		
+		<div class="form-group">
+			<a href="#">Proceed to checkout</a>
+		</div>
+		
 			
 		<div class="row">
 		<table>

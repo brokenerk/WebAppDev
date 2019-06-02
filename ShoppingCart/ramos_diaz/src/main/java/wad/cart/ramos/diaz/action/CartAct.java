@@ -41,12 +41,11 @@ public class CartAct {
 	private HttpSession session = ServletActionContext.getRequest().getSession();
 	private Integer idUser = (Integer) session.getAttribute("idUser");
 	
-	private static final long serialVersionUID = 1L;
-	
 	public void findCart() {
 		model = userBs.findById(idUser);
 		cart = userBs.findCart(model.getOrders());
-		cart = orderBs.formatTotal(cart);
+		if(cart != null)
+			cart = orderBs.formatTotal(cart);
 	}
 
 	public String index() {

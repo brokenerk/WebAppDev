@@ -9,42 +9,56 @@ import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator;
 
 import wad.cart.ramos.diaz.bs.UserBs;
-import wad.cart.ramos.diaz.entidad.Address;
 import wad.cart.ramos.diaz.entidad.User;
 
 @Results({ @Result(name = ActionSupport.SUCCESS, type = "redirectAction", params = { "actionName", "users" }),
-		   @Result(name = "login-users", type = "redirectAction", params = { "actionName", "login/users"})})
+		   @Result(name = "login-users", type = "redirectAction", params = { "actionName", "login/users"}),
+		   @Result(name = ActionSupport.INPUT, location="/pages/users/index-edit.jsp")})
 @InterceptorRef("customStack")
-public class UsersAct {
+public class UsersAct extends ActionSupport implements ModelDriven<User>{
 	@Autowired
 	private UserBs userBs;
-	private Address address;
 	private User model;
 	private Integer idSel;
+	private String confirmPassword;
+	private HttpSession session = ServletActionContext.getRequest().getSession();
+	private Integer idUser = (Integer) session.getAttribute("idUser");
 	
 	private static final long serialVersionUID = 1L;
 	
 	public String index() {
-		HttpSession session = ServletActionContext.getRequest().getSession();
-		Integer idUser = (Integer) session.getAttribute("idUser");
-		
 		model = userBs.findById(idUser);
-		address = model.getAddress();
+		System.out.println("---------->index()");
 		return "index";
 	}
+
 	
-	@VisitorFieldValidator
-	public Address getAddress() {
-		return address;
+	public String create() {
+		model = userBs.findById(idUser);
+		System.out.println("---------->create()");
+		return "create";
 	}
-
-	public void setAddress(Address address) {
-		this.address = address;
+	
+	public void validateUpdate() {
+		System.out.println("---------->validateUpdate()");
+		if(confirmPassword.equals("")) {
+			addFieldError("confirmPassword", "Confirm password is mandatory");
+		}
+		else if(!model.getPassword().equalsIgnoreCase(confirmPassword)) {
+			addFieldError("confirmPassword", "Passwords doesn't match");
+		}
 	}
-
+	
+	public String update() {
+		System.out.println("---------->update()");
+		model = userBs.updateUser(model);
+		return ActionSupport.SUCCESS;
+	}
+	
 	@VisitorFieldValidator
 	public Integer getIdSel() {
 		return idSel;
@@ -61,6 +75,15 @@ public class UsersAct {
 	@VisitorFieldValidator
 	public User getModel() {
 		return model;
+	}
+
+	@VisitorFieldValidator
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 	
 }

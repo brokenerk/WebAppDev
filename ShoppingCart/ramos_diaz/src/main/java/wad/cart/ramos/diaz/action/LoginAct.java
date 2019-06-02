@@ -9,17 +9,17 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator;
 
 import wad.cart.ramos.diaz.bs.LoginBs;
-import wad.cart.ramos.diaz.bs.UserBs;
 import wad.cart.ramos.diaz.bs.UserNotFoundException;
 import wad.cart.ramos.diaz.bs.WrongPasswordException;
-import wad.cart.ramos.diaz.entidad.OrderC;
 import wad.cart.ramos.diaz.entidad.User;
 
 @Results({ 
 	@Result(name = ActionSupport.SUCCESS, type = "redirectAction", params = { "actionName", "login" }), 
+	@Result(name = ActionSupport.INPUT, location="/pages/login/index-show.jsp"),
 	@Result(name = "cart", type = "redirectAction", params = { "actionName", "cart" }),
 	@Result(name = "credit-card", type = "redirectAction", params = { "actionName", "credit-card" }),
 	@Result(name = "orders", type = "redirectAction", params = { "actionName", "orders" }),
+	@Result(name = "products", type = "redirectAction", params = { "actionName", "products" }),
 	@Result(name = "users", type = "redirectAction", params = { "actionName", "users" })})
 public class LoginAct extends ActionSupport {
 	@Autowired
@@ -33,10 +33,6 @@ public class LoginAct extends ActionSupport {
 	
 	public String show() {
 		return "show";
-	}
-	
-	public String editNew() {
-		return "editNew";
 	}
 	
 	public void validateCreate() {
@@ -58,6 +54,13 @@ public class LoginAct extends ActionSupport {
 	}
 	
 	public String create() {
+		idSel = getIdSel();
+		return idSel;
+	}
+	
+	public String destroy() {
+		ServletActionContext.getRequest().getSession().setAttribute("idUser", null);
+		ServletActionContext.getRequest().getSession().invalidate();
 		idSel = getIdSel();
 		return idSel;
 	}
