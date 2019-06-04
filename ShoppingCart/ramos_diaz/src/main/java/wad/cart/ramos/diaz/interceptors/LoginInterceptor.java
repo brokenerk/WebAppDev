@@ -15,6 +15,7 @@ import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import wad.cart.ramos.diaz.bs.LoginBs;
 
 @Results({ @Result(name = "login-cart", type = "redirectAction", params = { "actionName", "login/cart"}),
+		   @Result(name = "login-buy", type = "redirectAction", params = { "actionName", "login/cart"}),
 		   @Result(name = "login-credit-card", type = "redirectAction", params = { "actionName", "login/credit-card"}),
 		   @Result(name = "login-orders", type = "redirectAction", params = { "actionName", "login/orders" }),
 		   @Result(name = "login-products", type = "redirectAction", params = { "actionName", "login/products" }),

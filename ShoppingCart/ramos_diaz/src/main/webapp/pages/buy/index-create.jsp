@@ -12,30 +12,30 @@
 	<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Completed Order</title>
+<title>Order purchased</title>
 </head>
 <body>
-	<h1>Completed Order ID: ${order.id}</h1>
-		<div class="form-group">
-			<div class="col-md-4">
-				<label for="">Date: </label>
-			</div>
-			<div class="col-md-8">${order.date}</div>
-		</div>
-		<div class="form-group">
+	<div class="row">
+		<h2 class="title">Thank you! You have bought the order with ID ${cart.id}</h2>
+	</div>
+	
+	<div class="form-group">
 			<div class="col-md-4">
 				<label for="">Total: </label>
 			</div>
-			<div class="col-md-8">${order.total}</div>
+			<div class="col-md-8">$ ${cart.total}</div>
 		</div>
 		
-		<div class="row">
+	<div class="row">
+		<h3>Details: </h3>
+	</div>
+	
+	<div class="row">
 		<table>
 			<thead>
 				<tr>
 					<th>Image</th>
 					<th>Name</th>
-					<th>Price</th>
 					<th>Amount</th>
 					<th></th>
 					<th></th>
@@ -43,19 +43,26 @@
 			</thead>
 			<tbody>
 				<s:iterator value="orderDetails" var="orderDetail">
+					<s:set var="productId">${orderDetail.product.id}</s:set>
 					<tr>
 						<td><img src="${pageContext.request.contextPath }/imgs/products/${orderDetail.product.id}.jpg" width="100"/></td>
 						<td>${orderDetail.product.name}</td>
-						<td>$ ${orderDetail.product.realPrice}</td>
 						<td>${orderDetail.amount}</td>
 						</tr>
+						
 				</s:iterator>
 			</tbody>
 		</table>
 	</div>
-			
+	
 	<div class="row">
-		<a href="${pageContext.request.contextPath}/orders">Return</a>
+		<a href="${pageContext.request.contextPath}/orders">Completed Orders</a>
+	</div>
+	<div class="row">
+		<a href="${pageContext.request.contextPath}/products">Products</a>
+	</div>
+	<div class="row">
+		<a href="${pageContext.request.contextPath}/users">Account</a>
 	</div>
 </body>
 </html>

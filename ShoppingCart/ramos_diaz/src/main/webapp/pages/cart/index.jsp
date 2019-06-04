@@ -34,12 +34,14 @@
 			<div class="col-md-4">
 				<label for="">Total</label>
 			</div>
-			<div class="col-md-8">${cart.total}</div>
+			<div class="col-md-8">$ ${cart.total}</div>
 		</div>
 		
-		<div class="form-group">
-			<a href="#">Proceed to checkout</a>
-		</div>
+		<s:if test="%{cart.id!=null}">
+			<div class="form-group">
+				<a href="${pageContext.request.contextPath}/buy">Proceed to checkout</a>
+			</div>
+		</s:if>
 		
 			
 		<div class="row">

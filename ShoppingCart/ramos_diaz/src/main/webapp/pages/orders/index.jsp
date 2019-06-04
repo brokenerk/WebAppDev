@@ -33,8 +33,8 @@
 					<tr>
 						<td>${order.id}</td>
 						<td>${order.date}</td>
-						<td>${order.purchased}</td>
-						<td>${order.total}</td>
+						<td>Purchased</td>
+						<td>$ ${order.total}</td>
 						<!-- Metodo PUT -->
 						<td><a href="${pageContext.request.contextPath}/orders/${order.id}">View</a></td>
 					</tr>
@@ -42,7 +42,13 @@
 			</tbody>
 		</table>
 		<div class="row">
-			<a href="${pageContext.request.contextPath}/users">Return</a>
+			<a href="${pageContext.request.contextPath}/users">Account</a>
+		</div>
+		<div class="row">
+			<a href="${pageContext.request.contextPath}/products">Products</a>
+		</div>
+		<div class="row">
+			<a href="${pageContext.request.contextPath}/cart">Cart</a>
 		</div>
 	</div>
 </body>

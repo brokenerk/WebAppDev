@@ -73,7 +73,12 @@
 		</div>
 	</s:if>
 	<s:else>
-		<a href="${pageContext.request.contextPath}/login/products">Login</a>
+		<div class="row">
+			<a href="${pageContext.request.contextPath}/login/products">Login</a>
+		</div>
+		<div class="row">
+			<a href="${pageContext.request.contextPath}/register">Register</a>
+		</div>
 	</s:else>
 </body>
 	</html>

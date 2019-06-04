@@ -42,6 +42,11 @@ public class OrderBs {
 		orderDao.deleteOrder(order);
 	}
 	
+	@Transactional(rollbackFor = Exception.class)
+	public OrderC orderIsPurchased(OrderC order) {
+		return orderDao.orderIsPurchased(order);
+	}
+	
 	public OrderC formatTotal(OrderC order) {
 		DecimalFormat df = new DecimalFormat("#.##");
 		order.setTotal(Float.valueOf(df.format(order.getTotal())));

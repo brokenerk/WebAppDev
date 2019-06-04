@@ -15,7 +15,7 @@ public class LoginBs {
 	//Para usar el acceso a datos
 	@Autowired
 	private LoginDao loginDao;
-	String[] views = {"cart", "credit-card", "orders", "products", "users"};
+	String[] views = {"buy", "cart", "credit-card", "orders", "products", "users"};
 	
 	public String findView(String url) {
 		String view = "";

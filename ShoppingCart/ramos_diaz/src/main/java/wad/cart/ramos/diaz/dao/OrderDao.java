@@ -12,6 +12,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import wad.cart.ramos.diaz.entidad.OrderC;
 import wad.cart.ramos.diaz.entidad.OrderDetail;
@@ -65,6 +66,21 @@ public class OrderDao {
 		catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("Error al actualizar el carrito");
+		}
+		finally {
+		}
+		return o;
+	}
+	
+	public OrderC orderIsPurchased(OrderC order) {
+		OrderC o = order;
+		try {
+			order.setPurchased(true);
+			o = entityManagerFactory.merge(order);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("Error al actualizar estado de la orden");
 		}
 		finally {
 		}
