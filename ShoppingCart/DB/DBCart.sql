@@ -80,6 +80,8 @@ alter table card_users add constraint FKcard_users337911 foreign key (id_user) r
 alter table card_users add constraint FKcard_users162639 foreign key (id_credit_card) references credit_card;
 
 drop table users cascade;
+drop table access cascade;
+drop table address cascade;
 drop table person cascade;
 drop table product cascade;
 drop table order_detail cascade;

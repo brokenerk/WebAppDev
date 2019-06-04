@@ -38,18 +38,6 @@ public class User extends Person implements Serializable {
 	@OneToMany
 	@JoinColumn(name = "id_user", referencedColumnName = "id_user", insertable = false, updatable = false)
 	private List<OrderC> orders;
-	
-	@OneToMany
-	@JoinColumn(name = "id_user", referencedColumnName = "id_user", insertable = false, updatable = false)
-	private List<CardUser> creditCards;
-	
-	public List<CardUser> getCreditCards() {
-		return creditCards;
-	}
-
-	public void setCreditCards(List<CardUser> creditCards) {
-		this.creditCards = creditCards;
-	}
 
 	public List<OrderC> getOrders() {
 		return orders;

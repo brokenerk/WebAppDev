@@ -119,7 +119,7 @@
 					<label for="">Expiration Month - MM</label>
 				</div>
 					<div class="col-md-8">
-					<s:textfield id="txExpMonth" name="expMonth"/>
+					<s:textfield type="number" min="1" max="12" id="txExpMonth" name="expMonth"/>
 					<s:fielderror fieldName="expMonth" />
 				</div>
 				
