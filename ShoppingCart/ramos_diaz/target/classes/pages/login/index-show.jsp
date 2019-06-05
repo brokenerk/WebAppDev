@@ -21,13 +21,12 @@
 		action="%{#pageContext.request.contextPath}/login"
 		method="post" theme="simple">
 		
+		<s:fielderror fieldName="username" style="color: red;"/>
 		<s:textfield id="txUsername" name="username" placeholder="Email"/>
 
-		<s:fielderror fieldName="username" style="color: red;"/>
-
-		<s:password id="txPassword" name="password" class="lock" placeholder="Password"/>
 		<s:fielderror fieldName="password" style="color: red;"/>
-
+		<s:password id="txPassword" name="password" class="lock" placeholder="Password"/>
+		
 		<s:hidden id="IdSel" name="idSel"/>
 		<s:submit value="Enter" />
 

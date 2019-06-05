@@ -73,7 +73,7 @@
 
 	<!-- Tema para usar a los elementos renderizados a partir de las etiquetas 
 		de Struts2 -->
-	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.ui.theme" value="xhtml" />
 	<constant name="struts.configuration.xml.reload" value="true" />
 	<constant name="struts.i18n.reload" value="true" />
 

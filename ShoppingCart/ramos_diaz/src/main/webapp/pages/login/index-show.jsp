@@ -19,16 +19,28 @@
 	<s:actionerror/>
 	<s:form id="frmLogin"
 		action="%{#pageContext.request.contextPath}/login"
-		method="post" theme="simple">
+		method="post" theme="simple" class="login100-form validate-form">
 		
-		<s:fielderror fieldName="username" style="color: red;"/>
-		<s:textfield id="txUsername" name="username" placeholder="Email"/>
+		<div class="wrap-input100 m-b-10">
+			<!--<input class="input100" type="text" name="username" placeholder="Username"/>-->
+			<s:textfield cssClass="input100" cssErrorClass="is-invalid" id="txUsername" name="username" placeholder="Email"/>
+			<s:fielderror fieldName="username" style="color: white; font-weight: bold;"/>
+		</div>
 
-		<s:fielderror fieldName="password" style="color: red;"/>
-		<s:password id="txPassword" name="password" class="lock" placeholder="Password"/>
-		
+		<div class="wrap-input100 m-b-10">
+			<!--<input class="input100" type="password" name="pass" placeholder="Password"/>-->
+			<s:password id="txPassword" name="password" cssClass="input100" cssErrorClass="is-invalid" placeholder="Password"/>
+			<s:fielderror fieldName="password" style="color: white; font-weight: bold;"/>
+			
+		</div>
+
 		<s:hidden id="IdSel" name="idSel"/>
-		<s:submit value="Enter" />
+
+
+		<div class="container-login100-form-btn p-t-10">
+			<s:submit class="login100-form-btn" value="Sign In"/>
+		</div>
+		
 
 	</s:form>
 

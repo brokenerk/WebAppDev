@@ -15,9 +15,9 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-
-	<div>
+		<h1 class="my-4">Products</h1>
 		<div class="row">
+
 		<s:iterator value="listProducts" var="product">
 			<s:set var="product.id">${product.id}</s:set>
 
@@ -39,7 +39,7 @@
 		            </div>
 		            <h5>Price: $ ${product.realPrice}</h5>
 		            <p class="card-text">${product.description}</p>
-		            <h8>On Stock: ${product.stock}</h8>
+		            <h8>On Stock: ${product.stock} remaining</h8>
 		          </div>
 		          <div class="card-footer">
 		          	<s:if test="%{idUser!=null}">
@@ -58,7 +58,6 @@
 
 		</s:iterator>
 		</div>
-	</div>
 </body>
 </html>
 </jsp:root>

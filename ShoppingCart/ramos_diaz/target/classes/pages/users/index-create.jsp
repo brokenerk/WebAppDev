@@ -18,115 +18,96 @@
 	<h1 class="my-4">Edit Personal Info</h1>
 	<s:actionerror/>
 	<s:form id="frmAddUser"
-			action="%{#pageContext.request.contextPath}/users/%{model.id}"
-			method="post" theme="simple">
+	action="%{#pageContext.request.contextPath}/users/%{model.id}"
+	method="post" theme="simple">
 			
-			<s:hidden id="hdnMethod" name="_method" value="put" />
-			<s:hidden id="IdUser" name="model.id" value="%{model.id}" />
-			
-			
-			
-			<div class="row">
-				<div class="col">
-					<label for="" class="text-dark">Name</label>
-					<s:textfield class="form-control" id="texName" name="model.name"/>
-					<s:fielderror fieldName="model.name" class="text-danger"/>
-				</div>
-				<div class="col">
-					<label for="" class="text-dark">Last Name</label>
-					<s:textfield class="form-control" id="texLastName" name="model.lastName"/>
-					<s:fielderror fieldName="model.lastName" class="text-danger"/>
-				</div>
-				
-				
+		<s:hidden id="hdnMethod" name="_method" value="put" />
+		<s:hidden id="IdUser" name="model.id" value="%{model.id}" />
+		
+		<div class="form-group row">
+			<div class="col">
+				<label for="" class="text-dark">Name</label>
+				<s:textfield class="form-control" id="txName" name="model.name"/>
+				<s:fielderror fieldName="model.name" class="text-danger"/>
 			</div>
-			
-			
+			<div class="col">
+				<label for="" class="text-dark">Last Name</label>
+				<s:textfield class="form-control" id="txLastName" name="model.lastName"/>
+				<s:fielderror fieldName="model.lastName" class="text-danger"/>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col">
+				<label for="" class="text-dark">Second Last Name</label>
+				<s:textfield class="form-control" id="txSecondLastName" name="model.secondLastName"/>
+				<s:fielderror fieldName="model.secondLastName" class="text-danger"/>
+			</div>
+			<div class="col">
+				<label for="" class="text-dark">Email</label>
+				<s:textfield class="form-control" id="txLogin" name="model.login"/>
+				<s:fielderror fieldName="model.login" class="text-danger"/>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col">
+				<label for="" class="text-dark">Password</label>
+				<s:password class="form-control" id="txPassword" name="model.password"/>
+				<s:fielderror fieldName="model.password" class="text-danger"/>
+			</div>
+			<div class="col">
+				<label for="" class="text-dark">Confirm Password</label>
+				<s:password class="form-control" id="txConfirmPassword" name="confirmPassword"/>
+				<s:fielderror fieldName="confirmPassword" class="text-danger"/>
+			</div>
+		</div>
+		
+		
+		<div class="my-4">
+			<h2>Edit Address</h2>
+		</div>
+
+		<div class="form-group row">
+			<div class="col">
+				<label for="" class="text-dark">Street</label>
+				<s:textfield class="form-control" id="txStreet" name="model.street"/>
+				<s:fielderror fieldName="model.street" class="text-danger"/>
+			</div>
+			<div class="col">
+				<label for="" class="text-dark">City</label>
+				<s:textfield class="form-control" id="txCity" name="model.city"/>
+				<s:fielderror fieldName="model.city" class="text-danger"/>
+			</div>
+		</div>
+
+		<div class="form-group row">
 			<div class="col-md-4">
-				<label for="">Second Last Name</label>
+				<label for="" class="text-dark">State</label>
+				<s:textfield class="form-control" id="txState" name="model.state"/>
+				<s:fielderror fieldName="model.state" class="text-danger"/>
 			</div>
-			<div class="col-md-8">
-				<s:textfield id="txSecondLastName" name="model.secondLastName"/>
-				<s:fielderror fieldName="model.secondLastName" />
-			</div>
-			
-			<div class="col-md-8">
-				<h2>Edit Address</h2>
-			</div>
-			
 			<div class="col-md-4">
-				<label for="">Street</label>
+				<label for="" class="text-dark">Zip Code</label>
+				<s:textfield class="form-control" id="txZipCode" name="model.zipCode"/>
+				<s:fielderror fieldName="model.zipCode" class="text-danger"/>
 			</div>
-			<div class="col-md-8">
-				<s:textfield id="txStreet" name="model.street"/>
-				<s:fielderror fieldName="model.street" />
-			</div>
-			
 			<div class="col-md-4">
-				<label for="">City</label>
+				<label for="" class="text-dark">Telephone</label>
+				<s:textfield class="form-control" id="txTelephone" name="model.telephone"/>
+				<s:fielderror fieldName="model.telephone" class="text-danger"/>
 			</div>
-			<div class="col-md-8">
-				<s:textfield id="txCity" name="model.city"/>
-				<s:fielderror fieldName="model.city" />
+		</div>
+		
+		<div class="form-group row">
+			<div class="col-md-2">
+				<s:submit class="btn btn-success" value="Update" />
 			</div>
-			
-			<div class="col-md-4">
-				<label for="">State</label>
+			<div class="col">
+				<a class="btn btn-danger" href="${pageContext.request.contextPath}/users">Cancel</a>
 			</div>
-			<div class="col-md-8">
-				<s:textfield id="txState" name="model.state"/>
-				<s:fielderror fieldName="model.state" />
-			</div>
-			
-			<div class="col-md-4">
-				<label for="">ZipCode</label>
-			</div>
-			<div class="col-md-8">
-				<s:textfield id="txZipCode" name="model.zipCode"/>
-				<s:fielderror fieldName="model.zipCode" />
-			</div>
-			
-			<div class="col-md-4">
-				<label for="">Telephone</label>
-			</div>
-			<div class="col-md-8">
-				<s:textfield id="txTelephone" name="model.telephone"/>
-				<s:fielderror fieldName="model.telephone" />
-			</div>
-			
-			<div class="col-md-8">
-				<h2>Edit Account</h2>
-			</div>
-			
-			<div class="col-md-4">
-				<label for="">Username</label>
-			</div>
-			<div class="col-md-8">
-				<s:textfield id="txLogin" name="model.login"/>
-				<s:fielderror fieldName="model.login" />
-			</div>
-			
-			<div class="col-md-4">
-				<label for="">Password</label>
-			</div>
-			<div class="col-md-8">
-				<s:password id="txPassword" name="model.password"/>
-				<s:fielderror fieldName="model.password" />
-			</div>
-			
-			<div class="col-md-4">
-				<label for="">Confirm New Password</label>
-			</div>
-			<div class="col-md-8">
-				<s:password id="txConfirmPassword" name="confirmPassword"/>
-				<s:fielderror fieldName="confirmPassword" />
-			</div>
-			
-			
-			<s:submit value="Update" />
-			<div class="row">
-				<a href="${pageContext.request.contextPath}/users">Cancel</a>
-			</div>
+		</div>
+
 	</s:form>
 
 </body>

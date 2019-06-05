@@ -30,9 +30,11 @@
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-danger bg-danger fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
+      <a class="nav-link text-white" href="${pageContext.request.contextPath}/products">
       <span class="navbar-brand mb-0 h1 text-white">Shopping Cart</span>
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -85,13 +87,12 @@
 
         <h1 class="my-4">Menu</h1>
         <div class="list-group">
-          <a href="#" class="list-group-item text-danger">Category 1</a>
-          <a href="#" class="list-group-item text-danger">Category 2</a>
-          <a href="#" class="list-group-item text-danger">Category 3</a>
-          <a href="#" class="list-group-item text-danger">Category 3</a>
-          <a href="#" class="list-group-item text-danger">Category 3</a>
-          <a href="#" class="list-group-item text-danger">Category 3</a>
-          <a href="#" class="list-group-item text-danger">Category 3</a>
+          <a href="#" class="list-group-item text-danger">Products</a>
+          <a href="#" class="list-group-item text-danger">Cart</a>
+          <a href="#" class="list-group-item text-danger">Account</a>
+          <a href="#" class="list-group-item text-danger">Orders</a>
+          <a href="#" class="list-group-item text-danger">Login</a>
+          <a href="#" class="list-group-item text-danger">Register</a>
         </div>
 
       </div>

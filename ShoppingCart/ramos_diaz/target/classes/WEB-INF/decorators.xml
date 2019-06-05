@@ -16,11 +16,9 @@
 		<pattern>/cart*</pattern>
 		<pattern>/users*</pattern>
 		<pattern>/orders*</pattern>
+		<pattern>/register*</pattern>
 	</decorator>
 	<decorator name="login" page="login-template.jsp">
 		<pattern>/login*</pattern>
-	</decorator>
-	<decorator name="register" page="register-template.jsp">
-		<pattern>/register*</pattern>
 	</decorator>
 </decorators> 
