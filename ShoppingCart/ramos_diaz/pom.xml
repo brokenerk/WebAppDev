@@ -231,12 +231,11 @@
 			<artifactId>asm-commons</artifactId>
 			<version>5.1</version>
 		</dependency>
-		<!--  <dependency>
+		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-sitemesh-plugin</artifactId>
 			<version>${struts.version}</version>
 		</dependency>
-		-->
 		
 		<!-- Conekta para transacciones/pagos online con tarjeta de credito -->
 		<dependency>

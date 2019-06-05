@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import wad.cart.ramos.diaz.dao.ProductDao;
 import wad.cart.ramos.diaz.entidad.OrderDetail;
@@ -49,6 +50,15 @@ public class ProductBs {
 	
 	public Product findById(Integer id) {
 		return productDao.findById(id);
+	}
+	
+	@Transactional(rollbackFor = Exception.class)
+	public void updateStock(List<OrderDetail> orderDetails) {
+		for(OrderDetail od: orderDetails) {
+			Product p = findById(od.getIdProduct());
+			p.setStock(p.getStock() - od.getAmount());
+			productDao.updateStock(p);
+		}
 	}
 
 }

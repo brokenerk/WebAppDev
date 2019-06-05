@@ -168,5 +168,14 @@ public class CartAct {
 	public User getModel() {
 		return model;
 	}
+	
+	@VisitorFieldValidator
+	public Integer getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
+	}
 
 }

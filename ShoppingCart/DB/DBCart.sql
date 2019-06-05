@@ -1,10 +1,21 @@
 ---------------------------------------------------------
---Create database homework-6:
+--Create database shpping-cart:
 --$ su - postgres
 --$ createdb shopping-cart
 --$ psql shopping-cart
 
 ---------------------------------------------------------
+
+drop table users cascade;
+drop table access cascade;
+drop table address cascade;
+drop table person cascade;
+drop table product cascade;
+drop table order_detail cascade;
+drop table order_c cascade;
+drop table credit_card cascade;
+drop table card_users cascade;
+
 --Tables:
 
 create table users (
@@ -55,21 +66,21 @@ create table order_c (
 	id_user int4 not null,
 	primary key (id_order));
 
-create table card_users (
-	id_user int4 not null,
-	id_credit_card int4 not null,
-	primary key (id_user, id_credit_card));
+--create table card_users (
+--	id_user int4 not null,
+--	id_credit_card int4 not null,
+--	primary key (id_user, id_credit_card));
 
-create table credit_card (
-	id_credit_card serial not null,
-	tx_number varchar(16) not null,
-	tx_owner varchar(60) not null,
-	fh_expiration timestamp(0) not null,
-	tx_street varchar(100) not null, 
-	tx_city varchar(100) not null, 
-	tx_state varchar(100) not null,
-	tx_zipcode varchar(10) not null, 
-	primary key (id_credit_card));
+--create table credit_card (
+--	id_credit_card serial not null,
+--	tx_number varchar(16) not null,
+--	tx_owner varchar(60) not null,
+--	fh_expiration timestamp(0) not null,
+--	tx_street varchar(100) not null, 
+--	tx_city varchar(100) not null, 
+--	tx_state varchar(100) not null,
+--	tx_zipcode varchar(10) not null, 
+--	primary key (id_credit_card));
 
 alter table access add constraint FKaccess801659 foreign key (id_access) references users;
 alter table users add constraint FKusers311802 foreign key (id_user) references person;
@@ -79,12 +90,3 @@ alter table order_c add constraint FKorder_c249289 foreign key (id_user) referen
 alter table card_users add constraint FKcard_users337911 foreign key (id_user) references users;
 alter table card_users add constraint FKcard_users162639 foreign key (id_credit_card) references credit_card;
 
-drop table users cascade;
-drop table access cascade;
-drop table address cascade;
-drop table person cascade;
-drop table product cascade;
-drop table order_detail cascade;
-drop table order_c cascade;
-drop table credit_card cascade;
-drop table card_users cascade;

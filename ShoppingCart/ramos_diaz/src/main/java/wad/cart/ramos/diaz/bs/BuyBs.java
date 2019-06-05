@@ -20,18 +20,16 @@ import wad.cart.ramos.diaz.entidad.User;
 @Scope(value = BeanDefinition.SCOPE_SINGLETON)
 public class BuyBs {
 	
-
 	public Order buy(String json) throws ErrorList, Error {
 		// Llave privada (servidor) para pruebas
 		Conekta.setApiKey("key_yV9kDKjLq5AwAsBRrQ5WJw");
-		Conekta.setApiVerion("2.0.0");
+		Conekta.setApiVerion("2.1.5");
 		Conekta.setLocale("en");
 		JSONObject buyJSON = new JSONObject(json);
-
 		return Order.create(buyJSON);
 	}
 	
-	public String createPaymentMethod(String creditCard, String owner, String expMonth, String expYear,
+	public String createPaymentMethod(String creditCard, String owner, Integer expMonth, Integer expYear,
 									  String cvc, Integer idUser, String address) {
 		String paymentMethod = "{" +
 							   "'card': {" + 
@@ -65,9 +63,7 @@ public class BuyBs {
 		// Llave publica para tokenizar tarjeta (prueba)
 		Conekta.setApiKey("key_FqD7qn3VvVoy6fUnuFA32CQ");
 		Conekta.setApiVerion("2.0.0");
-		
 		Integer total = Math.round(t);
-		System.out.println("--------------->" + total);
 		
 		//Token creditCard = Token.create(new JSONObject(paymentMethod));
 		//String tokenID = creditCard.getId();
@@ -109,7 +105,6 @@ public class BuyBs {
 				"		    }]" + 
 				"		  }]," + 
 				"		}";
-
 		return order;
 	}
 

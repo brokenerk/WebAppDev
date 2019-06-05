@@ -17,7 +17,7 @@ import wad.cart.ramos.diaz.entidad.User;
 
 @Results({ @Result(name = ActionSupport.SUCCESS, type = "redirectAction", params = { "actionName", "users" }),
 		   @Result(name = "login-users", type = "redirectAction", params = { "actionName", "login/users"}),
-		   @Result(name = ActionSupport.INPUT, location="/pages/users/index-edit.jsp")})
+		   @Result(name = ActionSupport.INPUT, location="/pages/users/index-create.jsp")})
 @InterceptorRef("customStack")
 public class UsersAct extends ActionSupport implements ModelDriven<User>{
 	@Autowired
@@ -85,5 +85,17 @@ public class UsersAct extends ActionSupport implements ModelDriven<User>{
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
+
+	@VisitorFieldValidator
+	public Integer getIdUser() {
+		return idUser;
+	}
+
+
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
+	}
+	
+	
 	
 }

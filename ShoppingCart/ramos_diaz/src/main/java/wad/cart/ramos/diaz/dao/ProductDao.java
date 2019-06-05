@@ -33,5 +33,14 @@ public class ProductDao {
 	public Product findById(Integer id) {
 		return entityManagerFactory.find(Product.class, id);
 	}
+	
+	public void updateStock(Product p) {
+		try {
+			entityManagerFactory.merge(p);
+		}
+		catch(Exception e) {
+			System.out.println("--------------> Error al actualizar stock del producto");
+		}
+	}
 
 }

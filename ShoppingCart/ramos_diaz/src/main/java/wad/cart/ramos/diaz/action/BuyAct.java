@@ -1,6 +1,5 @@
 package wad.cart.ramos.diaz.action;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -15,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.IntRangeFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RegexFieldValidator;
+import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.Validations;
@@ -47,10 +47,10 @@ public class BuyAct extends ActionSupport{
 	@Autowired
 	private BuyBs buyBs;
 	private User model;
-	private Integer idSel;
+	private Integer idSel, expMonth, expYear;
 	private OrderC cart;
 	private List<OrderDetail> orderDetails;
-	private String owner, result, creditCard, expMonth, expYear, cvc;
+	private String owner, creditCard, cvc;
 	
 	private HttpSession session = ServletActionContext.getRequest().getSession();
 	private Integer idUser = (Integer) session.getAttribute("idUser");
@@ -74,28 +74,40 @@ public class BuyAct extends ActionSupport{
 	
 	public void validateCreate() {
 		findCart();
-		String address = buyBs.createAddress(model.getStreet(), model.getCity(), model.getState(), model.getZipCode());
-		String paymentMethod = buyBs.createPaymentMethod(getCreditCard(), getOwner(), getExpMonth(), getExpYear(), getCvc(), idUser, address);
-		
-		List<OrderDetail> od = cart.getOrderDetails();
-		Product p = od.get(0).getProduct();
-		String json = buyBs.createOrder(cart.getId(), cart.getTotal(), model, p, paymentMethod);
-		
+		List<OrderDetail> orderDetails = cart.getOrderDetails();
+		Product p = orderDetails.get(0).getProduct();
+		Boolean allAvailable = true;
 
-		try {
-			Order buy = buyBs.buy(json);
-			result = "Exito";
-			System.out.println("------------>" + buy.charges.get(0));
-		} catch (ErrorList e) {
-			addFieldError("buyError", e.details.get(0).message);
-			//e.printStackTrace();
-		} catch (Error e) {
-			//e.printStackTrace();
+		for(OrderDetail od: orderDetails) {
+			p = od.getProduct();
+			if(od.getAmount() > p.getStock()) {
+				addFieldError("" + p.getId() + "", "The product " + p.getName() + " is out of stock. Try again later or reduce the amount");
+				setIdSel(p.getId());
+				System.out.println("The product is out of stock. Try again later or reduce the amount");
+				allAvailable = false;
+			}
+		}
+		
+		if(allAvailable) {
+			String address = buyBs.createAddress(model.getStreet(), model.getCity(), model.getState(), model.getZipCode());
+			String paymentMethod = buyBs.createPaymentMethod(getCreditCard(), getOwner(), getExpMonth(), getExpYear(), getCvc(), idUser, address);
+			String json = buyBs.createOrder(cart.getId(), cart.getTotal(), model, p, paymentMethod);
+			
+			try {
+				Order buy = buyBs.buy(json);
+				System.out.println("------------>" + buy.charges.get(0));
+			} catch (ErrorList e) {
+				addFieldError("buyError", e.details.get(0).message);
+			} catch (Error e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
 	public String create() {
+		findCart();
 		cart = orderBs.orderIsPurchased(cart);
+		productBs.updateStock(orderDetails);
 		return "create";
 	}
 	
@@ -160,27 +172,27 @@ public class BuyAct extends ActionSupport{
 		this.creditCard = creditCard;
 	}
 	
-	@RequiredStringValidator(fieldName = "expMonth", type = ValidatorType.FIELD, message = "Expiration month is mandatory") 
+	@RequiredFieldValidator(fieldName = "expMonth", type = ValidatorType.FIELD, message = "Expiration month is mandatory") 
 	@RegexFieldValidator(regex = "^[0-9]*$", fieldName = "expMonth", type = ValidatorType.FIELD, message = "Expiration month only accepts numbers")
-	@StringLengthFieldValidator(fieldName = "expMonth", type = ValidatorType.FIELD, message = "Expiration month format is MM", minLength = "2", maxLength = "2")
+	@IntRangeFieldValidator(fieldName = "expMonth", type = ValidatorType.FIELD, message = "Expiration month is between 01 and 12", min = "1", max = "12")
 	@VisitorFieldValidator
-	public String getExpMonth() {
+	public Integer getExpMonth() {
 		return expMonth;
 	}
 
-	public void setExpMonth(String expMonth) {
+	public void setExpMonth(Integer expMonth) {
 		this.expMonth = expMonth;
 	}
 	
-	@RequiredStringValidator(fieldName = "expYear", type = ValidatorType.FIELD, message = "Expiration year is mandatory") 
-	@RegexFieldValidator(regex = "^[0-9]*$", fieldName = "expYear", type = ValidatorType.FIELD, message = "Expiration year only accepts numbers")
-	@StringLengthFieldValidator(fieldName = "expYear", type = ValidatorType.FIELD, message = "Expiration year format is YYYY", minLength = "4", maxLength = "4")
+	@RequiredFieldValidator(fieldName = "expYear", type = ValidatorType.FIELD, message = "Expiration year is mandatory") 
+	@RegexFieldValidator(regex = "^[0-9]*$", fieldName = "expMonth", type = ValidatorType.FIELD, message = "Expiration year only accepts numbers")
+	@IntRangeFieldValidator(fieldName = "expYear", type = ValidatorType.FIELD, message = "Expiration year is up to 2020", min = "2020")
 	@VisitorFieldValidator
-	public String getExpYear() {
+	public Integer getExpYear() {
 		return expYear;
 	}
 
-	public void setExpYear(String expYear) {
+	public void setExpYear(Integer expYear) {
 		this.expYear = expYear;
 	}
 	
@@ -194,16 +206,6 @@ public class BuyAct extends ActionSupport{
 
 	public void setCvc(String cvc) {
 		this.cvc = cvc;
-	}
-
-	
-	@VisitorFieldValidator
-	public String getResult() {
-		return result;
-	}
-
-	public void setResult(String result) {
-		this.result = result;
 	}
 	
 }

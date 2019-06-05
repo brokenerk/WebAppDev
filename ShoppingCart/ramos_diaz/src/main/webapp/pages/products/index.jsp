@@ -15,79 +15,49 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-	<s:if test="%{idUser==null}">
+		<h1 class="my-4">Products</h1>
 		<div class="row">
-			<a href="${pageContext.request.contextPath}/login/products">Login</a>
-		</div>
-		<div class="row">
-			<a href="${pageContext.request.contextPath}/register">Register</a>
-		</div>
-	</s:if>
-	<s:else>
-		<div class="row">
-			<a href="${pageContext.request.contextPath}/users">Account</a>
-		</div>
-		<div class="row">
-			<s:form id="frmRemove"
-			action="%{#pageContext.request.contextPath}/login/products"
-			method="post" theme="simple">
-			
-			<s:hidden id="hdnMethod" name="_method" value="delete" />
-			<s:submit value="Logout" />
-			</s:form>
-		</div>
-	</s:else>
+
+		<s:iterator value="listProducts" var="product">
+			<s:set var="product.id">${product.id}</s:set>
 
 
-	<div class="row">
-		<a href="${pageContext.request.contextPath}/cart">Cart</a>
-	</div>
-	<div class="row">
-		<h1 class="title">Products</h1>
-	</div>
-	<div class="row">
-		<table>
-			<thead>
-				<tr>
-					<th>Image</th>
-					<th>Name</th>
-					<th>Price</th>
-					<th>Discount</th>
-					<th>Total</th>
-					<th></th>
-					<s:if test="%{idUser!=null}">
-					<th></th>
-					</s:if>
-				</tr>
-			</thead>
-			<tbody>
-				<s:iterator value="listProducts" var="product">
-					<s:set var="product.id">${product.id}</s:set>
-					<tr>
-						<td><img src="${pageContext.request.contextPath }/imgs/products/${product.id}.jpg" width="100"/></td>
-						<td>${product.name}</td>
-						<td>$ ${product.price}</td>
-						<td>${product.discount} %</td>
-						<td>$ ${product.realPrice}</td>
-						<td><a href="${pageContext.request.contextPath}/products/${product.id}">View</a></td>
+			<div class="col-lg-4 col-md-6 mb-4">
+		        <div class="card h-400">
+		          <img class="card-img-top" src="${pageContext.request.contextPath}/imgs/products/${product.id}.jpg" width="100" alt=""/>
+		          <div class="card-body">
+		            <h4 class="card-title text-primary">
+		              ${product.name}
+		            </h4>
+		            <div class="row">
+		                <div class="col-lg-6 col-md-10 mb-6">
+		                	<h8>$ ${product.price}</h8>
+		                </div>
+		                <div class="col-lg-6 col-md-10 mb-6">
+		                	<h8>${product.discount}% OFF</h8>
+		                </div>
+		            </div>
+		            <h5>Price: $ ${product.realPrice}</h5>
+		            <p class="card-text">${product.description}</p>
+		            <h8>On Stock: ${product.stock} remaining</h8>
+		          </div>
+		          <div class="card-footer">
+		          	<s:if test="%{idUser!=null}">
+
+		          		<s:form id="frmAddProduct"
+						action="%{#pageContext.request.contextPath}/cart"
+						method="post" theme="simple">
 						
-						<s:if test="%{idUser!=null}">
-							<td>
-								<s:form id="frmAddProduct"
-								action="%{#pageContext.request.contextPath}/cart"
-								method="post" theme="simple">
-								
-								<s:hidden id="IdSel" name="idSel" value="%{#product.id}"/>
-								<s:submit value="Add to Cart" />
-								</s:form>
-							</td>
-						</s:if>
-						
-						</tr>
-				</s:iterator>
-			</tbody>
-		</table>
-	</div>
+						<s:hidden id="IdSel" name="idSel" value="%{#product.id}"/>
+						<s:submit class="btn btn-info" value="Add to Cart" />
+						</s:form>
+		          	</s:if>
+		          </div>
+		        </div>
+		      </div>
+
+		</s:iterator>
+		</div>
 </body>
 </html>
 </jsp:root>
