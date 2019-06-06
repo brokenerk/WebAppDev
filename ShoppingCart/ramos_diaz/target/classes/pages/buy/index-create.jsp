@@ -15,54 +15,47 @@
 <title>Order purchased</title>
 </head>
 <body>
-	<div class="row">
-		<h2 class="title">Thank you! You have bought the order with ID ${cart.id}</h2>
-	</div>
+	<h1 class="my-4">Thank you!</h1>
+	 <h3>You have bought the order with ID ${cart.id}</h3>
 	
-	<div class="form-group">
-			<div class="col-md-4">
-				<label for="">Total: </label>
-			</div>
-			<div class="col-md-8">$ ${cart.total}</div>
-		</div>
-		
-	<div class="row">
-		<h3>Details: </h3>
-	</div>
-	
-	<div class="row">
-		<table>
-			<thead>
-				<tr>
-					<th>Image</th>
-					<th>Name</th>
-					<th>Amount</th>
-					<th></th>
-					<th></th>
+	<table class="table table-striped table-hover table-responsive">
+		<thead class="thead-dark">
+			<tr>
+			<th>Image</th>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Price</th>
+			<th>Amount</th>
+		</tr>
+	</thead>
+	<tbody>
+		<s:iterator value="orderDetails" var="orderDetail">
+			<s:set var="productId">${orderDetail.product.id}</s:set>
+			<tr>
+				<td style="width:10%"><img src="${pageContext.request.contextPath }/imgs/products/${orderDetail.product.id}.jpg" width="100"/></td>
+				<td style="width:20%">${orderDetail.product.name}</td>
+				<td style="width:35%">${orderDetail.product.description}</td>
+				<td style="width:20%">$ ${orderDetail.product.realPrice}</td>
+				<td style="width:5%">${orderDetail.amount}</td>
 				</tr>
-			</thead>
-			<tbody>
-				<s:iterator value="orderDetails" var="orderDetail">
-					<s:set var="productId">${orderDetail.product.id}</s:set>
-					<tr>
-						<td><img src="${pageContext.request.contextPath }/imgs/products/${orderDetail.product.id}.jpg" width="100"/></td>
-						<td>${orderDetail.product.name}</td>
-						<td>${orderDetail.amount}</td>
-						</tr>
-						
-				</s:iterator>
-			</tbody>
-		</table>
-	</div>
+			</s:iterator>
+			<tr class="table-info">
+				<td scope="col"><b>Total</b></td>
+				<td></td>
+				<td></td>
+				<td style="width:20%"><b>$ ${cart.total}</b></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
 	
-	<div class="row">
-		<a href="${pageContext.request.contextPath}/orders">Completed Orders</a>
-	</div>
-	<div class="row">
-		<a href="${pageContext.request.contextPath}/products">Products</a>
-	</div>
-	<div class="row">
-		<a href="${pageContext.request.contextPath}/users">Account</a>
+	<div class="form-group row">
+		<div class="col-md-4">
+			<a class="btn btn-success" href="${pageContext.request.contextPath}/orders">See it on your completed orders</a>
+		</div>
+		<div class="col">
+			<a class="btn btn-info" href="${pageContext.request.contextPath}/products">Or keep shopping</a>
+		</div>
 	</div>
 </body>
 </html>

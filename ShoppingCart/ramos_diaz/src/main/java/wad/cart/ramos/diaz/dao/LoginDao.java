@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import wad.cart.ramos.diaz.entidad.User;
 
-
 //Definir capa de acceso a datos
 @Repository("loginDao")
 public class LoginDao {
@@ -42,5 +41,4 @@ public class LoginDao {
 		//Devolver usuario, si se encontro
 		return registeredUser;
 	}
-
 }

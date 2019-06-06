@@ -10,66 +10,68 @@
   </jsp:text>
 
 <html lang="es-MX">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Login</title>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<link href="${pageContext.request.contextPath}/resources/components/shoppy/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
-<!-- Custom Theme files -->
-<link href="${pageContext.request.contextPath}/resources/components/shoppy/css/style.css" rel="stylesheet" type="text/css" media="all"/>
-<!--js-->
-
-<!--icons-css-->
-<link href="${pageContext.request.contextPath}/resources/components/shoppy/css/font-awesome.css" rel="stylesheet"/> 
-<!--Google Fonts-->
-<link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'/>
-<link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'/>
-<!--static chart-->
-</head>
-<body>	
-<div class="login-page">
-    <div class="login-main">  	
-    	 <div class="login-head">
-				<h1>Login</h1>
+<s:head>
+	<title>Login</title>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!--==============================================================================================================================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/components/login/vendor/bootstrap/css/bootstrap.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/components/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/components/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/components/login/vendor/animate/animate.css"/>
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/components/login/vendor/css-hamburgers/hamburgers.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/components/login/vendor/select2/select2.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/components/login/css/util.css"/>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/components/login/css/main.css"/>
+<!--===============================================================================================-->
+</s:head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('${pageContext.request.contextPath}/resources/components/login/images/img-01.jpg');">
+			<div class="wrap-login100 p-t-50 p-b-30">
+				
+			<div class="login100-form-avatar">
+				<img src="${pageContext.request.contextPath}/resources/components/login/images/avatar-02.jpg" alt="AVATAR"/>
 			</div>
-			<div class="login-block">
+
+			<span class="login100-form-title p-t-20 p-b-45">
+				Login
+			</span>
 				<decorator:body/>
-				<!--<form>
-					<input type="text" name="email" placeholder="Email" required=""/>
-					<input type="password" name="password" class="lock" placeholder="Password"/>
-
-					<input type="submit" name="Sign In" value="Enter"/>	
-									
-				</form>-->
-				<h3>Not a member?<a href="${pageContext.request.contextPath}/register"> Sign up now</a></h3>
-				<h5><a href="${pageContext.request.contextPath}/products">Go Back to Products</a></h5>
+			<div class="text-center w-full">
+				<a class="txt1" href="${pageContext.request.contextPath}/register">
+					Create new account						
+				</a>
 			</div>
-      </div>
-</div>
-<!--inner block end here-->
-<!--copy rights start here-->
-<div class="copyrights">
-	 <p>©Copyright 2019</p>
-</div>	
-<!--COPY rights end here-->
-
-<!--scrolling js-->
+			<div class="text-center w-full">
+				<a class="txt1" href="${pageContext.request.contextPath}/products">
+					Go back to products					
+				</a>
+			</div>
+			</div>
+		</div>
+	</div>
+	
 <jsp:text>
   <![CDATA[
-  		<script src="${pageContext.request.contextPath}/resources/components/shoppy/js/jquery-2.1.1.min.js"></script> 
-		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-		<script src="${pageContext.request.contextPath}/resources/components/shoppy/js/jquery.nicescroll.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/components/shoppy/js/scripts.js"></script>
-		<!--//scrolling js-->
-<script src="${pageContext.request.contextPath}/resources/components/shoppy/js/bootstrap.js"> </script>
+	    <!--===============================================================================================-->	
+		<script src="${pageContext.request.contextPath}/resources/components/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="${pageContext.request.contextPath}/resources/components/login/vendor/bootstrap/js/popper.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/components/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="${pageContext.request.contextPath}/resources/components/login/vendor/select2/select2.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="${pageContext.request.contextPath}/resources/components/login/js/main.js"></script>
         ]]>
 </jsp:text>
-<!-- mother grid end here-->
 </body>
 </html>
 </jsp:root>

@@ -74,12 +74,12 @@
 		<div class="form-group row">
 			<div class="col">
 				<label for="" class="text-dark">Name</label>
-				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txName" name="model.name"/>
+				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txName" name="model.name" placeholder="Juan"/>
 				<s:fielderror fieldName="model.name" class="text-danger"/>
 			</div>
 			<div class="col">
 				<label for="" class="text-dark">Last Name</label>
-				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txLastName" name="model.lastName"/>
+				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txLastName" name="model.lastName" placeholder="Gonzalez"/>
 				<s:fielderror fieldName="model.lastName" class="text-danger"/>
 			</div>
 		</div>
@@ -87,12 +87,12 @@
 		<div class="form-group row">
 			<div class="col">
 				<label for="" class="text-dark">Second Last Name</label>
-				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txSecondLastName" name="model.secondLastName"/>
+				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txSecondLastName" name="model.secondLastName" placeholder="Ramirez"/>
 				<s:fielderror fieldName="model.secondLastName" class="text-danger"/>
 			</div>
 			<div class="col">
 				<label for="" class="text-dark">Email</label>
-				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txLogin" name="model.login"/>
+				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txLogin" name="model.login" placeholder="goku777@gmail.com"/>
 				<s:fielderror fieldName="model.login" class="text-danger"/>
 			</div>
 		</div>
@@ -100,12 +100,12 @@
 		<div class="form-group row">
 			<div class="col">
 				<label for="" class="text-dark">Password</label>
-				<s:password cssClass="form-control" cssErrorClass="is-invalid" id="txPassword" name="model.password"/>
+				<s:password cssClass="form-control" cssErrorClass="is-invalid" id="txPassword" name="model.password" placeholder="*******"/>
 				<s:fielderror fieldName="model.password" class="text-danger"/>
 			</div>
 			<div class="col">
 				<label for="" class="text-dark">Confirm Password</label>
-				<s:password cssClass="form-control" cssErrorClass="is-invalid" id="txConfirmPassword" name="confirmPassword"/>
+				<s:password cssClass="form-control" cssErrorClass="is-invalid" id="txConfirmPassword" name="confirmPassword" placeholder="*******"/>
 				<s:fielderror fieldName="confirmPassword" class="text-danger"/>
 			</div>
 		</div>
@@ -117,12 +117,12 @@
 		<div class="form-group row">
 			<div class="col">
 				<label for="" class="text-dark">Street</label>
-				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txStreet" name="model.street"/>
+				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txStreet" name="model.street" placeholder="Calle El Solecito 231"/>
 				<s:fielderror fieldName="model.street" class="text-danger"/>
 			</div>
 			<div class="col">
 				<label for="" class="text-dark">City</label>
-				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txCity" name="model.city"/>
+				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txCity" name="model.city" placeholder="Naucalpan de Juarez"/>
 				<s:fielderror fieldName="model.city" class="text-danger"/>
 			</div>
 		</div>
@@ -130,17 +130,17 @@
 		<div class="form-group row">
 			<div class="col-md-4">
 				<label for="" class="text-dark">State</label>
-				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txState" name="model.state"/>
+				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txState" name="model.state" placeholder="Edo. de Mexico"/>
 				<s:fielderror fieldName="model.state" class="text-danger"/>
 			</div>
 			<div class="col-md-4">
 				<label for="" class="text-dark">Zip Code</label>
-				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txZipCode" name="model.zipCode"/>
+				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txZipCode" name="model.zipCode" placeholder="54040"/>
 				<s:fielderror fieldName="model.zipCode" class="text-danger"/>
 			</div>
 			<div class="col-md-4">
 				<label for="" class="text-dark">Telephone</label>
-				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txTelephone" name="model.telephone"/>
+				<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txTelephone" name="model.telephone" placeholder="55-55-55-55-55"/>
 				<s:fielderror fieldName="model.telephone" class="text-danger"/>
 			</div>
 		</div>

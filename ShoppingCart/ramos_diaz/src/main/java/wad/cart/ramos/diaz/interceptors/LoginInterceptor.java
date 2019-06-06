@@ -42,9 +42,7 @@ public class LoginInterceptor extends AbstractInterceptor implements StrutsStati
 			String ret = "login-" + loginBs.findView(url);
 			return ret;
 		} 
-		else {
+		else
 			return invocation.invoke();
-		}
 	}
-
 }

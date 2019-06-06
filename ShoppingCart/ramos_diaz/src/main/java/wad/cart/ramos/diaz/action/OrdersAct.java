@@ -23,7 +23,6 @@ import wad.cart.ramos.diaz.entidad.User;
 	      @Result(name = "login-orders", type = "redirectAction", params = { "actionName", "login/orders"})})
 @InterceptorRef("customStack")
 public class OrdersAct {
-	
 	@Autowired
 	private UserBs userBs;
 	@Autowired
@@ -35,14 +34,13 @@ public class OrdersAct {
 	private List<OrderC> orders;
 	private OrderC order;
 	private List<OrderDetail> orderDetails;
+	HttpSession session = ServletActionContext.getRequest().getSession();
+	Integer idUser = (Integer) session.getAttribute("idUser");
 
-	
 	private static final long serialVersionUID = 1L;
 	
 	public String index() {
 		//Nos apoyamos de la sesion
-		HttpSession session = ServletActionContext.getRequest().getSession();
-		Integer idUser = (Integer) session.getAttribute("idUser");
 		model = userBs.findById(idUser);
 		orders = userBs.findOrders(model.getOrders());
 		return "index";
@@ -56,21 +54,27 @@ public class OrdersAct {
 	public List<OrderC> getOrders() {
 		return orders;
 	}
+
 	public void setOrders(List<OrderC> orders) {
 		this.orders = orders;
 	}
+
 	public OrderC getOrder() {
 		return order;
 	}
+
 	public void setOrder(OrderC order) {
 		this.order = order;
 	}
+
 	public List<OrderDetail> getOrderDetails() {
 		return orderDetails;
 	}
+
 	public void setOrderDetails(List<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
+
 	@VisitorFieldValidator
 	public Integer getIdSel() {
 		return idSel;
@@ -78,9 +82,8 @@ public class OrdersAct {
 
 	public void setIdSel(Integer idSel) {
 		this.idSel = idSel;
-		if (idSel != null) {
+		if (idSel != null)
 			order = orderBs.findById(idSel);
-		}
 	}
 
 	public void setModel(User model) {
@@ -91,5 +94,13 @@ public class OrdersAct {
 	public User getModel() {
 		return model;
 	}
+	
+	@VisitorFieldValidator
+	public Integer getIdUser() {
+		return idUser;
+	}
 
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
+	}
 }

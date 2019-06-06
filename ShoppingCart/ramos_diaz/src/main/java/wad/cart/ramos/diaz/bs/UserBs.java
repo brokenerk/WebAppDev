@@ -40,9 +40,8 @@ public class UserBs {
 	public OrderC findCart(List<OrderC> orders){
 		OrderC order = null;
 		for(OrderC o: orders) {
-			if(!o.getPurchased()) {
+			if(!o.getPurchased())
 				order = o;
-			}
 		}
 		return order;
 	}
@@ -50,9 +49,8 @@ public class UserBs {
 	public List<OrderC> findOrders(List<OrderC> orders){
 		List<OrderC> order = new ArrayList<OrderC>();
 		for(OrderC o: orders) {
-			if(o.getPurchased()) {
+			if(o.getPurchased())
 				order.add(o);
-			}
 		}
 		return order;
 	}

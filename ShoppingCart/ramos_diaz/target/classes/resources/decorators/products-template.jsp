@@ -24,6 +24,8 @@
 
   <!-- Custom styles for this template -->
   <link href="${pageContext.request.contextPath}/resources/components/bootstrap/css/shop-homepage.css" rel="stylesheet"/>
+
+  <link href="${pageContext.request.contextPath}/resources/decorators/footer.css" rel="stylesheet"/>
   <decorator:head />
 </head>
 
@@ -83,22 +85,20 @@
 
     <div class="row">
 
-      <div class="col-lg-3">
+      <div class="col-lg-3 col-md-3">
 
         <h1 class="my-4">Menu</h1>
         <div class="list-group">
-          <a href="#" class="list-group-item text-danger">Products</a>
-          <a href="#" class="list-group-item text-danger">Cart</a>
-          <a href="#" class="list-group-item text-danger">Account</a>
-          <a href="#" class="list-group-item text-danger">Orders</a>
-          <a href="#" class="list-group-item text-danger">Login</a>
-          <a href="#" class="list-group-item text-danger">Register</a>
+          <a href="${pageContext.request.contextPath}/products" class="list-group-item text-danger">Products</a>
+          <a href="${pageContext.request.contextPath}/cart" class="list-group-item text-danger">Cart</a>
+          <a href="${pageContext.request.contextPath}/users" class="list-group-item text-danger">Account</a>
+          <a href="${pageContext.request.contextPath}/orders" class="list-group-item text-danger">Orders</a>
         </div>
 
       </div>
       <!-- /.col-lg-3 -->
 
-      <div class="col-lg-9">
+      <div class="col-lg-9 col-md-9">
 
         <!--<div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
           <ol class="carousel-indicators">
@@ -139,7 +139,7 @@
 
   </div>
   <!-- /.container -->
-
+  <p class="text-white">aaa</p>
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">

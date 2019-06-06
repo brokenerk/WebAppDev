@@ -15,16 +15,16 @@
 <title>Completed Orders</title>
 </head>
 <body>
-	<h1>Completed Orders</h1>
+	<h1 class="my-4">Completed Orders</h1>
+
 	<div class="row">
-		<table>
-			<thead>
+		<table class="table table-striped table-hover table-responsive table-fixed">
+			<thead class="thead-dark">
 				<tr>
-					<th>ID</th>
+					<th>Order ID</th>
 					<th>Date</th>
 					<th>State</th>
 					<th>Total</th>
-					<th></th>
 					<th></th>
 				</tr>
 			</thead>
@@ -36,20 +36,11 @@
 						<td>Purchased</td>
 						<td>$ ${order.total}</td>
 						<!-- Metodo PUT -->
-						<td><a href="${pageContext.request.contextPath}/orders/${order.id}">View</a></td>
+						<td><a class="btn btn-info" href="${pageContext.request.contextPath}/orders/${order.id}">View</a></td>
 					</tr>
 				</s:iterator>
 			</tbody>
 		</table>
-		<div class="row">
-			<a href="${pageContext.request.contextPath}/users">Account</a>
-		</div>
-		<div class="row">
-			<a href="${pageContext.request.contextPath}/products">Products</a>
-		</div>
-		<div class="row">
-			<a href="${pageContext.request.contextPath}/cart">Cart</a>
-		</div>
 	</div>
 </body>
 </html>

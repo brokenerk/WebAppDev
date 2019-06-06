@@ -71,9 +71,8 @@ public class OrderBs {
 			orderDao.addProduct(product, idOrder, amount);
 			return true;
 		}
-		else {
+		else
 			return false;
-		}
 	}
 	
 	@Transactional(rollbackFor = Exception.class)
@@ -85,5 +84,4 @@ public class OrderBs {
 	public Float updateAmount(Product p, Integer idOrder, String operation) {
 		return orderDao.updateAmount(p, idOrder, operation);
 	}
-
 }

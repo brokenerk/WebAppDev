@@ -58,8 +58,8 @@ public class UserDao {
 		catch(Exception e) {
 			System.out.println("Error al registrar nuevo usuario");
 		}
-		finally {}
+		finally {
+		}
 		return u;
 	}
-
 }

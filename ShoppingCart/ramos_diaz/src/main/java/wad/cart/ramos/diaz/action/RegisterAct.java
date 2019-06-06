@@ -1,5 +1,8 @@
 package wad.cart.ramos.diaz.action;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.interceptor.validation.SkipValidation;
@@ -14,13 +17,13 @@ import wad.cart.ramos.diaz.entidad.User;
 
 @Results({ @Result(name = ActionSupport.SUCCESS, type = "redirectAction", params = { "actionName", "login/products" }),
 	       @Result(name = ActionSupport.INPUT, location="/pages/register/index.jsp")})
-
 public class RegisterAct extends ActionSupport implements ModelDriven<User>{
 	@Autowired
 	private UserBs userBs;
 	private User model = new User();
 	private String confirmPassword;
-
+	private HttpSession session = ServletActionContext.getRequest().getSession();
+	private Integer idUser = (Integer) session.getAttribute("idUser");
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -30,12 +33,10 @@ public class RegisterAct extends ActionSupport implements ModelDriven<User>{
 	}
 	
 	public void validateCreate() {
-		if(confirmPassword.equals("")) {
+		if(confirmPassword.equals(""))
 			addFieldError("confirmPassword", "Confirm password is mandatory");
-		}
-		else if(!model.getPassword().equalsIgnoreCase(confirmPassword)) {
+		else if(!model.getPassword().equalsIgnoreCase(confirmPassword))
 			addFieldError("confirmPassword", "Passwords doesn't match");
-		}
 	}
 	
 	public String create() {
@@ -61,4 +62,12 @@ public class RegisterAct extends ActionSupport implements ModelDriven<User>{
 		this.model = model;
 	}
 	
+	@VisitorFieldValidator
+	public Integer getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
+	}
 }

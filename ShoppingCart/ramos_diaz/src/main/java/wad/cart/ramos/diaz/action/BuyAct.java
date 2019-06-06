@@ -1,7 +1,6 @@
 package wad.cart.ramos.diaz.action;
 
 import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
@@ -47,10 +46,10 @@ public class BuyAct extends ActionSupport{
 	@Autowired
 	private BuyBs buyBs;
 	private User model;
-	private Integer idSel, expMonth, expYear;
+	private Integer idSel;
 	private OrderC cart;
 	private List<OrderDetail> orderDetails;
-	private String owner, creditCard, cvc;
+	private String conektaTokenId;
 	
 	private HttpSession session = ServletActionContext.getRequest().getSession();
 	private Integer idUser = (Integer) session.getAttribute("idUser");
@@ -74,6 +73,7 @@ public class BuyAct extends ActionSupport{
 	
 	public void validateCreate() {
 		findCart();
+		System.out.println("-------------->" + getConektaTokenId());
 		List<OrderDetail> orderDetails = cart.getOrderDetails();
 		Product p = orderDetails.get(0).getProduct();
 		Boolean allAvailable = true;
@@ -89,10 +89,7 @@ public class BuyAct extends ActionSupport{
 		}
 		
 		if(allAvailable) {
-			String address = buyBs.createAddress(model.getStreet(), model.getCity(), model.getState(), model.getZipCode());
-			String paymentMethod = buyBs.createPaymentMethod(getCreditCard(), getOwner(), getExpMonth(), getExpYear(), getCvc(), idUser, address);
-			String json = buyBs.createOrder(cart.getId(), cart.getTotal(), model, p, paymentMethod);
-			
+			String json = buyBs.createOrder(cart.getId(), cart.getTotal(), model, p, getConektaTokenId());
 			try {
 				Order buy = buyBs.buy(json);
 				System.out.println("------------>" + buy.charges.get(0));
@@ -147,65 +144,21 @@ public class BuyAct extends ActionSupport{
 		this.orderDetails = orderDetails;
 	}
 	
-	@Validations(
-			requiredStrings = {@RequiredStringValidator(fieldName = "owner", type = ValidatorType.FIELD, message = "Owner is mandatory")}, 
-			stringLengthFields = {@StringLengthFieldValidator(fieldName = "owner", type = ValidatorType.FIELD, message = "Owner length is too long", maxLength = "30")})
 	@VisitorFieldValidator
-	public String getOwner() {
-		return owner;
-	}
-
-	public void setOwner(String owner) {
-		this.owner = owner;
+	public Integer getIdUser() {
+		return idUser;
 	}
 	
-	@RequiredStringValidator(fieldName = "creditCard", type = ValidatorType.FIELD, message = "Credit card number is mandatory") 
-	@RegexFieldValidator(regex = "^[0-9]*$", fieldName = "creditCard", type = ValidatorType.FIELD, message = "Credit card number only accepts numbers")
-	@StringLengthFieldValidator(fieldName = "creditCard", type = ValidatorType.FIELD, message = "Credit card number length must be 16", minLength = "16", maxLength = "16")
-	@VisitorFieldValidator
-	public String getCreditCard() {
-		return creditCard;
-	}
-
-
-	public void setCreditCard(String creditCard) {
-		this.creditCard = creditCard;
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
 	}
 	
-	@RequiredFieldValidator(fieldName = "expMonth", type = ValidatorType.FIELD, message = "Expiration month is mandatory") 
-	@RegexFieldValidator(regex = "^[0-9]*$", fieldName = "expMonth", type = ValidatorType.FIELD, message = "Expiration month only accepts numbers")
-	@IntRangeFieldValidator(fieldName = "expMonth", type = ValidatorType.FIELD, message = "Expiration month is between 01 and 12", min = "1", max = "12")
 	@VisitorFieldValidator
-	public Integer getExpMonth() {
-		return expMonth;
+	public String getConektaTokenId() {
+		return conektaTokenId;
 	}
 
-	public void setExpMonth(Integer expMonth) {
-		this.expMonth = expMonth;
+	public void setConektaTokenId(String conektaTokenId) {
+		this.conektaTokenId = conektaTokenId;
 	}
-	
-	@RequiredFieldValidator(fieldName = "expYear", type = ValidatorType.FIELD, message = "Expiration year is mandatory") 
-	@RegexFieldValidator(regex = "^[0-9]*$", fieldName = "expMonth", type = ValidatorType.FIELD, message = "Expiration year only accepts numbers")
-	@IntRangeFieldValidator(fieldName = "expYear", type = ValidatorType.FIELD, message = "Expiration year is up to 2020", min = "2020")
-	@VisitorFieldValidator
-	public Integer getExpYear() {
-		return expYear;
-	}
-
-	public void setExpYear(Integer expYear) {
-		this.expYear = expYear;
-	}
-	
-	@RequiredStringValidator(fieldName = "cvc", type = ValidatorType.FIELD, message = "CVC is mandatory") 
-	@RegexFieldValidator(regex = "^[0-9]*$", fieldName = "cvc", type = ValidatorType.FIELD, message = "CVC only accepts numbers")
-	@StringLengthFieldValidator(fieldName = "cvc", type = ValidatorType.FIELD, message = "CVC length must be 3", minLength = "3", maxLength = "3")
-	@VisitorFieldValidator
-	public String getCvc() {
-		return cvc;
-	}
-
-	public void setCvc(String cvc) {
-		this.cvc = cvc;
-	}
-	
 }

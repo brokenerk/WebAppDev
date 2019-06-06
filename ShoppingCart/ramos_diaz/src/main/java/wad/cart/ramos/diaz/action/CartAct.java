@@ -25,7 +25,6 @@ import wad.cart.ramos.diaz.entidad.User;
 			@Result(name = "login-cart", type = "redirectAction", params = { "actionName", "login/cart"})})
 @InterceptorRef("customStack")
 public class CartAct {
-	
 	@Autowired
 	private UserBs userBs;
 	@Autowired
@@ -44,14 +43,14 @@ public class CartAct {
 	public void findCart() {
 		model = userBs.findById(idUser);
 		cart = userBs.findCart(model.getOrders());
-		if(cart != null)
+		if(cart != null){
 			cart = orderBs.formatTotal(cart);
+			orderDetails = productBs.calculateRealPrice(cart.getOrderDetails());
+		}
 	}
 
 	public String index() {
 		findCart();
-		if(cart != null)
-			orderDetails = productBs.calculateRealPrice(cart.getOrderDetails());
 		return "index";
 	}
 	
@@ -59,7 +58,6 @@ public class CartAct {
 		//Obtenemos el producto
 		Product newProduct = productBs.findById(idSel);
 		newProduct = productBs.calculateDiscount(newProduct);
-		
 		findCart();
 		Boolean firstTime = false;
 		//Si no hay un carrito activo, lo agregamos
@@ -71,12 +69,10 @@ public class CartAct {
 		
 		//Intentamos agregar el producto
 		Boolean added = orderBs.addProduct(newProduct, cart.getId(), 1);
-		
 		/*Si se agrego, actualizamos la orden, sino, acabamos. 
 		Tambien revisamos si es el primer articulo en el carrito*/
-		if(added && !firstTime) {
+		if(added && !firstTime)
 			cart = orderBs.updateOrder(newProduct.getRealPrice() + cart.getTotal(), cart);
-		}
 		
 		return ActionSupport.SUCCESS;
 	}
@@ -87,17 +83,13 @@ public class CartAct {
 		//Buscamos producto
 		Product p = productBs.findById(idSel);
 		p = productBs.calculateDiscount(p);
-		
 		//Actualizamos la ordeDetail asociada
 		Float newPrice = orderBs.updateAmount(p, cart.getId(), getOperation());
-		
 		//Actualizamos carrito
 		cart = orderBs.updateOrder(newPrice, cart);
-		
 		//Si no hay productos, borramos
-		if(cart.getOrderDetails().isEmpty()) {
+		if(cart.getOrderDetails().isEmpty())
 			orderBs.deleteOrder(cart);
-		}
 		
 		return ActionSupport.SUCCESS;
 	}
@@ -112,14 +104,11 @@ public class CartAct {
 		orderBs.removeProduct(p, cart.getId());
 		
 		Float newPrice = cart.getTotal() - p.getRealPrice();
-		
 		//Actualizamos la orden
 		cart = orderBs.updateOrder(newPrice, cart);
-		
 		//Si no hay productos, eliminamos la orden
-		if(cart.getOrderDetails().isEmpty()) {
+		if(cart.getOrderDetails().isEmpty())
 			orderBs.deleteOrder(cart);
-		}
 		
 		return ActionSupport.SUCCESS;
 	}
@@ -177,5 +166,4 @@ public class CartAct {
 	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
 	}
-
 }

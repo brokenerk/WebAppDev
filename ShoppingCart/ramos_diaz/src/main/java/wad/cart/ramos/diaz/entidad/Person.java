@@ -55,7 +55,7 @@ public class Person {
 	
 	@Validations(
 			requiredStrings = {@RequiredStringValidator(fieldName = "model.name", type = ValidatorType.FIELD, message = "Name is mandatory")}, 
-			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.name", type = ValidatorType.FIELD, message = "Name length is too long", maxLength = "30")})
+			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.name", type = ValidatorType.FIELD, message = "Name length is too long. Max is 30", maxLength = "30")})
 	public String getName() {
 		return name;
 	}
@@ -66,7 +66,7 @@ public class Person {
 	
 	@Validations(
 			requiredStrings = {@RequiredStringValidator(fieldName = "model.lastName", type = ValidatorType.FIELD, message = "Last name is mandatory")}, 
-			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.lastName", type = ValidatorType.FIELD, message = "Last name length is too long", maxLength = "30")})
+			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.lastName", type = ValidatorType.FIELD, message = "Last name length is too long. Max is 30", maxLength = "30")})
 	public String getLastName() {
 		return lastName;
 	}
@@ -77,7 +77,7 @@ public class Person {
 	
 	@Validations(
 			requiredStrings = {@RequiredStringValidator(fieldName = "model.secondLastName", type = ValidatorType.FIELD, message = "Second lastname is mandatory")}, 
-			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.secondLastName", type = ValidatorType.FIELD, message = "Second lastname length is too long", maxLength = "30")})
+			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.secondLastName", type = ValidatorType.FIELD, message = "Second lastname length is too long. Max is 30", maxLength = "30")})
 	public String getSecondLastName() {
 		return secondLastName;
 	}
@@ -88,7 +88,7 @@ public class Person {
 
 	@Validations(
 			requiredStrings = {@RequiredStringValidator(fieldName = "model.state", type = ValidatorType.FIELD, message = "State is mandatory")}, 
-			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.state", type = ValidatorType.FIELD, message = "State length is too long", maxLength = "100")})
+			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.state", type = ValidatorType.FIELD, message = "State length is too long. Max is 100", maxLength = "100")})
 	public String getState() {
 		return state;
 	}
@@ -99,7 +99,7 @@ public class Person {
 	
 	@Validations(
 			requiredStrings = {@RequiredStringValidator(fieldName = "model.telephone", type = ValidatorType.FIELD, message = "Telephone is mandatory")}, 
-			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.telephone", type = ValidatorType.FIELD, message = "Telephone length is not valid", minLength="14", maxLength = "14")})
+			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.telephone", type = ValidatorType.FIELD, message = "Telephone length must be 10. Between every two numbers there must be a -", minLength="14", maxLength = "14")})
 	public String getTelephone() {
 		return telephone;
 	}
@@ -110,7 +110,7 @@ public class Person {
 	
 	@Validations(
 			requiredStrings = {@RequiredStringValidator(fieldName = "model.street", type = ValidatorType.FIELD, message = "Street is mandatory")}, 
-			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.street", type = ValidatorType.FIELD, message = "Street length is too long", maxLength = "100")})
+			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.street", type = ValidatorType.FIELD, message = "Street length is too long. Max is 100", maxLength = "100")})
 	public String getStreet() {
 		return street;
 	}
@@ -122,7 +122,7 @@ public class Person {
 	
 	@Validations(
 			requiredStrings = {@RequiredStringValidator(fieldName = "model.city", type = ValidatorType.FIELD, message = "City is mandatory")}, 
-			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.city", type = ValidatorType.FIELD, message = "City length is too long", maxLength = "100")})
+			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.city", type = ValidatorType.FIELD, message = "City length is too long. Max is 100", maxLength = "100")})
 	public String getCity() {
 		return city;
 	}
@@ -133,7 +133,7 @@ public class Person {
 	
 	@Validations(
 			requiredStrings = {@RequiredStringValidator(fieldName = "model.zipCode", type = ValidatorType.FIELD, message = "ZipCode is mandatory")}, 
-			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.zipCode", type = ValidatorType.FIELD, message = "ZipCode length is not valid", minLength="5", maxLength = "5")})
+			stringLengthFields = {@StringLengthFieldValidator(fieldName = "model.zipCode", type = ValidatorType.FIELD, message = "ZipCode length must be 5", minLength="5", maxLength = "5")})
 	public String getZipCode() {
 		return zipCode;
 	}

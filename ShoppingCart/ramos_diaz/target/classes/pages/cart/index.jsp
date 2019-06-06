@@ -39,6 +39,7 @@
 					<th></th>
 					<th></th>
 					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -80,14 +81,15 @@
 							<s:submit value="Remove" class="btn btn-danger" />
 							</s:form>
 						</td>
-						
+						<td></td>
 						</tr>
 						
 				</s:iterator>
 				<tr class="table-info">
 					<td scope="col"><b>Total</b></td>
 					<td></td>
-					<td><b>$ ${cart.total}</b></td>
+					<td style="width:19%"><b>$ ${cart.total}</b></td>
+					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>

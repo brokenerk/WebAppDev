@@ -23,51 +23,21 @@ public class BuyBs {
 	public Order buy(String json) throws ErrorList, Error {
 		// Llave privada (servidor) para pruebas
 		Conekta.setApiKey("key_yV9kDKjLq5AwAsBRrQ5WJw");
-		Conekta.setApiVerion("2.1.5");
+		Conekta.setApiVerion("2.0.0");
 		Conekta.setLocale("en");
 		JSONObject buyJSON = new JSONObject(json);
 		return Order.create(buyJSON);
-	}
-	
-	public String createPaymentMethod(String creditCard, String owner, Integer expMonth, Integer expYear,
-									  String cvc, Integer idUser, String address) {
-		String paymentMethod = "{" +
-							   "'card': {" + 
-							   "  'number': '" + creditCard + "'," + 
-							   "  'name': '" + owner + "'," + 
-							   "  'exp_month': '" + expMonth + "'," + 
-							   "  'exp_year': '" + expYear + "'," + 
-							   "  'cvc': '" + cvc + "'," +
-								   address + 
-							   "  }" +
-							   "}";
-		return paymentMethod;
-	}
-	
-	public String createAddress(String street, String city, String state, String zipCode) {
-		String address = "'address': {" + 
-						"	'street1': '" + street + "'," + 
-						"	'city': '" + city + "'," + 
-						"	'state': '" + state + "'," + 
-						"	'country': 'Mexico'," + 
-						"	'postal_code': '" + zipCode + "'" + 
-						"}";
-		return address;
 	}
 	
 	public String formatTelephone(String tel) {
 		return "+521" + tel.replace("-", "");
 	}
 	
-	public String createOrder(Integer idOrder, Float t, User user, Product product, String paymentMethod) {
-		// Llave publica para tokenizar tarjeta (prueba)
+	public String createOrder(Integer idOrder, Float t, User user, Product product, String tokenID) {
+		// Llave privada (servidor) para pruebas
 		Conekta.setApiKey("key_FqD7qn3VvVoy6fUnuFA32CQ");
 		Conekta.setApiVerion("2.0.0");
 		Integer total = Math.round(t);
-		
-		//Token creditCard = Token.create(new JSONObject(paymentMethod));
-		//String tokenID = creditCard.getId();
-		//System.out.println(tokenID);
 			
 		String order = "{" + 
 				"		  'livemode': false," + 
@@ -100,12 +70,11 @@ public class BuyBs {
 				"		      'fee': 0," + 
 				"    		  'payment_method': {" +
 		        "        		'type': 'card'," +
-		        "        		'token_id': 'tok_test_visa_4242'" + //TokenId de pruebas
+		        "        		'token_id': '" + tokenID + "'" + //TokenId de pruebas
 				"			   }" +			
 				"		    }]" + 
 				"		  }]," + 
 				"		}";
 		return order;
 	}
-
 }

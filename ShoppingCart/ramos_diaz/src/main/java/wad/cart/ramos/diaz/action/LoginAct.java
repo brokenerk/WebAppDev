@@ -48,8 +48,7 @@ public class LoginAct extends ActionSupport {
 		catch(WrongPasswordException ex2) {
 			addFieldError("password", "Password is wrong");
 		}
-		finally {
-			
+		finally {	
 		}
 	}
 	

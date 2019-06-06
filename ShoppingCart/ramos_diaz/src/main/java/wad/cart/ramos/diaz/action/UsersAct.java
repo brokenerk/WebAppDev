@@ -36,7 +36,6 @@ public class UsersAct extends ActionSupport implements ModelDriven<User>{
 		return "index";
 	}
 
-	
 	public String create() {
 		model = userBs.findById(idUser);
 		System.out.println("---------->create()");
@@ -45,12 +44,10 @@ public class UsersAct extends ActionSupport implements ModelDriven<User>{
 	
 	public void validateUpdate() {
 		System.out.println("---------->validateUpdate()");
-		if(confirmPassword.equals("")) {
+		if(confirmPassword.equals(""))
 			addFieldError("confirmPassword", "Confirm password is mandatory");
-		}
-		else if(!model.getPassword().equalsIgnoreCase(confirmPassword)) {
+		else if(!model.getPassword().equalsIgnoreCase(confirmPassword))
 			addFieldError("confirmPassword", "Passwords doesn't match");
-		}
 	}
 	
 	public String update() {
@@ -91,11 +88,7 @@ public class UsersAct extends ActionSupport implements ModelDriven<User>{
 		return idUser;
 	}
 
-
 	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
 	}
-	
-	
-	
 }

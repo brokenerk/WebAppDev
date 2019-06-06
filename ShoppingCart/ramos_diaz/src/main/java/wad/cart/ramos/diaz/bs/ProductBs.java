@@ -18,7 +18,6 @@ import wad.cart.ramos.diaz.entidad.User;
 @Service("productBs")
 @Scope(value = BeanDefinition.SCOPE_SINGLETON)
 public class ProductBs {
-	
 	@Autowired
 	private ProductDao productDao;
 	
@@ -42,9 +41,8 @@ public class ProductBs {
 	public List<Product> findAllProducts() {
 		List<Product> products = productDao.findAllProducts();
 		//Precio con descuento
-		for(Product p: products) {
+		for(Product p: products)
 			p = calculateDiscount(p);
-		}
 		return products;
 	}
 	
@@ -60,5 +58,4 @@ public class ProductBs {
 			productDao.updateStock(p);
 		}
 	}
-
 }

@@ -17,11 +17,9 @@
 		<pattern>/users*</pattern>
 		<pattern>/orders*</pattern>
 		<pattern>/register*</pattern>
+		<pattern>/buy*</pattern>
 	</decorator>
 	<decorator name="login" page="login-template.jsp">
 		<pattern>/login*</pattern>
-	</decorator>
-	<decorator name="register" page="register-template.jsp">
-
 	</decorator>
 </decorators> 

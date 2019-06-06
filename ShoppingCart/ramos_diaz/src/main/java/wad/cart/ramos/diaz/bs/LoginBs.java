@@ -20,9 +20,8 @@ public class LoginBs {
 	public String findView(String url) {
 		String view = "";
 		for(String v: views) {
-			if(url.endsWith(v)) {
+			if(url.endsWith(v))
 				view = v;
-			}
 		}
 		return view;
 	}
@@ -55,5 +54,4 @@ public class LoginBs {
 	private static String passwordDigest(String password) {
 		return password;
 	}
-
 }

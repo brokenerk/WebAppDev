@@ -42,5 +42,4 @@ public class ProductDao {
 			System.out.println("--------------> Error al actualizar stock del producto");
 		}
 	}
-
 }

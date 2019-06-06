@@ -19,7 +19,6 @@ import wad.cart.ramos.diaz.entidad.Product;
 @Results({ @Result(name = ActionSupport.SUCCESS, type = "redirectAction", params = { "actionName", "products" }), 
 			@Result(name = "login-products", type = "redirectAction", params = { "actionName", "login/products"})})
 public class ProductsAct {
-	
 	@Autowired
 	private ProductBs productBs;
 	private List<Product> listProducts;
@@ -65,9 +64,8 @@ public class ProductsAct {
 
 	public void setIdSel(Integer idSel) {
 		this.idSel = idSel;
-		if (idSel != null) {
+		if (idSel != null)
 			model = productBs.calculateDiscount(productBs.findById(idSel));
-		}
 	}
 	
 	@VisitorFieldValidator

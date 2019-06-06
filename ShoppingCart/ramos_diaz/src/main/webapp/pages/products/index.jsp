@@ -22,7 +22,7 @@
 			<s:set var="product.id">${product.id}</s:set>
 
 
-			<div class="col-lg-4 col-md-6 mb-4">
+			<div class="col-lg-4 col-md-4">
 		        <div class="card h-400">
 		          <img class="card-img-top" src="${pageContext.request.contextPath}/imgs/products/${product.id}.jpg" width="100" alt=""/>
 		          <div class="card-body">
@@ -30,10 +30,10 @@
 		              ${product.name}
 		            </h4>
 		            <div class="row">
-		                <div class="col-lg-6 col-md-10 mb-6">
+		                <div class="col-lg-6 col-md-9 mb-6">
 		                	<h8>$ ${product.price}</h8>
 		                </div>
-		                <div class="col-lg-6 col-md-10 mb-6">
+		                <div class="col-lg-6 col-md-9 mb-6">
 		                	<h8>${product.discount}% OFF</h8>
 		                </div>
 		            </div>
@@ -54,8 +54,8 @@
 		          	</s:if>
 		          </div>
 		        </div>
+		        <br/>
 		      </div>
-
 		</s:iterator>
 		</div>
 </body>
