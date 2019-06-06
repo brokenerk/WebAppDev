@@ -44,13 +44,15 @@ public class CartAct {
 		model = userBs.findById(idUser);
 		cart = userBs.findCart(model.getOrders());
 		if(cart != null){
-			cart = orderBs.formatTotal(cart);
-			orderDetails = productBs.calculateRealPrice(cart.getOrderDetails());
+			cart = orderBs.formatTotal(cart);	
 		}
 	}
 
 	public String index() {
 		findCart();
+		if(cart != null) {
+			orderDetails = productBs.calculateRealPrice(cart.getOrderDetails());
+		}
 		return "index";
 	}
 	
@@ -71,9 +73,9 @@ public class CartAct {
 		Boolean added = orderBs.addProduct(newProduct, cart.getId(), 1);
 		/*Si se agrego, actualizamos la orden, sino, acabamos. 
 		Tambien revisamos si es el primer articulo en el carrito*/
-		if(added && !firstTime)
+		if(added && !firstTime) {
 			cart = orderBs.updateOrder(newProduct.getRealPrice() + cart.getTotal(), cart);
-		
+		}
 		return ActionSupport.SUCCESS;
 	}
 	
