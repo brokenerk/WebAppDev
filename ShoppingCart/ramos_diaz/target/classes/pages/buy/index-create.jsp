@@ -50,7 +50,7 @@
 	</table>
 	
 	<div class="form-group row">
-		<div class="col-md-4">
+		<div class="col-md-8">
 			<a class="btn btn-success" href="${pageContext.request.contextPath}/orders">See it on your completed orders</a>
 		</div>
 		<div class="col">

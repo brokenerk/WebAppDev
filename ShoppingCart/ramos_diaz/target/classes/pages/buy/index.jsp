@@ -89,7 +89,7 @@
 
 						<div class="form-group">
 							<label for="" class="text-dark">Credit Card</label>
-							<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txCreditCard" name="creditCard" placeholder="4242424242424242" data-conekta="card[number]"/>
+							<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txCreditCard" name="creditCard" data-conekta="card[number]"/>
 						</div>
 
 						<div class="form-group">
@@ -108,8 +108,11 @@
 							</div>
 							<div class="col-md-4">
 								<label for="" class="text-dark">CVC</label>
-								<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txCvc" name="cvc" placeholder="123" data-conekta="card[cvc]"/>
+								<s:textfield cssClass="form-control" cssErrorClass="is-invalid" id="txCvc" name="cvc" data-conekta="card[cvc]"/>
 							</div>
+						</div>
+						<div class="row" style="padding:10px;">
+							<img src="${pageContext.request.contextPath }/imgs/credit-cards.png" height="65"/>
 						</div>
 					</div>
 					<div class="card-footer" id="credit-card-footer">
