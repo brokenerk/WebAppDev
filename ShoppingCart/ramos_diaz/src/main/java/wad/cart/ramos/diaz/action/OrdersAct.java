@@ -37,7 +37,6 @@ public class OrdersAct {
 	HttpSession session = ServletActionContext.getRequest().getSession();
 	Integer idUser = (Integer) session.getAttribute("idUser");
 
-	private static final long serialVersionUID = 1L;
 	
 	public String index() {
 		//Nos apoyamos de la sesion

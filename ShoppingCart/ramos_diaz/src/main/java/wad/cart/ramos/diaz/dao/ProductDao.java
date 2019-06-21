@@ -12,7 +12,6 @@ import javax.persistence.criteria.Root;
 import org.springframework.stereotype.Repository;
 
 import wad.cart.ramos.diaz.entidad.Product;
-import wad.cart.ramos.diaz.entidad.User;
 
 @Repository("productDao")
 public class ProductDao {

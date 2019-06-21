@@ -10,7 +10,7 @@
   </jsp:text>
 
 <html lang="es-MX">
-<s:head>
+<head>
 	<title>Login</title>
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -30,7 +30,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/components/login/css/util.css"/>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/components/login/css/main.css"/>
 <!--===============================================================================================-->
-</s:head>
+</head>
 <body>
 	
 	<div class="limiter">

@@ -2,7 +2,6 @@ package wad.cart.ramos.diaz.action;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
@@ -27,7 +26,6 @@ public class ProductsAct {
 	private HttpSession session = ServletActionContext.getRequest().getSession();
 	private Integer idUser = (Integer) session.getAttribute("idUser");
 	
-	private static final long serialVersionUID = 1L;
 
 	public String index() {
 		listProducts = productBs.findAllProducts();

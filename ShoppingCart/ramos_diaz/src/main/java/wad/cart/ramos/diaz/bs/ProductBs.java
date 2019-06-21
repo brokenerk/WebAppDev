@@ -1,7 +1,6 @@
 package wad.cart.ramos.diaz.bs;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import wad.cart.ramos.diaz.dao.ProductDao;
 import wad.cart.ramos.diaz.entidad.OrderDetail;
 import wad.cart.ramos.diaz.entidad.Product;
-import wad.cart.ramos.diaz.entidad.User;
 
 @Service("productBs")
 @Scope(value = BeanDefinition.SCOPE_SINGLETON)

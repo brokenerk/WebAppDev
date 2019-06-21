@@ -2,7 +2,6 @@ package wad.cart.ramos.diaz.bs;
 
 import java.time.Instant;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
@@ -12,7 +11,6 @@ import io.conekta.Conekta;
 import io.conekta.Error;
 import io.conekta.ErrorList;
 import io.conekta.Order;
-import io.conekta.Token;
 import wad.cart.ramos.diaz.entidad.Product;
 import wad.cart.ramos.diaz.entidad.User;
 
