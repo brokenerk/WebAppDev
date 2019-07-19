@@ -1,1 +1,0 @@
-Index URL: https://localhost:8080/ramos_diaz/products
